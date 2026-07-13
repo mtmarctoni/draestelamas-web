@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPostArticle from "../../components/BlogPostArticle.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", (entry) => entry.id.startsWith("ca/"));
+  return posts.map((post) => ({
+    params: { slug: post.id.split("/")[1] },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<BaseLayout
+  locale="ca"
+  title={`${post.data.title} | Dra. Estela Mas`}
+  description={post.data.summary.split("\n")[0]}
+>
+  <BlogPostArticle locale="ca" post={post} />
+</BaseLayout>
