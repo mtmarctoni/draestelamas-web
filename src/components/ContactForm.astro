@@ -1,0 +1,231 @@
+---
+import { getTranslations } from "../i18n";
+import type { Locale } from "../i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+---
+
+<section id="contacto">
+  <div class="section-inner contacto-inner">
+    <h2 class="section-title fade-up">{t.contact.title}</h2>
+    <div class="info-item fade-up">
+      <div class="info-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div>
+        <div class="info-label">Email</div>
+        <div class="info-val">{t.contact.email}</div>
+      </div>
+    </div>
+    <div class="fade-up form-wrap">
+      <p class="form-success" id="form-success" role="status" hidden>{t.contact.success}</p>
+      <p class="form-error" id="form-error" role="alert" hidden>{t.contact.error}</p>
+      <form
+        class="contact-form"
+        id="contact-form"
+        data-sending={t.contact.sending}
+        data-submit={t.contact.submit}
+      >
+        {/* LAYER 1: honeypot — visually removed, bots fill it, Zod rejects it. */}
+        <div class="honeypot" aria-hidden="true">
+          <label for="important_field">Do not fill this field</label>
+          <input type="text" id="important_field" name="important_field" tabindex="-1" autocomplete="off" />
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="name">{t.contact.labels.name}</label>
+            <input type="text" id="name" name="name" required minlength="2" autocomplete="given-name" />
+          </div>
+          <div class="field">
+            <label for="surname">{t.contact.labels.surname}</label>
+            <input type="text" id="surname" name="surname" autocomplete="family-name" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">{t.contact.labels.email}</label>
+          <input type="email" id="email" name="email" required autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="message">{t.contact.labels.message}</label>
+          <textarea id="message" name="message" rows="6"></textarea>
+        </div>
+        {/* LAYER 3: Cloudflare Turnstile (disabled by default). To enable, add the
+            widget below, allow challenges.cloudflare.com in the CSP (already done),
+            and uncomment the verification block in src/actions/index.ts:
+        <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY"></div>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
+        */}
+        <p class="form-note">{t.contact.gdpr}</p>
+        <button type="submit" class="btn btn-primary submit-btn" id="submit-btn">{t.contact.submit}</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { actions } from "astro:actions";
+
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const success = document.getElementById("form-success");
+  const errorBox = document.getElementById("form-error");
+  const submit = document.getElementById("submit-btn") as HTMLButtonElement | null;
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!submit) return;
+    submit.disabled = true;
+    submit.textContent = form.dataset.sending ?? "";
+    errorBox?.setAttribute("hidden", "");
+
+    const { error } = await actions.contact(new FormData(form));
+
+    if (!error) {
+      form.hidden = true;
+      success?.removeAttribute("hidden");
+    } else {
+      errorBox?.removeAttribute("hidden");
+      submit.disabled = false;
+      submit.textContent = form.dataset.submit ?? "";
+    }
+  });
+</script>
+
+<style>
+  #contacto {
+    background: #fff;
+  }
+  .contacto-inner {
+    max-width: 780px;
+  }
+  .info-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+  .info-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    background: var(--color-sand);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .info-icon svg {
+    width: 15px;
+    height: 15px;
+    stroke: var(--color-navy);
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+  }
+  .info-label {
+    font-size: 0.65rem;
+    color: var(--color-burnt);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .info-val {
+    font-size: 0.88rem;
+    color: var(--color-ink);
+    margin-top: 2px;
+  }
+  .form-wrap {
+    transition-delay: 0.1s;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .field label {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    font-weight: 500;
+  }
+  .field input,
+  .field textarea {
+    font-family: var(--font-body);
+    font-size: 0.87rem;
+    color: var(--color-ink);
+    background: var(--color-ivory);
+    border: 1px solid rgba(43, 74, 106, 0.15);
+    border-radius: 2px;
+    padding: 0.62rem 0.82rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    resize: vertical;
+  }
+  .field input:focus,
+  .field textarea:focus {
+    border-color: var(--color-sky);
+    box-shadow: 0 0 0 3px rgba(74, 123, 155, 0.1);
+  }
+  .field textarea {
+    min-height: 140px;
+  }
+  .form-note {
+    font-size: 0.69rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+  .form-success {
+    background: rgba(181, 98, 42, 0.08);
+    border: 1px solid var(--color-burnt);
+    border-radius: 4px;
+    padding: 1.5rem;
+    color: var(--color-burnt);
+    font-size: 0.87rem;
+    text-align: center;
+  }
+  .form-error {
+    background: rgba(198, 11, 30, 0.06);
+    border: 1px solid #c0392b;
+    border-radius: 4px;
+    padding: 1rem 1.5rem;
+    color: #c0392b;
+    font-size: 0.87rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .form-success[hidden],
+  .form-error[hidden] {
+    display: none;
+  }
+  .submit-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 960px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

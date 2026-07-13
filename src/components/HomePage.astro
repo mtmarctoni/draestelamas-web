@@ -7,6 +7,7 @@ import Cardiorenal from "./Cardiorenal.astro";
 import DigitalHealth from "./DigitalHealth.astro";
 import Gallery from "./Gallery.astro";
 import Collaborations from "./Collaborations.astro";
+import ContactForm from "./ContactForm.astro";
 import type { Locale } from "../i18n";
 
 interface Props {
@@ -24,4 +25,5 @@ const { locale } = Astro.props;
   <DigitalHealth locale={locale} />
   <Gallery locale={locale} />
   <Collaborations locale={locale} />
+  <ContactForm locale={locale} />
 </BaseLayout>
