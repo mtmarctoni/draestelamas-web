@@ -1,0 +1,108 @@
+---
+import { getTranslations } from "../i18n";
+import type { Locale } from "../i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+
+// Icons from the source site, index-paired with t.digital.areas.
+const icons = [
+  "<svg viewBox='0 0 24 24'><path d='M22 12h-4l-3 9L9 3l-3 9H2'/></svg>",
+  "<svg viewBox='0 0 24 24'><path d='M3 12h4l3 8 4-16 3 8h4'/></svg>",
+  "<svg viewBox='0 0 24 24'><path d='M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z'/></svg>",
+  "<svg viewBox='0 0 24 24'><rect x='4' y='4' width='16' height='16' rx='2'/><path d='M9 9h6v6H9z'/><path d='M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3'/></svg>",
+  "<svg viewBox='0 0 24 24'><path d='M9 11l3 3L22 4'/><path d='M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11'/></svg>",
+  "<svg viewBox='0 0 24 24'><circle cx='12' cy='12' r='3'/><path d='M12 1v6M12 17v6M4.2 4.2l4.3 4.3M15.5 15.5l4.3 4.3M1 12h6M17 12h6M4.2 19.8l4.3-4.3M15.5 8.5l4.3-4.3'/></svg>",
+];
+const delays = [0, 0.05, 0.1, 0.05, 0.1, 0.15];
+---
+
+<section id="digital">
+  <div class="section-inner">
+    <h2 class="section-title fade-up" set:html={t.digital.titleHtml} />
+    <p class="digital-intro fade-up">{t.digital.intro}</p>
+    <p class="section-label areas-label fade-up">{t.digital.areasLabel}</p>
+    <div class="digital-grid">
+      {
+        t.digital.areas.map((area, i) => (
+          <div class="digital-card fade-up" style={`transition-delay:${delays[i]}s`}>
+            <div class="digital-card-icon" set:html={icons[i]} />
+            <p>{area}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  #digital {
+    background: var(--color-ivory);
+  }
+  .digital-intro {
+    font-size: 0.97rem;
+    color: var(--color-muted);
+    font-weight: 300;
+    line-height: 1.85;
+    max-width: 720px;
+    margin-bottom: 2.5rem;
+  }
+  .areas-label {
+    margin-bottom: 0.5rem;
+  }
+  .digital-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+  .digital-card {
+    background: #fff;
+    border-radius: 4px;
+    padding: 1.5rem;
+    border: 1px solid rgba(43, 74, 106, 0.07);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .digital-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(43, 74, 106, 0.08);
+  }
+  .digital-card-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--color-sky), var(--color-navy));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .digital-card-icon :global(svg) {
+    width: 17px;
+    height: 17px;
+    stroke: #fff;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .digital-card p {
+    font-size: 0.85rem;
+    color: var(--color-ink);
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+  }
+  @media (max-width: 900px) {
+    .digital-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
