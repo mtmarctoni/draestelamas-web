@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "./Hero.astro";
+import EcgDivider from "./EcgDivider.astro";
+import About from "./About.astro";
+import DigitalHealth from "./DigitalHealth.astro";
+import Gallery from "./Gallery.astro";
+import Collaborations from "./Collaborations.astro";
+import type { Locale } from "../i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<BaseLayout locale={locale}>
+  <Hero locale={locale} />
+  <EcgDivider />
+  <About locale={locale} />
+  <DigitalHealth locale={locale} />
+  <Gallery locale={locale} />
+  <Collaborations locale={locale} />
+</BaseLayout>
