@@ -12,6 +12,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "test": "vitest run",
+    "deploy": "pnpm build && wrangler pages deploy dist --project-name draestelamas",
     "astro": "astro"
   },
   "dependencies": {

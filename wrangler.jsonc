@@ -1,13 +1,6 @@
 {
   "name": "draestelamas",
   "main": "@astrojs/cloudflare/entrypoints/server",
-  "compatibility_date": "2025-05-21",
-  "assets": { "directory": "./dist", "binding": "ASSETS" },
-  // Names declared here document the env contract. Real values NEVER go in this
-  // file: locally they live in .dev.vars (gitignored); in production they are
-  // set as Secrets in the Cloudflare dashboard (see 08-deploy.md).
-  "vars": {
-    "RESEND_API_KEY": "",
-    "TURNSTILE_SECRET_KEY": ""
-  }
+  "compatibility_date": "2025-07-13",
+  "assets": { "directory": "./dist", "binding": "ASSETS" }
 }

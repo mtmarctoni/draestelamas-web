@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: "https://www.draestelamas.com",
+  site: process.env.BASE_URL || "https://draestelamas.marctonimas.com",
   // output: 'static' is the default. Pages are prerendered; only Actions run on the Worker.
   adapter: cloudflare(),
   i18n: {
