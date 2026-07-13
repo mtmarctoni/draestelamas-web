@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dra. Estela Mas | Nefròloga</title>
+  <meta name="description" content="Nefròloga especialista en salut cardiorenometabòlica i prevenció del risc cardiovascular. Consulta nefrològica online amb un enfocament humanista i basat en l'evidència."/>
+  <meta name="author" content="Dra. Estela Mas Ródenas"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://www.draestelamas.com/"/>
+
+  <!-- Open Graph / xarxes socials -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Dra. Estela Mas"/>
+  <meta property="og:title" content="Dra. Estela Mas | Nefròloga"/>
+  <meta property="og:description" content="Nefròloga especialista en salut cardiorenometabòlica i prevenció del risc cardiovascular. Consulta nefrològica online."/>
+  <meta property="og:locale" content="ca_ES"/>
+  <meta property="og:locale:alternate" content="es_ES"/>
+  <meta property="og:locale:alternate" content="en_GB"/>
+  <meta property="og:url" content="https://www.draestelamas.com/"/>
+  <meta property="og:image" content="https://www.draestelamas.com/assets/img/obra-04.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="941"/>
+  <meta property="og:image:alt" content="Obra de la Dra. Estela Mas — dos ronyons amb paisatge de posta de sol"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Dra. Estela Mas | Nefròloga"/>
+  <meta name="twitter:description" content="Nefròloga especialista en salut cardiorenometabòlica i prevenció del risc cardiovascular."/>
+  <meta name="twitter:image" content="https://www.draestelamas.com/assets/img/obra-04.jpg"/>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/img/logo-gris.png"/>
+  <link rel="apple-touch-icon" href="/assets/img/logo.png"/>
+
+  <!-- hreflang: versions per idioma -->
+  <link rel="alternate" hreflang="ca" href="https://www.draestelamas.com/?lang=ca"/>
+  <link rel="alternate" hreflang="es" href="https://www.draestelamas.com/?lang=es"/>
+  <link rel="alternate" hreflang="en" href="https://www.draestelamas.com/?lang=en"/>
+  <link rel="alternate" hreflang="x-default" href="https://www.draestelamas.com/"/>
+
+  <!-- Fonts autoallotjades (abans Google Fonts) — cap petició a tercers, millor per RGPD -->
+  <link rel="preload" href="/assets/fonts/cormorant-garamond-normal-300.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="preload" href="/assets/fonts/inter-normal-300.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="stylesheet" href="/assets/fonts/fonts.css"/>
+  <style>
+    :root {
+      --navy:   #2B4A6A;
+      --sky:    #4A7B9B;
+      --burnt:  #B5622A;
+      --amber:  #D4943A;
+      --sand:   #EAE2D4;
+      --ivory:  #F5F2ED;
+      --dark:   #252830;
+      --muted:  #6B7888;
+      --white:  #FFFFFF;
+      --f-d: 'Cormorant Garamond', Georgia, serif;
+      --f-b: 'Inter', system-ui, sans-serif;
+      --max-w: 1100px;
+      --nav-h: 72px;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--f-b); background:var(--ivory); color:var(--dark); font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased; }
+    img { max-width:100%; display:block; }
+    a { color:inherit; text-decoration:none; }
+
+    /* ── LANG ── */
+    [data-lang] { display:none !important; }
+    .lang-ca [data-lang="ca"] { display:block !important; }
+    .lang-ca [data-lang="ca"].inline { display:inline !important; }
+    .lang-es [data-lang="es"] { display:block !important; }
+    .lang-es [data-lang="es"].inline { display:inline !important; }
+    .lang-en [data-lang="en"] { display:block !important; }
+    .lang-en [data-lang="en"].inline { display:inline !important; }
+    .nav-links li [data-lang] { display:none !important; }
+    .lang-ca .nav-links li [data-lang="ca"] { display:inline-block !important; }
+    .lang-es .nav-links li [data-lang="es"] { display:inline-block !important; }
+    .lang-en .nav-links li [data-lang="en"] { display:inline-block !important; }
+    .lang-ca .nav-links li a.nav-blog-link[data-lang="ca"],
+    .lang-es .nav-links li a.nav-blog-link[data-lang="es"],
+    .lang-en .nav-links li a.nav-blog-link[data-lang="en"] { display:inline-flex !important; }
+    .formacion-list [data-lang] { display:none !important; }
+    .lang-ca .formacion-list [data-lang="ca"] { display:inline !important; }
+    .lang-es .formacion-list [data-lang="es"] { display:inline !important; }
+    .lang-en .formacion-list [data-lang="en"] { display:inline !important; }
+    .sobre-tags [data-lang] { display:none !important; }
+    .lang-ca .sobre-tags [data-lang="ca"] { display:inline-block !important; }
+    .lang-es .sobre-tags [data-lang="es"] { display:inline-block !important; }
+    .lang-en .sobre-tags [data-lang="en"] { display:inline-block !important; }
+
+    /* ── NAV ── */
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; height:var(--nav-h); display:flex; align-items:center; justify-content:space-between; padding:0 2rem; background:rgba(245,242,237,.96); backdrop-filter:blur(12px); border-bottom:1px solid rgba(43,74,106,.1); transition:box-shadow .3s; }
+    nav.scrolled { box-shadow:0 2px 24px rgba(43,74,106,.1); }
+    .nav-logo { display:flex; align-items:center; gap:.75rem; }
+    .nav-logo img { height:44px; width:auto; }
+    .nav-logo-text { font-family:var(--f-d); font-size:1.05rem; font-weight:600; color:var(--navy); line-height:1.1; letter-spacing:.01em; }
+    .nav-logo-sub { font-family:var(--f-b); font-weight:300; font-style:normal; font-size:.68rem; color:var(--burnt); display:block; letter-spacing:.12em; text-transform:uppercase; margin-top:1px; }
+    .nav-links { display:flex; gap:1.25rem; list-style:none; align-items:center; }
+    .nav-links li { display:flex; align-items:center; }
+    .nav-links a { font-size:.72rem; font-weight:500; letter-spacing:.09em; text-transform:uppercase; color:var(--navy); padding:.25rem 0; border-bottom:2px solid transparent; transition:all .2s; display:inline-block; }
+    .nav-links a:hover { border-bottom-color:var(--burnt); color:var(--burnt); }
+    .nav-cta { background:var(--navy) !important; color:var(--white) !important; padding:.4rem 1rem !important; border-radius:2px !important; border:none !important; transition:background .2s !important; }
+    .nav-cta:hover { background:var(--burnt) !important; }
+    .nav-blog-link { align-items:center; gap:.45rem; }
+    .nav-blog-pill { background:var(--burnt); color:var(--white); font-size:.54rem; letter-spacing:.06em; text-transform:uppercase; font-weight:600; padding:.18rem .5rem; border-radius:20px; line-height:1; flex-shrink:0; transition:background .2s; }
+    .nav-blog-link:hover .nav-blog-pill { background:var(--navy); }
+    .lang-switcher { display:flex; align-items:center; gap:.3rem; }
+    .lang-btn { font-size:.65rem; font-weight:500; cursor:pointer; background:none; border:1px solid var(--sand); padding:.26rem .5rem; border-radius:2px; transition:all .2s; color:var(--muted); display:flex; align-items:center; gap:.22rem; line-height:1; }
+    .lang-btn:hover { border-color:var(--sky); color:var(--sky); }
+    .lang-btn.active { border-color:var(--burnt); color:var(--burnt); background:rgba(181,98,42,.06); }
+    .flag { font-size:.78rem; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+    .hamburger span { width:24px; height:2px; background:var(--navy); transition:.3s; }
+
+    /* ── ECG ── */
+    /* Full-bleed cardiac-monitor line. Built as a repeating SVG tile so it fills the whole
+       width edge-to-edge (no side gaps) with no distortion. The horizontal position is driven
+       by page scroll in JS (scroll down → moves left, scroll up → moves right), so it only
+       animates while the user scrolls. Vertically centred in the white band. */
+    .ecg-wrap { background:var(--white); height:128px; overflow:hidden; }
+    .ecg-line {
+      height:100%;
+      background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='150'%20height='44'%3E%3Cpath%20d='M0,22%20L10,22%20L20,7%20L28,38%20L38,3%20L48,41%20L56,22%20L150,22'%20fill='none'%20stroke='%23B5622A'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat:repeat-x;
+      background-position:center center;
+      background-size:150px 44px;
+    }
+    /* Remove the section's own top gap so the line sits centred in the white band above it */
+    #sobre .section-inner { padding-top: 0; }
+
+    /* ── HERO ── */
+    #inicio { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; align-items:center; padding-top:var(--nav-h); max-width:var(--max-w); margin:0 auto; padding-left:2rem; padding-right:2rem; gap:4rem; }
+    .hero-text { padding:4rem 0; }
+    .hero-eyebrow { font-size:.68rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--sky); margin-bottom:1rem; }
+    .hero-title { font-family:var(--f-d); font-size:clamp(2.6rem,4.5vw,4rem); font-weight:300; color:var(--navy); line-height:1.1; margin-bottom:1.25rem; }
+    .hero-title em { font-style:italic; color:var(--burnt); }
+    .hero-subtitle { font-size:.97rem; color:var(--muted); font-weight:300; max-width:460px; margin-bottom:2rem; line-height:1.85; }
+    .hero-btns { display:flex; gap:.75rem; flex-wrap:wrap; }
+    .btn { display:inline-block; padding:.75rem 1.8rem; font-size:.78rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; border-radius:2px; transition:.25s; cursor:pointer; border:none; }
+    .btn-primary { background:var(--navy); color:var(--white); border:2px solid var(--navy); }
+    .btn-primary:hover { background:var(--burnt); border-color:var(--burnt); }
+    .btn-online { background:var(--burnt); color:var(--white); border:2px solid var(--burnt); }
+    .btn-online:hover { background:var(--amber); border-color:var(--amber); }
+    .btn-outline { background:transparent; color:var(--navy); border:2px solid var(--navy); }
+    .btn-outline:hover { background:var(--navy); color:var(--white); }
+    .hero-visual { position:relative; display:flex; align-items:center; justify-content:center; }
+    .hero-blob { width:400px; height:400px; background:linear-gradient(135deg,var(--navy),var(--sky)); border-radius:60% 40% 55% 45%/45% 55% 40% 60%; opacity:.08; position:absolute; }
+
+    /* ── SECTIONS ── */
+    section { scroll-margin-top:var(--nav-h); }
+    .section-inner { max-width:var(--max-w); margin:0 auto; padding:5rem 2rem; }
+    .section-label { font-size:.66rem; letter-spacing:.22em; text-transform:uppercase; color:var(--burnt); font-weight:500; margin-bottom:1rem; }
+    .section-title { font-family:var(--f-d); font-size:clamp(1.9rem,3.5vw,2.8rem); font-weight:300; color:var(--navy); line-height:1.15; margin-bottom:1.5rem; }
+    .section-title em { font-style:italic; color:var(--burnt); }
+
+    /* ── SOBRE JO ── */
+    #sobre { background:var(--white); }
+    .sobre-grid { display:grid; grid-template-columns:1fr 1.6fr; gap:4rem; align-items:start; }
+    .sobre-photo-wrap { position:relative; }
+    .sobre-photo-wrap img { width:100%; border-radius:4px; display:block; }
+    .sobre-accent { position:absolute; bottom:-14px; right:-14px; width:80px; height:80px; background:var(--sand); border-radius:2px; z-index:-1; }
+    .sobre-content p { color:var(--muted); margin-bottom:1.25rem; font-weight:300; font-size:.96rem; line-height:1.85; }
+    .sobre-tags { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.5rem; }
+    .tag { display:inline-block; font-size:.67rem; padding:.3rem .75rem; border-radius:2px; background:var(--sand); color:var(--navy); font-weight:500; letter-spacing:.03em; }
+    .tag.accent { background:rgba(181,98,42,.1); color:var(--burnt); }
+    .social-links { display:flex; gap:.75rem; margin-bottom:1.75rem; flex-wrap:wrap; }
+    .social-link { display:inline-flex; align-items:center; gap:.4rem; font-size:.73rem; color:var(--sky); border:1px solid rgba(74,123,155,.3); padding:.35rem .85rem; border-radius:2px; font-weight:500; transition:all .2s; }
+    .social-link:hover { background:var(--sky); color:var(--white); border-color:var(--sky); }
+    .formacion-list { list-style:none; margin-top:1.5rem; }
+    .formacion-list li { display:flex; gap:1rem; padding:.65rem 0; border-bottom:1px solid var(--sand); font-size:.84rem; color:var(--muted); align-items:baseline; line-height:1.5; }
+    .formacion-bullet { color:var(--burnt); font-size:1rem; flex-shrink:0; margin-top:2px; }
+
+    /* ── SERVICIOS ── */
+    #servicios { background:var(--ivory); }
+    .servicios-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2rem; }
+    .servicio-card { background:var(--white); border-radius:4px; padding:1.75rem; border:1px solid rgba(43,74,106,.07); transition:transform .25s,box-shadow .25s; }
+    .servicio-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(43,74,106,.09); }
+    .servicio-icon { width:38px; height:38px; background:linear-gradient(135deg,var(--navy),var(--sky)); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:1rem; }
+    .servicio-icon svg { width:18px; height:18px; stroke:white; fill:none; stroke-width:1.8; stroke-linecap:round; }
+    .servicio-card h3 { font-family:var(--f-d); font-size:1.15rem; font-weight:400; color:var(--navy); margin-bottom:.4rem; }
+    .servicio-card p { font-size:.81rem; color:var(--muted); line-height:1.75; font-weight:300; }
+
+    /* ── CONSULTA ONLINE ── */
+    #consulta { background:var(--navy); }
+    #consulta .section-label { color:var(--amber); }
+    #consulta .section-title { color:var(--white); }
+    #consulta .section-title em { color:var(--amber); }
+    .consulta-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; margin-top:2rem; align-items:start; }
+    .consulta-intro { font-size:.95rem; color:rgba(255,255,255,.65); font-weight:300; line-height:1.85; margin-bottom:2rem; }
+    .consulta-help-title { font-family:var(--f-d); font-size:1.35rem; font-weight:400; color:var(--white); margin-bottom:1rem; }
+    .consulta-list { list-style:none; }
+    .consulta-list li { display:flex; gap:.75rem; padding:.6rem 0; border-bottom:1px solid rgba(255,255,255,.08); font-size:.85rem; color:rgba(255,255,255,.65); font-weight:300; line-height:1.6; }
+    .consulta-list li::before { content:"→"; color:var(--amber); flex-shrink:0; font-size:.85rem; margin-top:2px; }
+    .consulta-cta { margin-top:2rem; }
+    .btn-online-lg { display:inline-block; background:var(--burnt); color:var(--white); border:2px solid var(--burnt); padding:.9rem 2.2rem; font-size:.82rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; border-radius:2px; transition:.25s; }
+    .btn-online-lg:hover { background:var(--amber); border-color:var(--amber); }
+
+    /* ── GALERIA ── */
+    #galeria { background:var(--white); }
+    .galeria-intro { font-size:.95rem; color:var(--muted); font-weight:300; line-height:1.85; max-width:700px; margin-bottom:2.5rem; }
+    .galeria-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .galeria-item { border-radius:4px; overflow:hidden; border:1px solid rgba(43,74,106,.07); transition:transform .25s,box-shadow .25s; }
+    .galeria-item:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(43,74,106,.12); }
+    .galeria-img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; }
+    .galeria-caption { padding:.9rem 1rem; background:var(--white); }
+    .galeria-caption h4 { font-family:var(--f-d); font-size:1rem; font-weight:400; color:var(--navy); margin-bottom:.15rem; }
+    .galeria-caption p { font-size:.7rem; color:var(--muted); font-weight:300; }
+
+    /* ── BLOG / CONEIX ── */
+    #blog { background:var(--ivory); }
+    .blog-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; margin-top:2rem; }
+    .blog-card { background:var(--white); border-radius:4px; overflow:hidden; border:1px solid rgba(43,74,106,.07); transition:box-shadow .25s; }
+    .blog-card:hover { box-shadow:0 8px 32px rgba(43,74,106,.1); }
+    .blog-img { aspect-ratio:12/5; background:linear-gradient(135deg,var(--navy),var(--sky)); display:flex; align-items:center; justify-content:center; font-size:2rem; color:rgba(255,255,255,.2); }
+    .blog-eyebrow { display:inline-flex; align-items:center; gap:.4rem; border:1px solid rgba(181,98,42,.35); border-radius:20px; padding:.35rem .9rem; margin-bottom:1.25rem; }
+    .blog-eyebrow::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--burnt); flex-shrink:0; }
+    .blog-img.warm { background:linear-gradient(135deg,var(--burnt),var(--amber)); }
+    .blog-body { padding:1.4rem; }
+    .blog-cat { font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:var(--burnt); font-weight:500; margin-bottom:.4rem; }
+    .blog-card h3 { font-family:var(--f-d); font-size:1.18rem; font-weight:400; color:var(--navy); margin-bottom:.4rem; line-height:1.25; }
+    .blog-card p { font-size:.81rem; color:var(--muted); font-weight:300; }
+
+    /* ── CONTACTO ── */
+    #contacto { background:var(--white); }
+    .contacto-info h3 { font-family:var(--f-d); font-size:1.3rem; font-weight:400; color:var(--navy); margin-bottom:1.5rem; }
+    .info-item { display:flex; gap:1rem; align-items:flex-start; margin-bottom:1.4rem; }
+    .info-icon { width:34px; height:34px; flex-shrink:0; background:var(--sand); border-radius:50%; display:flex; align-items:center; justify-content:center; }
+    .info-icon svg { width:15px; height:15px; stroke:var(--navy); fill:none; stroke-width:1.8; stroke-linecap:round; }
+    .info-label { font-size:.65rem; color:var(--burnt); letter-spacing:.1em; text-transform:uppercase; font-weight:500; }
+    .info-val { font-size:.88rem; color:var(--dark); margin-top:2px; }
+    .contact-form { display:flex; flex-direction:column; gap:1rem; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .field { display:flex; flex-direction:column; gap:5px; }
+    .field label { font-size:.65rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:500; }
+    .field input,.field textarea,.field select { font-family:var(--f-b); font-size:.87rem; color:var(--dark); background:var(--ivory); border:1px solid rgba(43,74,106,.15); border-radius:2px; padding:.62rem .82rem; transition:border-color .2s,box-shadow .2s; outline:none; resize:vertical; }
+    .field input:focus,.field textarea:focus,.field select:focus { border-color:var(--sky); box-shadow:0 0 0 3px rgba(74,123,155,.1); }
+    .field textarea { min-height:110px; }
+    .form-note { font-size:.69rem; color:var(--muted); line-height:1.6; }
+    .form-success { display:none; background:rgba(181,98,42,.08); border:1px solid var(--burnt); border-radius:4px; padding:1.5rem; color:var(--burnt); font-size:.87rem; text-align:center; }
+
+    /* ── FOOTER ── */
+    footer { background:var(--dark); color:rgba(255,255,255,.4); text-align:center; padding:2.5rem 2rem; font-size:.73rem; }
+    .footer-logo { font-family:var(--f-d); font-size:1.4rem; color:var(--white); font-weight:300; margin-bottom:1rem; display:flex; align-items:center; justify-content:center; gap:.75rem; }
+    .footer-logo img { height:34px; width:auto; opacity:.75; filter:brightness(0) invert(1); }
+    footer a { color:var(--amber); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up { opacity:0; transform:translateY(22px); transition:opacity .7s ease,transform .7s ease; }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:960px) {
+      #inicio { grid-template-columns:1fr; gap:1.25rem; min-height:auto; padding:calc(var(--nav-h) + 0.75rem) 1.5rem 3rem; }
+      .ecg-wrap { height:96px; }
+      .hero-visual { display:none; }
+      .sobre-grid { grid-template-columns:1fr; }
+      .servicios-grid { grid-template-columns:repeat(2,1fr); }
+      .consulta-grid,.blog-grid { grid-template-columns:1fr; }
+      .galeria-grid { grid-template-columns:repeat(2,1fr); }
+      .contacto-grid { grid-template-columns:1fr; }
+      .form-row { grid-template-columns:1fr; }
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .nav-links.open { display:flex; flex-direction:column; position:fixed; top:var(--nav-h); left:0; right:0; background:var(--ivory); padding:1.5rem 2rem; border-bottom:1px solid var(--sand); gap:1rem; z-index:99; }
+      .hero-btns { flex-direction:row; flex-wrap:wrap; gap:.6rem; }
+      .hero-text { padding:1rem 0 0; }
+      .hero-title { font-size:clamp(2rem,7vw,2.6rem); margin-bottom:1rem; }
+      .hero-subtitle { margin-bottom:1.25rem; }
+      .hero-eyebrow { margin-bottom:.6rem; }
+    }
+    @media(max-width:600px) {
+      .servicios-grid,.galeria-grid { grid-template-columns:1fr; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      .fade-up { opacity:1; transform:none; }
+    }
+
+    /* ── MODALS ── */
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(37,40,48,.6); z-index:1000; align-items:center; justify-content:center; padding:1.5rem; backdrop-filter:blur(4px); }
+    .modal-overlay.open { display:flex; }
+    .modal-box { background:var(--white); border-radius:4px; max-width:680px; width:100%; max-height:85vh; overflow-y:auto; padding:3rem; position:relative; }
+    @media(min-width:961px) {
+      #post-modal-overlay .modal-box { max-width:1088px; }
+    }
+    .modal-close { position:absolute; top:1.25rem; right:1.25rem; background:none; border:none; cursor:pointer; color:var(--muted); font-size:1.4rem; line-height:1; transition:color .2s; }
+    .modal-close:hover { color:var(--burnt); }
+    .modal-box h2 { font-family:var(--f-d); font-size:1.8rem; font-weight:300; color:var(--navy); margin-bottom:1.5rem; }
+    .modal-box h3 { font-family:var(--f-d); font-size:1.2rem; font-weight:400; color:var(--navy); margin:1.5rem 0 .5rem; }
+    .modal-box p { font-size:.88rem; color:var(--muted); line-height:1.85; margin-bottom:.75rem; font-weight:300; }
+    .modal-box ul { padding-left:1.25rem; margin-bottom:.75rem; }
+    .modal-box ul li { font-size:.88rem; color:var(--muted); line-height:1.85; font-weight:300; margin-bottom:.3rem; }
+    .modal-box strong { color:var(--navy); font-weight:500; }
+    .modal-date { font-size:.75rem; color:var(--muted); opacity:.6; margin-top:2rem; border-top:1px solid var(--sand); padding-top:1rem; }
+    #post-modal-body p { font-size:.9rem; color:var(--dark); line-height:1.85; font-weight:300; margin-bottom:1rem; }
+    #post-modal-body strong { font-weight:600; color:var(--navy); }
+    #post-modal-body em { font-style:italic; }
+    #post-modal-body ul, #post-modal-body ol { margin:0 0 1rem 1.25rem; }
+    #post-modal-body li { font-size:.9rem; color:var(--dark); line-height:1.85; font-weight:300; margin-bottom:.35rem; }
+    #post-modal-body h1, #post-modal-body h2, #post-modal-body h3 { font-family:var(--f-d); font-weight:400; color:var(--navy); margin:1.25rem 0 .6rem; }
+    #post-modal-body a { color:var(--sky); text-decoration:underline; }
+    #post-modal-body img { border-radius:4px; margin:1rem 0; }
+    .blog-card { cursor:pointer; }
+
+    /* ── LIGHTBOX ── */
+    .galeria-item { cursor:zoom-in; }
+    .lightbox-overlay { display:none; position:fixed; inset:0; background:rgba(37,40,48,.92); z-index:2000; align-items:center; justify-content:center; padding:1rem; backdrop-filter:blur(6px); }
+    .lightbox-overlay.open { display:flex; }
+    .lightbox-inner { position:relative; max-width:90vw; max-height:90vh; display:flex; flex-direction:column; align-items:center; gap:1rem; }
+    .lightbox-inner img { max-width:90vw; max-height:80vh; object-fit:contain; border-radius:3px; box-shadow:0 24px 80px rgba(0,0,0,.6); }
+    .lightbox-caption { text-align:center; }
+    .lightbox-caption h4 { font-family:var(--f-d); font-size:1.2rem; font-weight:400; color:var(--white); margin-bottom:.25rem; }
+    .lightbox-caption p { font-size:.78rem; color:rgba(255,255,255,.55); font-weight:300; font-style:italic; }
+    .lightbox-close { position:fixed; top:1.25rem; right:1.5rem; background:none; border:none; color:rgba(255,255,255,.7); font-size:2rem; cursor:pointer; line-height:1; transition:color .2s; z-index:2001; }
+    .lightbox-close:hover { color:var(--burnt); }
+    .lightbox-prev, .lightbox-next { position:fixed; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); color:rgba(255,255,255,.8); font-size:1.5rem; cursor:pointer; padding:.5rem .9rem; border-radius:2px; transition:all .2s; z-index:2001; }
+    .lightbox-prev { left:1rem; }
+    .lightbox-next { right:1rem; }
+    .lightbox-prev:hover, .lightbox-next:hover { background:rgba(255,255,255,.2); color:white; }
+    @media(max-width:600px) { .lightbox-prev, .lightbox-next { display:none; } }
+
+    /* ── SALUT DIGITAL I IA ── */
+    #digital { background:var(--ivory); }
+    .digital-intro { font-size:.97rem; color:var(--muted); font-weight:300; line-height:1.85; max-width:720px; margin-bottom:2.5rem; }
+    .digital-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; margin-top:2rem; }
+    .digital-card { background:var(--white); border-radius:4px; padding:1.5rem; border:1px solid rgba(43,74,106,.07); display:flex; align-items:flex-start; gap:.85rem; transition:transform .25s,box-shadow .25s; }
+    .digital-card:hover { transform:translateY(-3px); box-shadow:0 10px 32px rgba(43,74,106,.08); }
+    .digital-card-icon { width:34px; height:34px; flex-shrink:0; background:linear-gradient(135deg,var(--sky),var(--navy)); border-radius:8px; display:flex; align-items:center; justify-content:center; }
+    .digital-card-icon svg { width:17px; height:17px; stroke:white; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .digital-card p { font-size:.85rem; color:var(--dark); font-weight:400; line-height:1.5; }
+
+    /* ── COL·LABORACIONS ── */
+    #colaboracions { background:var(--navy); }
+    #colaboracions .section-label { color:var(--amber); }
+    #colaboracions .section-title { color:var(--white); }
+    #colaboracions .section-title em { color:var(--amber); }
+    .colab-intro { font-size:.97rem; color:rgba(255,255,255,.7); font-weight:300; line-height:1.85; max-width:720px; margin-bottom:1rem; }
+    .colab-highlight { font-size:1.05rem; color:var(--white); font-weight:300; font-style:italic; font-family:var(--f-d); max-width:720px; margin-bottom:2.5rem; }
+    .colab-cols { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:1rem; }
+    .colab-col h3 { font-family:var(--f-d); font-size:1.3rem; font-weight:400; color:var(--amber); margin-bottom:1.25rem; }
+    .colab-list { list-style:none; }
+    .colab-list li { display:flex; gap:.75rem; padding:.55rem 0; border-bottom:1px solid rgba(255,255,255,.1); font-size:.88rem; color:rgba(255,255,255,.75); font-weight:300; }
+    .colab-list li::before { content:"—"; color:var(--amber); flex-shrink:0; }
+    .colab-cta { margin-top:2.5rem; }
+    @media(max-width:900px) {
+      .digital-grid { grid-template-columns:1fr; }
+      .colab-cols { grid-template-columns:1fr; gap:2rem; }
+    }
+
+    .l-geminada { display:inline-block; transform:translateY(-.05em); padding:0 .02em; }
+  </style>
+
+  <!-- Dades estructurades Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Physician",
+    "name": "Dra. Estela Mas Ródenas",
+    "medicalSpecialty": "Nephrology",
+    "description": "Nefròloga especialista en salut cardiorenometabòlica i prevenció del risc cardiovascular.",
+    "url": "https://www.draestelamas.com/",
+    "availableService": {
+      "@type": "MedicalProcedure",
+      "name": "Consulta nefrològica online"
+    },
+    "knowsLanguage": ["ca", "es", "en"]
+  }
+  </script>
+</head>
+<body class="lang-ca">
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-logo">
+    <img src="/assets/img/logo.png" alt="Logo — dos ronyons amb paisatge"/>
+    <div class="nav-logo-text">
+      Dra. Estela Mas
+      <span class="nav-logo-sub">Nefrologia</span>
+    </div>
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li>
+      <a href="#inicio" data-lang="ca">Inici</a>
+      <a href="#inicio" data-lang="es">Inicio</a>
+      <a href="#inicio" data-lang="en">Home</a>
+    </li>
+    <li>
+      <a href="#sobre" data-lang="ca">Sobre jo</a>
+      <a href="#sobre" data-lang="es">Sobre mí</a>
+      <a href="#sobre" data-lang="en">About me</a>
+    </li>
+    <li>
+      <a href="#cardiorenal" class="nav-blog-link" data-lang="ca">Salut Cardiorenal<span class="nav-blog-pill">Blog</span></a>
+      <a href="#cardiorenal" class="nav-blog-link" data-lang="es">Salud Cardiorrenal<span class="nav-blog-pill">Blog</span></a>
+      <a href="#cardiorenal" class="nav-blog-link" data-lang="en">Cardiorenal Health<span class="nav-blog-pill">Blog</span></a>
+    </li>
+    <li>
+      <a href="#digital" data-lang="ca">Salut Digital i IA</a>
+      <a href="#digital" data-lang="es">Salud Digital e IA</a>
+      <a href="#digital" data-lang="en">Digital Health & AI</a>
+    </li>
+    <li>
+      <a href="#galeria" data-lang="ca">Humanisme Mèdic</a>
+      <a href="#galeria" data-lang="es">Humanismo Médico</a>
+      <a href="#galeria" data-lang="en">Medical Humanism</a>
+    </li>
+    <li>
+      <a href="#colaboracions" data-lang="ca">Col<span class="l-geminada">·</span>laboracions</a>
+      <a href="#colaboracions" data-lang="es">Colaboraciones</a>
+      <a href="#colaboracions" data-lang="en">Collaborations</a>
+    </li>
+    <li>
+      <a href="#contacto" class="nav-cta" data-lang="ca">Contacte</a>
+      <a href="#contacto" class="nav-cta" data-lang="es">Contacto</a>
+      <a href="#contacto" class="nav-cta" data-lang="en">Contact</a>
+    </li>
+    <li class="lang-switcher">
+      <button class="lang-btn active" id="btn-ca" onclick="setLang('ca')"><svg width="16" height="11" viewBox="0 0 16 11" style="display:inline-block;vertical-align:middle;margin-right:2px;border-radius:1px"><rect width="16" height="11" fill="#FCDD09"/><rect y="0" width="16" height="1.57" fill="#C60B1E"/><rect y="3.14" width="16" height="1.57" fill="#C60B1E"/><rect y="6.29" width="16" height="1.57" fill="#C60B1E"/><rect y="9.43" width="16" height="1.57" fill="#C60B1E"/></svg>CA</button>
+      <button class="lang-btn" id="btn-es" onclick="setLang('es')"><svg width="16" height="11" viewBox="0 0 16 11" style="display:inline-block;vertical-align:middle;margin-right:2px;border-radius:1px"><rect width="16" height="11" fill="#c60b1e"/><rect y="2.75" width="16" height="5.5" fill="#f1bf00"/></svg>ES</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')"><svg width="16" height="11" viewBox="0 0 16 11" style="display:inline-block;vertical-align:middle;margin-right:2px;border-radius:1px"><rect width="16" height="11" fill="#012169"/><path d="M0,0 L16,11 M16,0 L0,11" stroke="white" stroke-width="2.2"/><path d="M0,0 L16,11 M16,0 L0,11" stroke="#C8102E" stroke-width="1.2"/><path d="M8,0 V11 M0,5.5 H16" stroke="white" stroke-width="3"/><path d="M8,0 V11 M0,5.5 H16" stroke="#C8102E" stroke-width="1.8"/></svg>EN</button>
+    </li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-text fade-up">
+    <p class="hero-eyebrow">
+      <span data-lang="ca">Especialista en Nefrologia<br/>Salut cardiorenometabòlica<br/>Prevenció del risc cardiovascular</span>
+      <span data-lang="es">Especialista en Nefrología<br/>Salud cardiorrenal metabólica<br/>Prevención del riesgo cardiovascular</span>
+      <span data-lang="en">Specialist in Nephrology<br/>Cardiorenal metabolic health<br/>Cardiovascular risk prevention</span>
+    </p>
+    <h1 class="hero-title">
+      <span data-lang="ca">Darrere de cada pacient,<br/>hi ha una <em>obra d'art</em><br/>irrepetible.</span>
+      <span data-lang="es">Detrás de cada paciente,<br/>hay una <em>obra de arte</em><br/>irrepetible.</span>
+      <span data-lang="en">Behind every patient,<br/>lies an <em>irreplaceable</em><br/>work of art.</span>
+    </h1>
+    <p class="hero-subtitle">
+      <span data-lang="ca">Nefròloga especialitzada en salut cardiorenometabòlica i prevenció del risc cardiovascular. Uneixo la medicina basada en l'evidència, la innovació en salut digital i IA, i una mirada humanista centrada en la persona.</span>
+      <span data-lang="es">Nefróloga especializada en salud cardiorrenal metabólica y prevención del riesgo cardiovascular. Uno la medicina basada en la evidencia, la innovación en salud digital e IA, y una mirada humanista centrada en la persona.</span>
+      <span data-lang="en">Nephrologist specialising in cardiorenal metabolic health and cardiovascular risk prevention. I combine evidence-based medicine, digital health and AI innovation, and a humanistic, person-centred approach.</span>
+    </p>
+    <div class="hero-btns">
+      <a href="#colaboracions" class="btn btn-online">
+        <span data-lang="ca">Col<span class="l-geminada">·</span>laboracions</span>
+        <span data-lang="es">Colaboraciones</span>
+        <span data-lang="en">Collaborations</span>
+      </a>
+      <a href="#contacto" class="btn btn-outline">
+        <span data-lang="ca">Contacte</span>
+        <span data-lang="es">Contacto</span>
+        <span data-lang="en">Contact</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-blob"></div>
+    <img src="/assets/img/hero-obra.png"
+         alt="Obra d'art — dos ronyons amb paisatge de posta de sol"
+         style="width:100%; max-width:420px; border-radius:4px; display:block; box-shadow:0 8px 48px rgba(43,74,106,0.15); position:relative; z-index:1;"
+         class="fade-up" style="transition-delay:.2s"/>
+  </div>
+</section>
+
+<!-- ECG -->
+<div class="ecg-wrap" aria-hidden="true">
+  <div class="ecg-line"></div>
+</div>
+
+<!-- SOBRE JO -->
+<section id="sobre">
+  <div class="section-inner">
+    <div class="sobre-grid">
+      <div class="sobre-photo-wrap fade-up">
+        <img src="/assets/img/sobre-retrat.jpg" alt="Dra. Estela Mas Ródenas, nefròloga" loading="lazy"/>
+        <div class="sobre-accent"></div>
+      </div>
+      <div class="fade-up" style="transition-delay:.15s">
+        <h2 class="section-title" style="margin-bottom:.4rem">
+          <span data-lang="ca">Sobre <em>jo</em></span>
+          <span data-lang="es">Sobre <em>mí</em></span>
+          <span data-lang="en">About <em>me</em></span>
+        </h2>
+        <p class="section-label" style="margin-bottom:1.5rem">
+          <span data-lang="ca">Recerca, formació contínua i humanisme mèdic</span>
+          <span data-lang="es">Investigación, formación continua y humanismo médico</span>
+          <span data-lang="en">Research, continuous training and medical humanism</span>
+        </p>
+        <div class="sobre-tags">
+          <span class="tag" data-lang="ca">Salut cardiorenometabòlica</span>
+          <span class="tag" data-lang="es">Salud cardiorrenal metabólica</span>
+          <span class="tag" data-lang="en">Cardiorenal metabolic health</span>
+          <span class="tag" data-lang="ca">Risc cardiovascular</span>
+          <span class="tag" data-lang="es">Riesgo cardiovascular</span>
+          <span class="tag" data-lang="en">Cardiovascular risk</span>
+          <span class="tag accent" data-lang="ca">Art renal</span>
+          <span class="tag accent" data-lang="es">Arte renal</span>
+          <span class="tag accent" data-lang="en">Renal art</span>
+          <span class="tag accent" data-lang="ca">Humanisme mèdic</span>
+          <span class="tag accent" data-lang="es">Humanismo médico</span>
+          <span class="tag accent" data-lang="en">Medical humanism</span>
+        </div>
+        <p data-lang="ca">Soc <strong>nefròloga, investigadora i artista</strong>. La meva activitat se centra en l'<strong>atenció integral de les persones amb malaltia renal crònica, hipertensió arterial i síndrome cardiorenometabòlica</strong>, amb un enfocament orientat a la prevenció i a la medicina basada en l'evidència. La meva trajectòria professional combina l'activitat assistencial, la participació en recerca clínica i la formació continuada, amb un interès creixent per la <strong>salut digital, la intel·ligència artificial i la innovació en HealthTech</strong>.</p>
+        <p data-lang="ca">Compagino la meva activitat assistencial amb la formació contínua en innovació aplicada a la medicina i amb la divulgació científica, participant en xerrades i activitats formatives sobre prevenció cardiorenal, risc cardiovascular en la malaltia renal crònica i síndrome cardiorenometabòlica.</p>
+        <p data-lang="ca">Paral·lelament, he completat una formació de postgrau en <strong>artteràpia</strong>, una disciplina que ha enriquit la meva visió humanista de la medicina i que reforça la meva manera d'entendre l'atenció sanitària: <strong>rigorosa des del punt de vista científic, però també propera i centrada en la persona</strong>.</p>
+        <p data-lang="ca">He realitzat estades formatives a la <strong>Unitat Cardiorrenal de l'Hospital Puerta de Hierro</strong> (Madrid) i a la <strong>Mayo Clinic de Rochester</strong> (Estats Units), experiències que han ampliat la meva perspectiva clínica i científica.</p>
+        <p data-lang="ca">La meva vocació és contribuir a una medicina més <strong>preventiva, innovadora i humana</strong>, oferint una atenció basada en l'evidència i adaptada a les necessitats de cada persona.</p>
+        <p data-lang="es">Soy <strong>nefróloga, investigadora y artista</strong>. Mi actividad se centra en la <strong>atención integral de las personas con enfermedad renal crónica, hipertensión arterial y síndrome cardiorrenometabólico</strong>, con un enfoque orientado a la prevención y a la medicina basada en la evidencia. Mi trayectoria profesional combina la actividad asistencial, la participación en investigación clínica y la formación continuada, con un creciente interés por la <strong>salud digital, la inteligencia artificial y la innovación en HealthTech</strong>.</p>
+        <p data-lang="es">Compagino mi actividad asistencial con la formación continua en innovación aplicada a la medicina y con la divulgación científica, participando en charlas y actividades formativas sobre prevención cardiorrenal, riesgo cardiovascular en la enfermedad renal crónica y síndrome cardiorrenometabólico.</p>
+        <p data-lang="es">Paralelamente, he completado una formación de posgrado en <strong>arteterapia</strong>, una disciplina que ha enriquecido mi visión humanista de la medicina y que refuerza mi forma de entender la atención sanitaria: <strong>rigurosa desde el punto de vista científico, pero también cercana y centrada en la persona</strong>.</p>
+        <p data-lang="es">He realizado estancias formativas en la <strong>Unidad Cardiorrenal del Hospital Puerta de Hierro</strong> (Madrid) y en la <strong>Mayo Clinic de Rochester</strong> (Estados Unidos), experiencias que han ampliado mi perspectiva clínica y científica.</p>
+        <p data-lang="es">Mi vocación es contribuir a una medicina más <strong>preventiva, innovadora y humana</strong>, ofreciendo una atención basada en la evidencia y adaptada a las necesidades de cada persona.</p>
+        <p data-lang="en">I am a <strong>nephrologist, researcher and artist</strong>. My work focuses on the <strong>comprehensive care of people with chronic kidney disease, arterial hypertension and cardiorenal metabolic syndrome</strong>, with an approach oriented towards prevention and evidence-based medicine. My professional career combines clinical practice, participation in clinical research and continuous training, with a growing interest in <strong>digital health, artificial intelligence and HealthTech innovation</strong>.</p>
+        <p data-lang="en">I combine my clinical practice with continuous training in innovation applied to medicine and with scientific outreach, participating in talks and educational activities on cardiorenal prevention, cardiovascular risk in chronic kidney disease and cardiorenal metabolic syndrome.</p>
+        <p data-lang="en">In parallel, I have completed postgraduate training in <strong>art therapy</strong>, a discipline that has enriched my humanistic vision of medicine and reinforces my way of understanding healthcare: <strong>scientifically rigorous, but also close and person-centred</strong>.</p>
+        <p data-lang="en">I have completed training stays at the <strong>Cardiorenal Unit of Hospital Puerta de Hierro</strong> (Madrid) and at <strong>Mayo Clinic Rochester</strong> (United States), experiences that have broadened my clinical and scientific perspective.</p>
+        <p data-lang="en">My vocation is to contribute to a more <strong>preventive, innovative and human</strong> medicine, offering evidence-based care adapted to the needs of each individual.</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/estelamasrodenas/" target="_blank" rel="noopener" class="social-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://twitter.com/EstelaNefro" target="_blank" rel="noopener" class="social-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+            @EstelaNefro
+          </a>
+        </div>
+        <p class="section-label" style="margin-top:1.5rem" data-lang="ca">Formació i activitat acadèmica</p>
+        <p class="section-label" style="margin-top:1.5rem" data-lang="es">Formación y actividad académica</p>
+        <p class="section-label" style="margin-top:1.5rem" data-lang="en">Training and academic activity</p>
+        <ul class="formacion-list">
+          <li><span class="formacion-bullet">·</span>
+            <span data-lang="ca">Llicenciada en Medicina per la Universitat Autònoma de Barcelona</span>
+            <span data-lang="es">Licenciada en Medicina por la Universitat Autònoma de Barcelona</span>
+            <span data-lang="en">Medical degree from the Universitat Autònoma de Barcelona</span>
+          </li>
+          <li><span class="formacion-bullet">·</span>
+            <span data-lang="ca">Especialista en Nefrologia per l'Hospital Universitari Son Espases</span>
+            <span data-lang="es">Especialista en Nefrología por el Hospital Universitario Son Espases</span>
+            <span data-lang="en">Specialist in Nephrology, Hospital Universitari Son Espases</span>
+          </li>
+          <li><span class="formacion-bullet">·</span>
+            <span data-lang="ca">Màster en Investigació Mèdica</span>
+            <span data-lang="es">Máster en Investigación Médica</span>
+            <span data-lang="en">Master's in Medical Research</span>
+          </li>
+
+          <li><span class="formacion-bullet">·</span>
+            <span data-lang="ca">Formació en nutrició clínica</span>
+            <span data-lang="es">Formación en nutrición clínica</span>
+            <span data-lang="en">Training in clinical nutrition</span>
+          </li>
+          <li><span class="formacion-bullet">·</span>
+            <span data-lang="ca">Màster en Hemodiàlisi</span>
+            <span data-lang="es">Máster en Hemodiálisis</span>
+            <span data-lang="en">Master's in Haemodialysis</span>
+          </li>
+          <li><span class="formacion-bullet">·</span>
+            <span data-lang="ca">Màster en Maneig de Fluids i Electròlits</span>
+            <span data-lang="es">Máster en Manejo de Fluidos y Electrolitos</span>
+            <span data-lang="en">Master's in Fluid and Electrolyte Management</span>
+          </li>
+          <li><span class="formacion-bullet">·</span>
+            <span data-lang="ca">Formació continuada en síndrome cardiorenometabòlica, lipidologia clínica, risc cardiovascular i cardionefrologia</span>
+            <span data-lang="es">Formación continuada en síndrome cardiorrenal metabólico, lipidología clínica, riesgo cardiovascular y cardionefrología</span>
+            <span data-lang="en">Continuous training in cardiorenal metabolic syndrome, clinical lipidology, cardiovascular risk and cardiorenal medicine</span>
+          </li>
+          <li><span class="formacion-bullet">·</span>
+            <span data-lang="ca">Autora de publicacions en revistes científiques nacionals i internacionals</span>
+            <span data-lang="es">Autora de publicaciones en revistas científicas nacionales e internacionales</span>
+            <span data-lang="en">Author of publications in national and international scientific journals</span>
+          </li>
+          <li><span class="formacion-bullet">·</span>
+            <span data-lang="ca">Idiomes: català, castellà i anglès</span>
+            <span data-lang="es">Idiomas: catalán, castellano e inglés</span>
+            <span data-lang="en">Languages: Catalan, Spanish and English</span>
+          </li>
+        </ul>
+        <p class="section-label" style="margin-top:1.5rem" data-lang="ca">Societats científiques</p>
+        <p class="section-label" style="margin-top:1.5rem" data-lang="es">Sociedades científicas</p>
+        <p class="section-label" style="margin-top:1.5rem" data-lang="en">Scientific societies</p>
+        <ul class="formacion-list">
+          <li><span class="formacion-bullet">·</span>
+            <span data-lang="ca">Sociedad Española de Nefrología (SEN)</span>
+            <span data-lang="es">Sociedad Española de Nefrología (SEN)</span>
+            <span data-lang="en">Spanish Society of Nephrology (SEN)</span>
+          </li>
+          <li><span class="formacion-bullet">·</span>
+            <span data-lang="ca">European Renal Association (ERA)</span>
+            <span data-lang="es">European Renal Association (ERA)</span>
+            <span data-lang="en">European Renal Association (ERA)</span>
+          </li>
+          <li><span class="formacion-bullet">·</span>
+            <span data-lang="ca">American Society of Nephrology (ASN)</span>
+            <span data-lang="es">American Society of Nephrology (ASN)</span>
+            <span data-lang="en">American Society of Nephrology (ASN)</span>
+          </li>
+          <li><span class="formacion-bullet">·</span>
+            <span data-lang="ca">International Society of Nephrology (ISN)</span>
+            <span data-lang="es">International Society of Nephrology (ISN)</span>
+            <span data-lang="en">International Society of Nephrology (ISN)</span>
+          </li>
+          <li><span class="formacion-bullet">·</span>
+            <span data-lang="ca">Sociedad Española de Arteriosclerosis (SEA)</span>
+            <span data-lang="es">Sociedad Española de Arteriosclerosis (SEA)</span>
+            <span data-lang="en">Spanish Society of Arteriosclerosis (SEA)</span>
+          </li>
+          <li><span class="formacion-bullet">·</span>
+            <span data-lang="ca">Societat Balear de Nefrologia (SBN)</span>
+            <span data-lang="es">Societat Balear de Nefrologia (SBN)</span>
+            <span data-lang="en">Balearic Society of Nephrology (SBN)</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="cardiorenal">
+  <div class="section-inner">
+    <p class="section-label fade-up blog-eyebrow">
+      <span data-lang="ca">Blog · Articles de la doctora</span>
+      <span data-lang="es">Blog · Artículos de la doctora</span>
+      <span data-lang="en">Blog · Articles by the doctor</span>
+    </p>
+    <h2 class="section-title fade-up">
+      <span data-lang="ca">Salut <em>Cardiorenal</em></span>
+      <span data-lang="es">Salud <em>Cardiorrenal</em></span>
+      <span data-lang="en">Cardiorenal <em>Health</em></span>
+    </h2>
+    <div class="blog-grid" id="blog-grid"></div>
+  </div>
+</section>
+
+<!-- SALUT DIGITAL I IA -->
+<section id="digital">
+  <div class="section-inner">
+    <h2 class="section-title fade-up">
+      <span data-lang="ca">Salut Digital <em>i IA</em></span>
+      <span data-lang="es">Salud Digital <em>e IA</em></span>
+      <span data-lang="en">Digital Health <em>& AI</em></span>
+    </h2>
+    <p class="digital-intro fade-up">
+      <span data-lang="ca">La salut digital i la intel·ligència artificial estan transformant la manera en què prevenim, diagnostiquem i fem el seguiment de les malalties cròniques. El meu interès se centra en com aquestes eines poden contribuir a millorar la prevenció cardiorenal, el control de la hipertensió, la malaltia renal crònica i la presa de decisions clíniques basada en dades. Actualment estic ampliant la meva formació en aquest àmbit i seguint de prop els avenços científics i tecnològics, amb l'objectiu d'integrar la innovació digital en la pràctica clínica i participar en projectes que millorin l'atenció a pacients i professionals.</span>
+      <span data-lang="es">La salud digital y la inteligencia artificial están transformando la forma en que prevenimos, diagnosticamos y hacemos el seguimiento de las enfermedades crónicas. Mi interés se centra en cómo estas herramientas pueden contribuir a mejorar la prevención cardiorrenal, el control de la hipertensión, la enfermedad renal crónica y la toma de decisiones clínicas basada en datos. Actualmente estoy ampliando mi formación en este ámbito y siguiendo de cerca los avances científicos y tecnológicos, con el objetivo de integrar la innovación digital en la práctica clínica y participar en proyectos que mejoren la atención a pacientes y profesionales.</span>
+      <span data-lang="en">Digital health and artificial intelligence are transforming the way we prevent, diagnose and monitor chronic diseases. My interest focuses on how these tools can help improve cardiorenal prevention, hypertension control, chronic kidney disease and data-driven clinical decision-making. I am currently expanding my training in this field and closely following scientific and technological advances, with the aim of integrating digital innovation into clinical practice and participating in projects that improve care for patients and professionals.</span>
+    </p>
+    <p class="section-label fade-up" data-lang="ca" style="margin-bottom:.5rem">Àrees d'interès</p>
+    <p class="section-label fade-up" data-lang="es" style="margin-bottom:.5rem">Áreas de interés</p>
+    <p class="section-label fade-up" data-lang="en" style="margin-bottom:.5rem">Areas of interest</p>
+    <div class="digital-grid">
+      <div class="digital-card fade-up">
+        <div class="digital-card-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <p>
+          <span data-lang="ca">Monitorització remota de pacients</span>
+          <span data-lang="es">Monitorización remota de pacientes</span>
+          <span data-lang="en">Remote patient monitoring</span>
+        </p>
+      </div>
+      <div class="digital-card fade-up" style="transition-delay:.05s">
+        <div class="digital-card-icon"><svg viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+        <p>
+          <span data-lang="ca">Hipertensió i seguiment digital</span>
+          <span data-lang="es">Hipertensión y seguimiento digital</span>
+          <span data-lang="en">Hypertension and digital follow-up</span>
+        </p>
+      </div>
+      <div class="digital-card fade-up" style="transition-delay:.1s">
+        <div class="digital-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/></svg></div>
+        <p>
+          <span data-lang="ca">Prevenció cardiorenal</span>
+          <span data-lang="es">Prevención cardiorrenal</span>
+          <span data-lang="en">Cardiorenal prevention</span>
+        </p>
+      </div>
+      <div class="digital-card fade-up" style="transition-delay:.05s">
+        <div class="digital-card-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></div>
+        <p>
+          <span data-lang="ca">Intel·ligència artificial aplicada a la pràctica clínica</span>
+          <span data-lang="es">Inteligencia artificial aplicada a la práctica clínica</span>
+          <span data-lang="en">Artificial intelligence applied to clinical practice</span>
+        </p>
+      </div>
+      <div class="digital-card fade-up" style="transition-delay:.1s">
+        <div class="digital-card-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <p>
+          <span data-lang="ca">Suport a la presa de decisions clíniques</span>
+          <span data-lang="es">Apoyo a la toma de decisiones clínicas</span>
+          <span data-lang="en">Clinical decision-making support</span>
+        </p>
+      </div>
+      <div class="digital-card fade-up" style="transition-delay:.15s">
+        <div class="digital-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.2 4.2l4.3 4.3M15.5 15.5l4.3 4.3M1 12h6M17 12h6M4.2 19.8l4.3-4.3M15.5 8.5l4.3-4.3"/></svg></div>
+        <p>
+          <span data-lang="ca">Medicina personalitzada basada en dades</span>
+          <span data-lang="es">Medicina personalizada basada en datos</span>
+          <span data-lang="en">Data-driven personalised medicine</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- GALERIA / ART -->
+<section id="galeria">
+  <div class="section-inner">
+    <h2 class="section-title fade-up">
+      <span data-lang="ca">Humanisme <em>Mèdic</em></span>
+      <span data-lang="es">Humanismo <em>Médico</em></span>
+      <span data-lang="en">Medical <em>Humanism</em></span>
+    </h2>
+    <p class="galeria-intro fade-up">
+      <span data-lang="ca">A través de l'art, exploro l'experiència humana de la malaltia renal i la seva repercussió en la vida de les persones. Aquest projecte neix de la voluntat d'apropar la medicina, la ciència i les humanitats, generant espais de reflexió, divulgació i sensibilització al voltant de la salut renal.</span>
+      <span data-lang="es">A través del arte, exploro la experiencia humana de la enfermedad renal y su repercusión en la vida de las personas. Este proyecto nace de la voluntad de acercar la medicina, la ciencia y las humanidades, generando espacios de reflexión, divulgación y sensibilización en torno a la salud renal.</span>
+      <span data-lang="en">Through art, I explore the human experience of kidney disease and its impact on people's lives. This project is born from the desire to bring together medicine, science and the humanities, creating spaces for reflection, outreach and awareness around kidney health.</span>
+    </p>
+    <div class="galeria-grid">
+      <div class="galeria-item fade-up" onclick="openLightbox(0)">
+        <img class="galeria-img" loading="lazy" src="/assets/img/galeria-01.jpg" alt="El ronyó florit"/>
+        <div class="galeria-caption">
+          <h4>
+            <span data-lang="ca">El ronyó florit</span>
+            <span data-lang="es">El riñón florito</span>
+            <span data-lang="en">The Blooming Kidney</span>
+          </h4>
+          <p>
+            <span data-lang="ca">Acrílic i pastel sobre paper</span>
+            <span data-lang="es">Acrílico y pastel sobre papel</span>
+            <span data-lang="en">Acrylic and pastel on paper</span>
+          </p>
+        </div>
+      </div>
+      <div class="galeria-item fade-up" style="transition-delay:0.08s" onclick="openLightbox(1)">
+        <img class="galeria-img" loading="lazy" src="/assets/img/galeria-02.jpg" alt="Ciència i paisatge"/>
+        <div class="galeria-caption">
+          <h4>
+            <span data-lang="ca">Ciència i paisatge</span>
+            <span data-lang="es">Ciencia y paisaje</span>
+            <span data-lang="en">Science and Landscape</span>
+          </h4>
+          <p>
+            <span data-lang="ca">Llapis sobre paper</span>
+            <span data-lang="es">Lápiz sobre papel</span>
+            <span data-lang="en">Pencil on paper</span>
+          </p>
+        </div>
+      </div>
+      <div class="galeria-item fade-up" style="transition-delay:0.16s" onclick="openLightbox(2)">
+        <img class="galeria-img" loading="lazy" src="/assets/img/galeria-03.jpg" alt="The Blooming Glomerulus"/>
+        <div class="galeria-caption">
+          <h4>
+            <span data-lang="ca">The Blooming Glomerulus</span>
+            <span data-lang="es">The Blooming Glomerulus</span>
+            <span data-lang="en">The Blooming Glomerulus</span>
+          </h4>
+          <p>
+            <span data-lang="ca">Oli sobre tela · Portada NDT, febrer 2026</span>
+            <span data-lang="es">Óleo sobre tela · Portada NDT, febrero 2026</span>
+            <span data-lang="en">Oil on canvas · NDT cover, February 2026</span>
+          </p>
+        </div>
+      </div>
+      <div class="galeria-item fade-up" style="transition-delay:0.24s" onclick="openLightbox(3)">
+        <img class="galeria-img" loading="lazy" src="/assets/img/galeria-04.jpg" alt="Ronyons al capvespre"/>
+        <div class="galeria-caption">
+          <h4>
+            <span data-lang="ca">Ronyons al capvespre</span>
+            <span data-lang="es">Riñones al atardecer</span>
+            <span data-lang="en">Kidneys at Dusk</span>
+          </h4>
+          <p>
+            <span data-lang="ca">Acrílic sobre tela</span>
+            <span data-lang="es">Acrílico sobre tela</span>
+            <span data-lang="en">Acrylic on canvas</span>
+          </p>
+        </div>
+      </div>
+      <div class="galeria-item fade-up" style="transition-delay:0.32s" onclick="openLightbox(4)">
+        <img class="galeria-img" loading="lazy" src="/assets/img/galeria-05.jpg" alt="El far de Portocolom"/>
+        <div class="galeria-caption">
+          <h4>
+            <span data-lang="ca">Far interior</span>
+            <span data-lang="es">Faro interior</span>
+            <span data-lang="en">Inner Lighthouse</span>
+          </h4>
+          <p>
+            <span data-lang="ca">Oli sobre tela</span>
+            <span data-lang="es">Óleo sobre tela</span>
+            <span data-lang="en">Oil on canvas</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / CONEIX LA TEVA SALUT RENAL -->
+<!-- COL·LABORACIONS -->
+<section id="colaboracions">
+  <div class="section-inner">
+    <h2 class="section-title fade-up" style="margin-bottom:.4rem">
+      <span data-lang="ca">Col<span class="l-geminada">·</span>laboracions</span>
+      <span data-lang="es">Colaboraciones</span>
+      <span data-lang="en">Collaborations</span>
+    </h2>
+    <p class="colab-highlight fade-up">
+      <span data-lang="ca">Si creus que podem treballar junts, estaré encantada de conèixer la teva proposta.</span>
+      <span data-lang="es">Si crees que podemos trabajar juntos, estaré encantada de conocer tu propuesta.</span>
+      <span data-lang="en">If you think we can work together, I would be delighted to hear your proposal.</span>
+    </p>
+    <div class="colab-cols">
+      <div class="colab-col fade-up">
+        <h3 data-lang="ca">Àrees</h3>
+        <h3 data-lang="es">Áreas</h3>
+        <h3 data-lang="en">Areas</h3>
+        <ul class="colab-list">
+          <li>
+            <span data-lang="ca">Recerca clínica</span>
+            <span data-lang="es">Investigación clínica</span>
+            <span data-lang="en">Clinical research</span>
+          </li>
+          <li>
+            <span data-lang="ca">Prevenció cardiorenal</span>
+            <span data-lang="es">Prevención cardiorrenal</span>
+            <span data-lang="en">Cardiorenal prevention</span>
+          </li>
+          <li>
+            <span data-lang="ca">Salut digital i IA</span>
+            <span data-lang="es">Salud digital e IA</span>
+            <span data-lang="en">Digital health & AI</span>
+          </li>
+          <li>
+            <span data-lang="ca">Docència i conferències</span>
+            <span data-lang="es">Docencia y conferencias</span>
+            <span data-lang="en">Teaching and conferences</span>
+          </li>
+          <li>
+            <span data-lang="ca">Divulgació mèdica</span>
+            <span data-lang="es">Divulgación médica</span>
+            <span data-lang="en">Medical outreach</span>
+          </li>
+        </ul>
+      </div>
+      <div class="colab-col fade-up" style="transition-delay:.1s">
+        <h3 data-lang="ca">Entitats</h3>
+        <h3 data-lang="es">Entidades</h3>
+        <h3 data-lang="en">Entities</h3>
+        <ul class="colab-list">
+          <li>
+            <span data-lang="ca">Hospitals i centres sanitaris</span>
+            <span data-lang="es">Hospitales y centros sanitarios</span>
+            <span data-lang="en">Hospitals and healthcare centres</span>
+          </li>
+          <li>
+            <span data-lang="ca">Universitats i centres de recerca</span>
+            <span data-lang="es">Universidades y centros de investigación</span>
+            <span data-lang="en">Universities and research centres</span>
+          </li>
+          <li>
+            <span data-lang="ca">Empreses de salut digital</span>
+            <span data-lang="es">Empresas de salud digital</span>
+            <span data-lang="en">Digital health companies</span>
+          </li>
+          <li>
+            <span data-lang="ca">Societats científiques</span>
+            <span data-lang="es">Sociedades científicas</span>
+            <span data-lang="en">Scientific societies</span>
+          </li>
+          <li>
+            <span data-lang="ca">Mitjans de comunicació</span>
+            <span data-lang="es">Medios de comunicación</span>
+            <span data-lang="en">Media</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="colab-cta fade-up">
+      <a href="#contacto" class="btn-online-lg">
+        <span data-lang="ca">Enviar una proposta</span>
+        <span data-lang="es">Enviar una propuesta</span>
+        <span data-lang="en">Send a proposal</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTE -->
+<section id="contacto">
+  <div class="section-inner" style="max-width:780px">
+    <h2 class="section-title fade-up">
+      <span data-lang="ca">Contacte</span>
+      <span data-lang="es">Contacto</span>
+      <span data-lang="en">Contact</span>
+    </h2>
+    <div class="info-item fade-up" style="margin-bottom:2rem">
+      <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div>
+        <div class="info-label">Email</div>
+        <div class="info-val">info@draestelamas.com</div>
+      </div>
+    </div>
+    <div class="fade-up" style="transition-delay:.1s">
+      <div class="form-success" id="form-success">
+        <span data-lang="ca">✓ Missatge enviat. La Dra. Mas Ródenas es posarà en contacte amb vostè en breu.</span>
+        <span data-lang="es">✓ Mensaje enviado. La Dra. Mas Ródenas se pondrá en contacto con usted en breve.</span>
+        <span data-lang="en">✓ Message sent. Dr. Mas Ródenas will be in touch with you shortly.</span>
+      </div>
+      <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); submitForm();">
+        <div class="form-row">
+          <div class="field">
+            <label for="nombre" data-lang="ca">Nom</label>
+            <label for="nombre" data-lang="es">Nombre</label>
+            <label for="nombre" data-lang="en">Name</label>
+            <input type="text" id="nombre" name="nombre" required/>
+          </div>
+          <div class="field">
+            <label for="apellidos" data-lang="ca">Cognoms</label>
+            <label for="apellidos" data-lang="es">Apellidos</label>
+            <label for="apellidos" data-lang="en">Surname</label>
+            <input type="text" id="apellidos" name="apellidos"/>
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required/>
+        </div>
+        <div class="field">
+          <label for="mensaje" data-lang="ca">Missatge</label>
+          <label for="mensaje" data-lang="es">Mensaje</label>
+          <label for="mensaje" data-lang="en">Message</label>
+          <textarea id="mensaje" name="mensaje" style="min-height:140px"></textarea>
+        </div>
+        <p class="form-note" data-lang="ca">Les seves dades seran tractades amb total confidencialitat d'acord amb el RGPD. No es cediran a tercers.</p>
+        <p class="form-note" data-lang="es">Sus datos serán tratados con total confidencialidad conforme al RGPD. No serán cedidos a terceros.</p>
+        <p class="form-note" data-lang="en">Your data will be treated with full confidentiality in accordance with GDPR. It will not be shared with third parties.</p>
+        <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%; margin-top:.5rem">
+          <span data-lang="ca">Enviar</span>
+          <span data-lang="es">Enviar</span>
+          <span data-lang="en">Send</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <img src="/assets/img/logo.png" alt="Logo" loading="lazy"/>
+    Dra. Estela Mas Ródenas
+  </div>
+  <p data-lang="ca">Especialista en Nefrologia · Salut cardiorenometabòlica · Mallorca</p>
+  <p data-lang="es">Especialista en Nefrología · Salud cardiorrenal metabólica · Mallorca</p>
+  <p data-lang="en">Specialist in Nephrology · Cardiorenal metabolic health · Mallorca</p>
+  <p style="margin-top:.75rem">
+    <a href="https://www.linkedin.com/in/estelamasrodenas/" target="_blank" rel="noopener">LinkedIn</a>
+    &nbsp;·&nbsp;
+    <a href="https://twitter.com/EstelaNefro" target="_blank" rel="noopener">@EstelaNefro</a>
+  </p>
+  <p style="margin-top:.75rem">
+    <a href="#" data-lang="ca" onclick="event.preventDefault();openModal('privacy')">Política de privacitat</a>
+    <a href="#" data-lang="es" onclick="event.preventDefault();openModal('privacy')">Política de privacidad</a>
+    <a href="#" data-lang="en" onclick="event.preventDefault();openModal('privacy')">Privacy policy</a>
+    &nbsp;·&nbsp;
+    <a href="#" data-lang="ca" onclick="event.preventDefault();openModal('legal')">Avís legal</a>
+    <a href="#" data-lang="es" onclick="event.preventDefault();openModal('legal')">Aviso legal</a>
+    <a href="#" data-lang="en" onclick="event.preventDefault();openModal('legal')">Legal notice</a>
+  </p>
+  <p style="margin-top:.75rem">© <span id="footer-year">2026</span> draestelamas.com</p>
+  <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+</footer>
+
+<script>
+  // Metadades SEO per idioma
+  const seoMeta = {
+    ca: {
+      title: "Dra. Estela Mas | Nefròloga",
+      description: "Nefròloga especialista en salut cardiorenometabòlica i prevenció del risc cardiovascular. Consulta nefrològica online amb un enfocament humanista i basat en l'evidència."
+    },
+    es: {
+      title: "Dra. Estela Mas | Nefróloga",
+      description: "Nefróloga especialista en salud cardiorrenal metabólica y prevención del riesgo cardiovascular. Consulta nefrológica online con un enfoque humanista y basado en la evidencia."
+    },
+    en: {
+      title: "Dra. Estela Mas | Nephrologist",
+      description: "Nephrologist specialising in cardiorenal metabolic health and cardiovascular risk prevention. Online nephrology consultation with a humanistic, evidence-based approach."
+    }
+  };
+
+  // Detecta l'idioma: 1r la URL (?lang=), 2n la sessió, 3r el navegador, per defecte català
+  function getInitialLang() {
+    const urlLang = new URLSearchParams(window.location.search).get('lang');
+    if (urlLang && ['ca','es','en'].includes(urlLang)) return urlLang;
+    const saved = sessionStorage.getItem('dra-mas-lang');
+    if (saved) return saved;
+    const bl = (navigator.language || navigator.userLanguage || 'ca').toLowerCase();
+    if (bl.startsWith('es')) return 'es';
+    if (bl.startsWith('en')) return 'en';
+    return 'ca';
+  }
+
+  function updateSeoMeta(l) {
+    const m = seoMeta[l] || seoMeta.ca;
+    document.title = m.title;
+    const setMeta = (sel, val) => { const el = document.querySelector(sel); if (el) el.setAttribute('content', val); };
+    setMeta('meta[name="description"]', m.description);
+    setMeta('meta[property="og:title"]', m.title);
+    setMeta('meta[property="og:description"]', m.description);
+    setMeta('meta[name="twitter:title"]', m.title);
+    setMeta('meta[name="twitter:description"]', m.description);
+    const ogLocale = document.querySelector('meta[property="og:locale"]');
+    if (ogLocale) ogLocale.setAttribute('content', l === 'es' ? 'es_ES' : l === 'en' ? 'en_GB' : 'ca_ES');
+  }
+
+  let lang = 'ca';
+  function setLang(l) {
+    sessionStorage.setItem('dra-mas-lang', l);
+    lang = l;
+    document.body.classList.remove('lang-ca','lang-es','lang-en');
+    document.body.classList.add('lang-' + l);
+    document.documentElement.lang = l;
+    ['ca','es','en'].forEach(c => {
+      const b = document.getElementById('btn-' + c);
+      if (b) b.classList.toggle('active', c === l);
+    });
+    updateSeoMeta(l);
+    // Reflecteix l'idioma a la URL sense recarregar
+    const url = new URL(window.location);
+    url.searchParams.set('lang', l);
+    window.history.replaceState({}, '', url);
+    if (typeof renderBlogGrid === 'function') renderBlogGrid();
+  }
+
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+  document.getElementById('hamburger').addEventListener('click', () =>
+    document.getElementById('nav-links').classList.toggle('open'));
+  document.querySelectorAll('.nav-links a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open')));
+
+  const obs = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  }), {threshold:.12});
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // Apply detected language on load
+  setLang(getInitialLang());
+
+  // ECG divider: drive the trace horizontally from the page scroll position.
+  // Scrolling down moves the line left, scrolling up moves it right; it stays still when idle.
+  const ecgLine = document.querySelector('.ecg-line');
+  if (ecgLine && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const ECG_SPEED = 0.4;   // px of trace movement per px scrolled (higher = faster)
+    let ecgTicking = false;
+    function updateECG() {
+      ecgLine.style.backgroundPositionX = (-window.scrollY * ECG_SPEED) + 'px';
+      ecgTicking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ecgTicking) { requestAnimationFrame(updateECG); ecgTicking = true; }
+    }, { passive: true });
+    updateECG();
+  }
+
+  // Formspree — endpoint del formulari de contacte (panell: formspree.io)
+  const FORMSPREE = 'https://formspree.io/f/xrenzebr';
+
+  async function submitForm() {
+    const btn = document.getElementById('submit-btn');
+    const nom = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    if (!nom || !email) {
+      const msg = lang==='ca'?'Si us plau, ompli el nom i el correu.'
+                : lang==='es'?'Por favor, rellene nombre y email.'
+                : 'Please fill in your name and email.';
+      alert(msg); return;
+    }
+    btn.disabled = true;
+    btn.textContent = lang==='ca'?'Enviant...':lang==='es'?'Enviando...':'Sending...';
+    try {
+      const fd = new FormData();
+      ['nombre','apellidos','email','mensaje'].forEach(id =>
+        fd.append(id, document.getElementById(id).value));
+      const r = await fetch(FORMSPREE, {method:'POST',body:fd,headers:{'Accept':'application/json'}});
+      if (r.ok) {
+        document.getElementById('contact-form').style.display='none';
+        document.getElementById('form-success').style.display='block';
+      } else throw new Error();
+    } catch {
+      btn.disabled = false;
+      btn.innerHTML = lang==='ca'?'<span data-lang="ca">Enviar</span>'
+                    : lang==='es'?'<span data-lang="es">Enviar</span>'
+                    : '<span data-lang="en">Send</span>';
+      const err = lang==='ca'?'Hi ha hagut un error. Contacti per correu electrònic.'
+                : lang==='es'?'Ha ocurrido un error. Contacte por correo electrónico.'
+                : 'An error occurred. Please contact us by email.';
+      alert(err);
+    }
+  }
+</script>
+
+<!-- MODAL POLÍTICA DE PRIVACITAT -->
+<div class="modal-overlay" id="modal-privacy" onclick="if(event.target===this)closeModal('privacy')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('privacy')" aria-label="Tancar">×</button>
+
+    <div data-lang="ca">
+      <h2>Política de Privacitat</h2>
+      <h3>1. Responsable del tractament</h3>
+      <p><strong>Estela de los Ángeles Mas Ródenas</strong><br/>
+      Nefròloga col·legiada nº 070711336<br/>
+      Mallorca, Illes Balears, Espanya<br/>
+      Email: info@draestelamas.com<br/>
+      Web: www.draestelamas.com</p>
+
+      <h3>2. Dades que recollim</h3>
+      <p>A través del formulari de contacte recollim: nom, cognoms i adreça de correu electrònic. De manera opcional, un missatge.</p>
+
+      <h3>3. Finalitat del tractament</h3>
+      <p>Les dades recollides s'utilitzen exclusivament per respondre a les sol·licituds de consulta o contacte enviades a través del formulari web. No s'utilitzen per a cap altra finalitat.</p>
+
+      <h3>4. Base legal</h3>
+      <p>El tractament es basa en el <strong>consentiment exprés</strong> de la persona interessada, atorgat en el moment d'enviar el formulari (art. 6.1.a del RGPD).</p>
+
+      <h3>5. Conservació de les dades</h3>
+      <p>Les dades es conserven durant el temps estrictament necessari per atendre la sol·licitud i, en cas de relació assistencial, durant el termini legalment establert per a la documentació clínica.</p>
+
+      <h3>6. Destinataris</h3>
+      <p>Les dades no es cedeixen a tercers, excepte obligació legal. El formulari de contacte utilitza el servei <strong>Formspree</strong> per a la tramesa del missatge, amb garanties adequades de protecció de dades.</p>
+
+      <h3>7. Drets de la persona interessada</h3>
+      <p>Pot exercir els drets d'accés, rectificació, supressió, oposició, limitació i portabilitat de les seves dades dirigint-se a <strong>info@draestelamas.com</strong>, indicant el seu nom i la sol·licitud concreta. Té dret a presentar una reclamació davant l'<strong>Agència Espanyola de Protecció de Dades</strong> (www.aepd.es).</p>
+
+      <h3>8. Cookies</h3>
+      <p>Aquesta web no utilitza galetes de seguiment ni analítiques. Únicament s'utilitza l'emmagatzematge de sessió (sessionStorage) per recordar la preferència d'idioma durant la visita, sense recollir dades personals.</p>
+      <p class="modal-date">Darrera actualització: Juny de 2025</p>
+    </div>
+
+    <div data-lang="es">
+      <h2>Política de Privacidad</h2>
+      <h3>1. Responsable del tratamiento</h3>
+      <p><strong>Estela de los Ángeles Mas Ródenas</strong><br/>
+      Nefróloga colegiada nº 070711336<br/>
+      Mallorca, Illes Balears, España<br/>
+      Email: info@draestelamas.com<br/>
+      Web: www.draestelamas.com</p>
+
+      <h3>2. Datos que recogemos</h3>
+      <p>A través del formulario de contacto recogemos: nombre, apellidos y dirección de correo electrónico. De manera opcional, un mensaje.</p>
+
+      <h3>3. Finalidad del tratamiento</h3>
+      <p>Los datos recogidos se utilizan exclusivamente para responder a las solicitudes de consulta o contacto enviadas a través del formulario web. No se utilizan para ninguna otra finalidad.</p>
+
+      <h3>4. Base legal</h3>
+      <p>El tratamiento se basa en el <strong>consentimiento expreso</strong> de la persona interesada, otorgado en el momento de enviar el formulario (art. 6.1.a del RGPD).</p>
+
+      <h3>5. Conservación de los datos</h3>
+      <p>Los datos se conservan durante el tiempo estrictamente necesario para atender la solicitud y, en caso de relación asistencial, durante el plazo legalmente establecido para la documentación clínica.</p>
+
+      <h3>6. Destinatarios</h3>
+      <p>Los datos no se ceden a terceros, salvo obligación legal. El formulario de contacto utiliza el servicio <strong>Formspree</strong> para el envío del mensaje, con garantías adecuadas de protección de datos.</p>
+
+      <h3>7. Derechos de la persona interesada</h3>
+      <p>Puede ejercer los derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad de sus datos dirigiéndose a <strong>info@draestelamas.com</strong>, indicando su nombre y la solicitud concreta. Tiene derecho a presentar una reclamación ante la <strong>Agencia Española de Protección de Datos</strong> (www.aepd.es).</p>
+
+      <h3>8. Cookies</h3>
+      <p>Este sitio web no utiliza cookies de seguimiento ni analíticas. Únicamente se utiliza el almacenamiento de sesión (sessionStorage) para recordar la preferencia de idioma durante la visita, sin recoger datos personales.</p>
+      <p class="modal-date">Última actualización: Junio de 2025</p>
+    </div>
+
+    <div data-lang="en">
+      <h2>Privacy Policy</h2>
+      <h3>1. Data controller</h3>
+      <p><strong>Estela de los Ángeles Mas Ródenas</strong><br/>
+      Nephrologist, registration nº 070711336<br/>
+      Mallorca, Balearic Islands, Spain<br/>
+      Email: info@draestelamas.com<br/>
+      Web: www.draestelamas.com</p>
+
+      <h3>2. Data we collect</h3>
+      <p>Through the contact form we collect: first name, surname and email address. Optionally, a message.</p>
+
+      <h3>3. Purpose of processing</h3>
+      <p>The data collected is used exclusively to respond to consultation or contact requests submitted through the web form. It is not used for any other purpose.</p>
+
+      <h3>4. Legal basis</h3>
+      <p>Processing is based on the <strong>explicit consent</strong> of the data subject, given at the time of submitting the form (Art. 6.1.a GDPR).</p>
+
+      <h3>5. Data retention</h3>
+      <p>Data is retained for the time strictly necessary to address the request and, in the case of a healthcare relationship, for the legally established period for clinical documentation.</p>
+
+      <h3>6. Recipients</h3>
+      <p>Data is not shared with third parties, except where legally required. The contact form uses the <strong>Formspree</strong> service for message delivery, with appropriate data protection guarantees.</p>
+
+      <h3>7. Data subject rights</h3>
+      <p>You may exercise your rights of access, rectification, erasure, objection, restriction and portability by contacting <strong>info@draestelamas.com</strong>, stating your name and specific request. You have the right to lodge a complaint with the <strong>Spanish Data Protection Agency</strong> (www.aepd.es).</p>
+
+      <h3>8. Cookies</h3>
+      <p>This website does not use tracking or analytical cookies. Only session storage (sessionStorage) is used to remember language preference during the visit, without collecting personal data.</p>
+      <p class="modal-date">Last updated: June 2025</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL AVÍS LEGAL -->
+<div class="modal-overlay" id="modal-legal" onclick="if(event.target===this)closeModal('legal')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('legal')" aria-label="Tancar">×</button>
+
+    <div data-lang="ca">
+      <h2>Avís Legal</h2>
+      <h3>1. Titular del lloc web</h3>
+      <p><strong>Estela de los Ángeles Mas Ródenas</strong><br/>
+      Nefròloga. Número de col·legiada: <strong>070711336</strong><br/>
+      Mallorca, Illes Balears, Espanya<br/>
+      Email: info@draestelamas.com<br/>
+      Web: www.draestelamas.com</p>
+
+      <h3>2. Objecte i àmbit d'aplicació</h3>
+      <p>Aquest avís legal regula l'ús del lloc web www.draestelamas.com, titularitat de la Dra. Estela de los Ángeles Mas Ródenas. L'accés i l'ús d'aquest lloc web impliquen l'acceptació d'aquestes condicions.</p>
+
+      <h3>3. Caràcter informatiu</h3>
+      <p>Els continguts d'aquesta web tenen caràcter exclusivament informatiu i divulgatiu. <strong>No substitueixen en cap cas la consulta mèdica presencial ni el diagnòstic clínic individualitzat.</strong> Per a qualsevol decisió relacionada amb la salut, es recomana consultar un professional sanitari.</p>
+
+      <h3>4. Propietat intel·lectual</h3>
+      <p>Tots els continguts d'aquesta web (textos, imatges, obres d'art, disseny i codi) són propietat de la Dra. Estela de los Ángeles Mas Ródenas o estan degudament autoritzats. Queda prohibida la seva reproducció, distribució o comunicació pública sense autorització expressa.</p>
+
+      <h3>5. Responsabilitat</h3>
+      <p>La titular no es fa responsable dels danys que puguin derivar-se de l'ús de la informació continguda en aquest lloc web, ni de les interrupcions del servei per causes tècniques alienes al seu control.</p>
+
+      <h3>6. Legislació aplicable</h3>
+      <p>Aquest avís legal es regeix per la legislació espanyola vigent, en particular per la Llei 34/2002, d'11 de juliol, de Serveis de la Societat de la Informació i de Comerç Electrònic (LSSI-CE), i pel Reglament (UE) 2016/679 (RGPD).</p>
+      <p class="modal-date">Darrera actualització: Juny de 2025</p>
+    </div>
+
+    <div data-lang="es">
+      <h2>Aviso Legal</h2>
+      <h3>1. Titular del sitio web</h3>
+      <p><strong>Estela de los Ángeles Mas Ródenas</strong><br/>
+      Nefróloga. Número de colegiada: <strong>070711336</strong><br/>
+      Mallorca, Illes Balears, España<br/>
+      Email: info@draestelamas.com<br/>
+      Web: www.draestelamas.com</p>
+
+      <h3>2. Objeto y ámbito de aplicación</h3>
+      <p>Este aviso legal regula el uso del sitio web www.draestelamas.com, titularidad de la Dra. Estela de los Ángeles Mas Ródenas. El acceso y uso de este sitio web implican la aceptación de estas condiciones.</p>
+
+      <h3>3. Carácter informativo</h3>
+      <p>Los contenidos de esta web tienen carácter exclusivamente informativo y divulgativo. <strong>No sustituyen en ningún caso la consulta médica presencial ni el diagnóstico clínico individualizado.</strong> Para cualquier decisión relacionada con la salud, se recomienda consultar a un profesional sanitario.</p>
+
+      <h3>4. Propiedad intelectual</h3>
+      <p>Todos los contenidos de esta web (textos, imágenes, obras de arte, diseño y código) son propiedad de la Dra. Estela de los Ángeles Mas Ródenas o están debidamente autorizados. Queda prohibida su reproducción, distribución o comunicación pública sin autorización expresa.</p>
+
+      <h3>5. Responsabilidad</h3>
+      <p>La titular no se hace responsable de los daños que puedan derivarse del uso de la información contenida en este sitio web, ni de las interrupciones del servicio por causas técnicas ajenas a su control.</p>
+
+      <h3>6. Legislación aplicable</h3>
+      <p>Este aviso legal se rige por la legislación española vigente, en particular por la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), y por el Reglamento (UE) 2016/679 (RGPD).</p>
+      <p class="modal-date">Última actualización: Junio de 2025</p>
+    </div>
+
+    <div data-lang="en">
+      <h2>Legal Notice</h2>
+      <h3>1. Website owner</h3>
+      <p><strong>Estela de los Ángeles Mas Ródenas</strong><br/>
+      Nephrologist. Registration number: <strong>070711336</strong><br/>
+      Mallorca, Balearic Islands, Spain<br/>
+      Email: info@draestelamas.com<br/>
+      Web: www.draestelamas.com</p>
+
+      <h3>2. Purpose and scope</h3>
+      <p>This legal notice governs the use of the website www.draestelamas.com, owned by Dr. Estela de los Ángeles Mas Ródenas. Accessing and using this website implies acceptance of these terms.</p>
+
+      <h3>3. Informational nature</h3>
+      <p>The contents of this website are exclusively informational and educational in nature. <strong>They do not replace in any case an in-person medical consultation or individualised clinical diagnosis.</strong> For any health-related decision, consulting a healthcare professional is recommended.</p>
+
+      <h3>4. Intellectual property</h3>
+      <p>All content on this website (texts, images, artworks, design and code) is the property of Dr. Estela de los Ángeles Mas Ródenas or is duly authorised. Reproduction, distribution or public communication without express authorisation is prohibited.</p>
+
+      <h3>5. Liability</h3>
+      <p>The owner is not liable for any damages arising from the use of the information contained on this website, nor for service interruptions due to technical causes beyond their control.</p>
+
+      <h3>6. Applicable law</h3>
+      <p>This legal notice is governed by current Spanish legislation, in particular Law 34/2002 of 11 July on Information Society Services and Electronic Commerce (LSSI-CE), and Regulation (EU) 2016/679 (GDPR).</p>
+      <p class="modal-date">Last updated: June 2025</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      ['privacy','legal'].forEach(id => closeModal(id));
+    }
+  });
+</script>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <button class="lightbox-prev" onclick="event.stopPropagation();moveLightbox(-1)">‹</button>
+  <div class="lightbox-inner">
+    <img id="lightbox-img" src="" alt=""/>
+    <div class="lightbox-caption">
+      <h4 id="lightbox-title"></h4>
+      <p id="lightbox-desc"></p>
+    </div>
+  </div>
+  <button class="lightbox-next" onclick="event.stopPropagation();moveLightbox(1)">›</button>
+</div>
+
+<script>
+  const lbData = [{"src": "/assets/img/obra-01.jpg", "title_ca": "El ronyó florit", "title_es": "El riñón florito", "title_en": "The Blooming Kidney", "desc_ca": "Un ronyó com a jardí interior: la vida que persisteix dins la malaltia.", "desc_es": "Un riñón como jardín interior: la vida que persiste dentro de la enfermedad.", "desc_en": "A kidney as inner garden: the life that persists within disease.", "technique_ca": "Acrílic sobre tela", "technique_es": "Acrílico sobre tela", "technique_en": "Acrylic on canvas"}, {"src": "/assets/img/obra-02.jpg", "title_ca": "Ciència i paisatge", "title_es": "Ciencia y paisaje", "title_en": "Science and Landscape", "desc_ca": "La mirada científica i la dimensió humana de la medicina renal, retratades juntes.", "desc_es": "La mirada científica y la dimensión humana de la medicina renal, retratadas juntas.", "desc_en": "The scientific gaze and the human dimension of renal medicine, portrayed together.", "technique_ca": "Llapis sobre paper", "technique_es": "Lápiz sobre papel", "technique_en": "Pencil on paper"}, {"src": "/assets/img/obra-03.jpg", "title_ca": "The Blooming Glomerulus", "title_es": "The Blooming Glomerulus", "title_en": "The Blooming Glomerulus", "desc_ca": "Obra seleccionada com a portada de la revista Nephrology Dialysis Transplantation (Oxford University Press), febrer 2026.", "desc_es": "Obra seleccionada como portada de la revista Nephrology Dialysis Transplantation (Oxford University Press), febrero 2026.", "desc_en": "Artwork selected as the cover of Nephrology Dialysis Transplantation journal (Oxford University Press), February 2026.", "technique_ca": "Oli sobre tela · Portada NDT, febrer 2026", "technique_es": "Óleo sobre tela · Portada NDT, febrero 2026", "technique_en": "Oil on canvas · NDT cover, February 2026"}, {"src": "/assets/img/obra-04.jpg", "title_ca": "Ronyons al capvespre", "title_es": "Riñones al atardecer", "title_en": "Kidneys at Dusk", "desc_ca": "La posta de sol com a metàfora de la resiliència: la bellesa que existeix fins i tot en els moments difícils.", "desc_es": "El atardecer como metáfora de la resiliencia: la belleza que existe incluso en los momentos difíciles.", "desc_en": "Sunset as a metaphor for resilience: the beauty that exists even in difficult moments.", "technique_ca": "Acrílic sobre tela", "technique_es": "Acrílico sobre tela", "technique_en": "Acrylic on canvas"},{"src":"/assets/img/obra-05.jpg","title_ca":"Far interior","title_es":"Faro interior","title_en":"Inner Lighthouse","desc_ca":"El far simbolitza l'esperança, la guia i la resiliència davant la malaltia, mentre que el mar evoca la serenitat i el pas del temps.","desc_es":"El faro simboliza la esperanza, la guía y la resiliencia ante la enfermedad, mientras que el mar evoca la serenidad y el paso del tiempo.","desc_en":"The lighthouse symbolises hope, guidance and resilience in the face of illness, while the sea evokes serenity and the passing of time.","technique_ca":"Oli sobre tela","technique_es":"Óleo sobre tela","technique_en":"Oil on canvas"}];
+  let lbIdx = 0;
+
+  function openLightbox(i) {
+    lbIdx = i;
+    renderLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function moveLightbox(dir) {
+    lbIdx = (lbIdx + dir + lbData.length) % lbData.length;
+    renderLightbox();
+  }
+  function renderLightbox() {
+    const d = lbData[lbIdx];
+    document.getElementById('lightbox-img').src = d.src;
+    document.getElementById('lightbox-img').alt = d['title_' + lang] || d.title_ca;
+    document.getElementById('lightbox-title').textContent = d['title_' + lang] || d.title_ca;
+    document.getElementById('lightbox-desc').textContent =
+      (d['desc_' + lang] || d.desc_ca) + ' · ' + (d['technique_' + lang] || d.technique_ca);
+  }
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowRight') moveLightbox(1);
+    if (e.key === 'ArrowLeft') moveLightbox(-1);
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+<!-- MODAL ARTICLE -->
+<div class="modal-overlay" id="post-modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closePostModal()">&times;</button>
+    <p class="blog-cat" id="post-modal-cat"></p>
+    <h2 id="post-modal-title"></h2>
+    <div id="post-modal-body"></div>
+    <p class="modal-date" id="post-modal-date"></p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+<script>
+  let allPosts = [];
+  const blogDateLocales = { ca: 'ca-ES', es: 'es-ES', en: 'en-GB' };
+
+  function renderBlogGrid() {
+    const grid = document.getElementById('blog-grid');
+    if (!grid) return;
+    const l = typeof lang !== 'undefined' ? lang : 'ca';
+    const posts = [...allPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    if (posts.length === 0) {
+      grid.innerHTML = '';
+      return;
+    }
+
+    grid.innerHTML = posts.map((p, i) => {
+      const title = p['title_' + l] || p.title_ca;
+      const summary = p['summary_' + l] || p.summary_ca;
+      const category = p['category_' + l] || p.category_ca || '';
+      return `
+      <div class="blog-card fade-up" style="transition-delay:${(i % 4) * 0.04}s" onclick="openPostModal('${p.slug}')">
+        <div class="blog-img ${i % 2 ? 'warm' : ''}">
+          ${p.image ? `<img src="${p.image}" alt="${title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">` : '&#9670;'}
+        </div>
+        <div class="blog-body">
+          <p class="blog-cat">${category}</p>
+          <h3>${title}</h3>
+          <p>${summary}</p>
+        </div>
+      </div>`;
+    }).join('');
+
+    grid.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  }
+
+  function openPostModal(slug) {
+    const post = allPosts.find(p => p.slug === slug);
+    if (!post) return;
+    const l = typeof lang !== 'undefined' ? lang : 'ca';
+    const title = post['title_' + l] || post.title_ca;
+    const body = post['body_' + l] || post.body_ca || '';
+    const category = post['category_' + l] || post.category_ca || '';
+
+    document.getElementById('post-modal-cat').textContent = category;
+    document.getElementById('post-modal-title').textContent = title;
+    document.getElementById('post-modal-body').innerHTML =
+      (typeof marked !== 'undefined')
+        ? marked.parse(body)
+        : body.split('\n\n').map(par => `<p>${par}</p>`).join('');
+    document.getElementById('post-modal-date').textContent =
+      new Date(post.date).toLocaleDateString(blogDateLocales[l] || 'ca-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById('post-modal-overlay').classList.add('open');
+  }
+
+  function closePostModal() {
+    document.getElementById('post-modal-overlay').classList.remove('open');
+  }
+
+  document.getElementById('post-modal-overlay').addEventListener('click', e => {
+    if (e.target.id === 'post-modal-overlay') closePostModal();
+  });
+
+  fetch('/content/blog-posts.json')
+    .then(r => r.json())
+    .then(data => {
+      allPosts = data.posts || [];
+      renderBlogGrid();
+    })
+    .catch(() => { allPosts = []; });
+</script>
+
+</body>
+</html>
