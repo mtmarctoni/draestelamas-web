@@ -2,241 +2,252 @@ import type { TranslationContent } from "../types";
 
 const es: TranslationContent = {
   meta: {
-    title: "Dra. Estela Mas",
+    title: "Dra. Estela Mas | Nefróloga",
     description:
-      "Dra. Estela Mas — cardiòloga i pionera en salut digital i medicina cardio-renal. Clínica i recerca a Barcelona.",
+      "Nefróloga especialista en salud cardiorrenal metabólica y prevención del riesgo cardiovascular. Consulta nefrológica online con un enfoque humanista y basado en la evidencia.",
   },
   nav: {
-    about: "Sobre",
-    cardiorenal: "Cardio-renal",
-    digitalHealth: "Salut digital",
-    gallery: "Galeria",
-    collaborations: "Col·laboracions",
-    contact: "Contacte",
+    homeLabel: "Inicio",
+    aboutLabel: "Sobre mí",
+    blogLabel: "Salud Cardiorrenal",
+    blogPill: "Blog",
+    digitalLabel: "Salud Digital e IA",
+    galleryLabel: "Humanismo Médico",
+    collaborationsHtml: "Colaboraciones",
+    contactLabel: "Contacto",
   },
   hero: {
-    label: "Cardiologia · Salut Digital",
-    title: "Dra. Estela Mas",
-    subtitle: "Cardiòloga",
-    cta: "Coneix la trajectòria",
+    eyebrowHtml:
+      "Especialista en Nefrología<br />Salud cardiorrenal metabólica<br />Prevención del riesgo cardiovascular",
+    titleHtml:
+      "Detrás de cada paciente,<br />hay una <em>obra de arte</em><br />irrepetible.",
+    subtitle:
+      "Nefróloga especializada en salud cardiorrenal metabólica y prevención del riesgo cardiovascular. Uno la medicina basada en la evidencia, la innovación en salud digital e IA, y una mirada humanista centrada en la persona.",
+    ctaCollaborationsHtml: "Colaboraciones",
+    ctaContact: "Contacto",
+    imageAlt: "Obra de arte — dos riñones con paisaje de atardecer",
   },
   about: {
-    label: "Sobre",
-    title: "Trajectòria i vocació",
-    body: "<p>Amb més de 30 anys d'experiència en cardiologia, la Dra. Estela Mas ha dedicat la seva carrera a la intersecció entre la innovació tecnològica i l'atenció al pacient.</p><p>Pionera en la implementació de solucions de salut digital a Espanya, ha liderat projectes que han transformat la manera en què es diagnostiquen i tracten les malalties cardiovasculars.</p><p>La seva recerca se centra en la connexió entre la salut renal i la salut cardiovascular, un camp que requereix una atenció interdiscolinar i un enfocament personalitzat per a cada pacient.</p>",
-  },
-  cardiorenal: {
-    label: "Cardio-renal",
-    title: "El cor i el rinyó: una connexió vital",
-    intro:
-      "La relació entre el cor i el rinyó és una de les més complexes de la medicina. La malaltia cardiovascular és la primera causa de mortalitat en pacients amb malaltia renal crònica, i la disfunció renal accelerada en pacients amb insuficiència cardíaca.",
-    posts: [
-      {
-        id: "prevencion",
-        title: "Prevenció de la malaltia renal",
-        excerpt:
-          "El riñón florito: estratègies per mantenir la salut renal i prevenir l'avanç de la malaltia.",
-        image: "/assets/img/galeria-01.jpg",
-        href: "/blog/salud-renal-prevencion-enfermedad-renal",
-      },
+    titleHtml: "Sobre <em>mí</em>",
+    label: "Investigación, formación continua y humanismo médico",
+    tags: [
+      { text: "Salud cardiorrenal metabólica", accent: false },
+      { text: "Riesgo cardiovascular", accent: false },
+      { text: "Arte renal", accent: true },
+      { text: "Humanismo médico", accent: true },
     ],
+    bioHtml: [
+      "Soy <strong>nefróloga, investigadora y artista</strong>. Mi actividad se centra en la <strong>atención integral de las personas con enfermedad renal crónica, hipertensión arterial y síndrome cardiorrenometabólico</strong>, con un enfoque orientado a la prevención y a la medicina basada en la evidencia. Mi trayectoria profesional combina la actividad asistencial, la participación en investigación clínica y la formación continuada, con un creciente interés por la <strong>salud digital, la inteligencia artificial y la innovación en HealthTech</strong>.",
+      "Compagino mi actividad asistencial con la formación continua en innovación aplicada a la medicina y con la divulgación científica, participando en charlas y actividades formativas sobre prevención cardiorrenal, riesgo cardiovascular en la enfermedad renal crónica y síndrome cardiorrenometabólico.",
+      "Paralelamente, he completado una formación de posgrado en <strong>arteterapia</strong>, una disciplina que ha enriquecido mi visión humanista de la medicina y que refuerza mi forma de entender la atención sanitaria: <strong>rigurosa desde el punto de vista científico, pero también cercana y centrada en la persona</strong>.",
+      "He realizado estancias formativas en la <strong>Unidad Cardiorrenal del Hospital Puerta de Hierro</strong> (Madrid) y en la <strong>Mayo Clinic de Rochester</strong> (Estados Unidos), experiencias que han ampliado mi perspectiva clínica y científica.",
+      "Mi vocación es contribuir a una medicina más <strong>preventiva, innovadora y humana</strong>, ofreciendo una atención basada en la evidencia y adaptada a las necesidades de cada persona.",
+    ],
+    trainingLabel: "Formación y actividad académica",
+    training: [
+      "Licenciada en Medicina por la Universitat Autònoma de Barcelona",
+      "Especialista en Nefrología por el Hospital Universitario Son Espases",
+      "Máster en Investigación Médica",
+      "Formación en nutrición clínica",
+      "Máster en Hemodiálisis",
+      "Máster en Manejo de Fluidos y Electrolitos",
+      "Formación continuada en síndrome cardiorrenal metabólico, lipidología clínica, riesgo cardiovascular y cardionefrología",
+      "Autora de publicaciones en revistas científicas nacionales e internacionales",
+      "Idiomas: catalán, castellano e inglés",
+    ],
+    societiesLabel: "Sociedades científicas",
+    societies: [
+      "Sociedad Española de Nefrología (SEN)",
+      "European Renal Association (ERA)",
+      "American Society of Nephrology (ASN)",
+      "International Society of Nephrology (ISN)",
+      "Sociedad Española de Arteriosclerosis (SEA)",
+      "Societat Balear de Nefrologia (SBN)",
+    ],
+    portraitAlt: "Dra. Estela Mas Ródenas, nefróloga",
   },
-  digitalHealth: {
-    label: "Salut digital",
-    title: "Innovació al servei del pacient",
-    items: [
-      {
-        title: "Telemedicina",
-        description:
-          "Consultes remotes que permeten un seguiment continu del pacient sense necessitat de desplaçament.",
-        icon: "telemedicine",
-      },
-      {
-        title: "Inteligència Artificial",
-        description:
-          "Algoritmes predictius que ajuden a identificar pacients en risc abans que la malaltia progressi.",
-        icon: "ai",
-      },
-      {
-        title: "Wearables",
-        description:
-          "Dispositius connectats que monitoritzen els signes vitals en temps real i envien alertes al metge.",
-        icon: "wearables",
-      },
+  blog: {
+    eyebrow: "Blog · Artículos de la doctora",
+    titleHtml: "Salud <em>Cardiorrenal</em>",
+    back: "← Volver",
+  },
+  digital: {
+    titleHtml: "Salud Digital <em>e IA</em>",
+    intro:
+      "La salud digital y la inteligencia artificial están transformando la forma en que prevenimos, diagnosticamos y hacemos el seguimiento de las enfermedades crónicas. Mi interés se centra en cómo estas herramientas pueden contribuir a mejorar la prevención cardiorrenal, el control de la hipertensión, la enfermedad renal crónica y la toma de decisiones clínicas basada en datos. Actualmente estoy ampliando mi formación en este ámbito y siguiendo de cerca los avances científicos y tecnológicos, con el objetivo de integrar la innovación digital en la práctica clínica y participar en proyectos que mejoren la atención a pacientes y profesionales.",
+    areasLabel: "Áreas de interés",
+    areas: [
+      "Monitorización remota de pacientes",
+      "Hipertensión y seguimiento digital",
+      "Prevención cardiorrenal",
+      "Inteligencia artificial aplicada a la práctica clínica",
+      "Apoyo a la toma de decisiones clínicas",
+      "Medicina personalizada basada en datos",
     ],
   },
   gallery: {
-    label: "Galeria",
-    title: "Espai de treball i recerca",
-    items: [
+    titleHtml: "Humanismo <em>Médico</em>",
+    intro:
+      "A través del arte, exploro la experiencia humana de la enfermedad renal y su repercusión en la vida de las personas. Este proyecto nace de la voluntad de acercar la medicina, la ciencia y las humanidades, generando espacios de reflexión, divulgación y sensibilización en torno a la salud renal.",
+    artworks: [
       {
         id: "obra-01",
-        title: "Laboratori de recerca",
-        medium: "Investigació cardiovascular",
-        technique: "Recerca traslacional",
-        description: "Espai dedicat a la recerca cardiovascular i la innovació en salut digital.",
-        image: "/assets/img/galeria-01.jpg",
-        fullImage: "/assets/img/obra-01.jpg",
+        title: "El riñón florito",
+        medium: "Acrílico y pastel sobre papel",
+        technique: "Acrílico sobre tela",
+        description: "Un riñón como jardín interior: la vida que persiste dentro de la enfermedad.",
       },
       {
         id: "obra-02",
-        title: "Consulta cardiologica",
-        medium: "Atenció al pacient",
-        technique: "Cardiologia clínica",
-        description: "Espai de consulta dedicat a l'atenció cardiologica personalitzada.",
-        image: "/assets/img/galeria-02.jpg",
-        fullImage: "/assets/img/obra-02.jpg",
+        title: "Ciencia y paisaje",
+        medium: "Lápiz sobre papel",
+        technique: "Lápiz sobre papel",
+        description: "La mirada científica y la dimensión humana de la medicina renal, retratadas juntas.",
       },
       {
         id: "obra-03",
-        title: "Congrés internacional",
-        medium: "Presentació científica",
-        technique: "Recerca clínica",
-        description: "Presentació de resultats de recerca cardiovascular en congressos internacionals.",
-        image: "/assets/img/galeria-03.jpg",
-        fullImage: "/assets/img/obra-03.jpg",
+        title: "The Blooming Glomerulus",
+        medium: "Óleo sobre tela · Portada NDT, febrero 2026",
+        technique: "Óleo sobre tela · Portada NDT, febrero 2026",
+        description:
+          "Obra seleccionada como portada de la revista Nephrology Dialysis Transplantation (Oxford University Press), febrero 2026.",
       },
       {
         id: "obra-04",
-        title: "Equip multidisciplinari",
-        medium: "Col·laboració",
-        technique: "Treball en equip",
-        description: "Treball conjunt amb professionals de diverses especialitats per a l'atenció integral del pacient.",
-        image: "/assets/img/galeria-04.jpg",
-        fullImage: "/assets/img/obra-04.jpg",
+        title: "Riñones al atardecer",
+        medium: "Acrílico sobre tela",
+        technique: "Acrílico sobre tela",
+        description:
+          "El atardecer como metáfora de la resiliencia: la belleza que existe incluso en los momentos difíciles.",
       },
       {
         id: "obra-05",
-        title: "Innovació tecnològica",
-        medium: "Salut digital",
-        technique: "Tecnologia mèdica",
-        description: "Implementació de solucions tecnològiques per millorar l'atenció sanitària.",
-        image: "/assets/img/galeria-05.jpg",
-        fullImage: "/assets/img/obra-05.jpg",
+        title: "Faro interior",
+        medium: "Óleo sobre tela",
+        technique: "Óleo sobre tela",
+        description:
+          "El faro simboliza la esperanza, la guía y la resiliencia ante la enfermedad, mientras que el mar evoca la serenidad y el paso del tiempo.",
       },
     ],
   },
   collaborations: {
-    label: "Col·laboracions",
-    title: "Xarxa de col·laboració",
-    items: [
-      {
-        name: "Sociedad Española de Cardiología",
-        description: "Societat científica de referència en cardiologia a Espanya.",
-      },
-      {
-        name: "Fundació la Caixa",
-        description: "Projectes de recerca i innovació en salut digital.",
-      },
-      {
-        name: "Hospital Clínic de Barcelona",
-        description: "Centre de recerca i atenció cardiologica d'alt nivell.",
-      },
+    titleHtml: "Colaboraciones",
+    highlight: "Si crees que podemos trabajar juntos, estaré encantada de conocer tu propuesta.",
+    areasTitle: "Áreas",
+    areas: [
+      "Investigación clínica",
+      "Prevención cardiorrenal",
+      "Salud digital e IA",
+      "Docencia y conferencias",
+      "Divulgación médica",
     ],
+    entitiesTitle: "Entidades",
+    entities: [
+      "Hospitales y centros sanitarios",
+      "Universidades y centros de investigación",
+      "Empresas de salud digital",
+      "Sociedades científicas",
+      "Medios de comunicación",
+    ],
+    cta: "Enviar una propuesta",
   },
   contact: {
-    label: "Contacte",
-    title: "Posa't en contacte",
-    description:
-      "Si desitges més informació o volem una consulta, pots contactar-me directament. Estaré encantada d'atendre't.",
-    form: {
-      name: "Nom",
-      surname: "Cognoms",
-      email: "Correu electrònic",
-      message: "Missatge",
-      submit: "Enviar",
-      sending: "Enviant...",
-      success: "Missatge enviat correctament. Et contactaré aviat.",
-      error: "Hi ha hagut un error. Si us plau, torna-ho a intentar.",
-      honeypotLabel: "Deixa aquest camp buit",
-    },
+    title: "Contacto",
+    email: "info@draestelamas.com",
+    labels: { name: "Nombre", surname: "Apellidos", email: "Email", message: "Mensaje" },
+    gdpr: "Sus datos serán tratados con total confidencialidad conforme al RGPD. No serán cedidos a terceros.",
+    submit: "Enviar",
+    sending: "Enviando...",
+    success: "✓ Mensaje enviado. La Dra. Mas Ródenas se pondrá en contacto con usted en breve.",
+    error: "Ha ocurrido un error. Contacte por correo electrónico.",
   },
   footer: {
-    copyright: "© 2026 Dra. Estela Mas. Tots els drets reservats.",
-    privacy: "Política de privacitat",
-    legal: "Avís legal",
+    name: "Dra. Estela Mas Ródenas",
+    specialty: "Especialista en Nefrología · Salud cardiorrenal metabólica · Mallorca",
+    privacyLabel: "Política de privacidad",
+    legalLabel: "Aviso legal",
+  },
+  privacy: {
+    title: "Política de Privacidad",
+    sections: [
+      {
+        heading: "1. Responsable del tratamiento",
+        bodyHtml:
+          "<strong>Estela de los Ángeles Mas Ródenas</strong><br />Nefróloga colegiada nº 070711336<br />Mallorca, Illes Balears, España<br />Email: info@draestelamas.com<br />Web: www.draestelamas.com",
+      },
+      {
+        heading: "2. Datos que recogemos",
+        bodyHtml:
+          "A través del formulario de contacto recogemos: nombre, apellidos y dirección de correo electrónico. De manera opcional, un mensaje.",
+      },
+      {
+        heading: "3. Finalidad del tratamiento",
+        bodyHtml:
+          "Los datos recogidos se utilizan exclusivamente para responder a las solicitudes de consulta o contacto enviadas a través del formulario web. No se utilizan para ninguna otra finalidad.",
+      },
+      {
+        heading: "4. Base legal",
+        bodyHtml:
+          "El tratamiento se basa en el <strong>consentimiento expreso</strong> de la persona interesada, otorgado en el momento de enviar el formulario (art. 6.1.a del RGPD).",
+      },
+      {
+        heading: "5. Conservación de los datos",
+        bodyHtml:
+          "Los datos se conservan durante el tiempo estrictamente necesario para atender la solicitud y, en caso de relación asistencial, durante el plazo legalmente establecido para la documentación clínica.",
+      },
+      {
+        heading: "6. Destinatarios",
+        bodyHtml:
+          "Los datos no se ceden a terceros, salvo obligación legal. El formulario de contacto utiliza el servicio <strong>Resend</strong> para el envío del mensaje, con garantías adecuadas de protección de datos.",
+      },
+      {
+        heading: "7. Derechos de la persona interesada",
+        bodyHtml:
+          "Puede ejercer los derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad de sus datos dirigiéndose a <strong>info@draestelamas.com</strong>, indicando su nombre y la solicitud concreta. Tiene derecho a presentar una reclamación ante la <strong>Agencia Española de Protección de Datos</strong> (www.aepd.es).",
+      },
+      {
+        heading: "8. Cookies",
+        bodyHtml:
+          "Este sitio web no utiliza cookies de seguimiento ni analíticas, ni ningún mecanismo de almacenamiento local. La preferencia de idioma se refleja únicamente en la dirección de la página (/, /es/, /en/), sin recoger datos personales.",
+      },
+    ],
+    updated: "Última actualización: Julio de 2026",
   },
   legal: {
-    privacy: {
-      title: "Política de privacitat",
-      sections: [
-        {
-          title: "1. Informació responsable",
-          content:
-            "En compliment delarticle 13 del Reglament (UE) 2016/679 del Parlament Europeu i del Consell, us informem que les dades personals que ens facilite seran tractades per Dra. Estela Mas, amb NIF [NIF], i domicili a [domicili], com a responsable del tractament.",
-        },
-        {
-          title: "2. Finalitat del tractament",
-          content:
-            "Les dades personals que ens proporcioneu a través del formulari de contacte seran tractades amb la finalitat de gestionar la vostra consulta o sol·licitud d'informació.",
-        },
-        {
-          title: "3. Legitimació del tractament",
-          content:
-            "La base legal per al tractament de les vostres dades és el consentiment exprés que ens proporcioneu en enviar el formulari de contacte.",
-        },
-        {
-          title: "4. Conservació de les dades",
-          content:
-            "Les vostres dades personals seran conservades durant el temps necessari per gestionar la vostra consulta i, posteriorment, durant els terminis legals aplicables.",
-        },
-        {
-          title: "5. Comunicació de les dades",
-          content:
-            "No es previ la transferència internacional de dades. Les dades seran tractades exclusivament per Dra. Estela Mas.",
-        },
-        {
-          title: "6. Servei d'enviament de correu electrònic",
-          content:
-            "Utilitzem Resend, un servei de l'empresa Resend, Inc., per gestionar l'enviament de correus electrònics. Les vostres dades (nom, cognoms i correu electrònic) seran compartides amb Resend, Inc., amb seu als Estats Units, en virtut del seu adhesió al EU-U.S. Data Privacy Framework, que garanteix un nivell adequat de protecció de dades. Podeu consultar la seva política de privacitat a https://resend.com/legal/privacy-policy.",
-        },
-        {
-          title: "7. Exercici de drets",
-          content:
-            "Podeu exercir els vostres drets d'accés, rectificació, supressió, oposició, limitació i portabilitat de les dades personals enviant un correu electrònic a [correu electrònic] adjuntant una còpia del vostre DNI o document identificatiu equivalent.",
-        },
-        {
-          title: "8. Cookies",
-          content:
-            "Aquest web no utilitza cookies de rastreig ni cookies analítiques. Únicament s'utilitzen cookies tècniques estrictament necessaries per al funcionament de la web, les quals no requereixen el vostre consentiment.",
-        },
-      ],
-    },
-    legal: {
-      title: "Avís legal",
-      sections: [
-        {
-          title: "1. Informació general",
-          content:
-            "En compliment de l'article 10 de la Llei 34/2002, d'11 de juliol, de Serveis de la Societat de la Informació i de Comerç Electrònic, us informem que aquest web és titularitat de Dra. Estela Mas, amb NIF [NIF] i domicili a [domicili].",
-        },
-        {
-          title: "2. Propietat intel·lectual",
-          content:
-            "Tot el contingut d'aquest web, incloent-hi textos, imatges, dissenys, gràfics, logos, programari i qualsevol altre material, està protegit per les lleis de propietat intel·lectual i industrial. Qualsevol reproducció, distribució, comunicació pública o transformació d'aquest contingut sense l'autorització expressa de Dra. Estela Mas està prohibida.",
-        },
-        {
-          title: "3. Responsabilitat",
-          content:
-            "Dra. Estela Mas no es fa responsable de qualsevol dany o perjudici que pugui derivar-se de l'ús indegut d'aquest web ni dels continguts o serveis enllaçats des d'aquest.",
-        },
-        {
-          title: "4. Enllaços",
-          content:
-            "Aquest web pot contenir enllaços a llocs web de tercers. Dra. Estela Mas no assumeix cap responsabilitat pel contingut o les pràctiques de privacitat d'aquests llocs web de tercers.",
-        },
-        {
-          title: "5. Protecció de dades",
-          content:
-            "Per a informació sobre el tractament de les vostres dades personals, consulteu la nostra Política de Privacitat.",
-        },
-      ],
-    },
-  },
-  blog: {
-    readMore: "Llegir més",
-    backToHome: "Tornar a l'inici",
-    publishedOn: "Publicat el",
+    title: "Aviso Legal",
+    sections: [
+      {
+        heading: "1. Titular del sitio web",
+        bodyHtml:
+          "<strong>Estela de los Ángeles Mas Ródenas</strong><br />Nefróloga. Número de colegiada: <strong>070711336</strong><br />Mallorca, Illes Balears, España<br />Email: info@draestelamas.com<br />Web: www.draestelamas.com",
+      },
+      {
+        heading: "2. Objeto y ámbito de aplicación",
+        bodyHtml:
+          "Este aviso legal regula el uso del sitio web www.draestelamas.com, titularidad de la Dra. Estela de los Ángeles Mas Ródenas. El acceso y uso de este sitio web implican la aceptación de estas condiciones.",
+      },
+      {
+        heading: "3. Carácter informativo",
+        bodyHtml:
+          "Los contenidos de esta web tienen carácter exclusivamente informativo y divulgativo. <strong>No sustituyen en ningún caso la consulta médica presencial ni el diagnóstico clínico individualizado.</strong> Para cualquier decisión relacionada con la salud, se recomienda consultar a un profesional sanitario.",
+      },
+      {
+        heading: "4. Propiedad intelectual",
+        bodyHtml:
+          "Todos los contenidos de esta web (textos, imágenes, obras de arte, diseño y código) son propiedad de la Dra. Estela de los Ángeles Mas Ródenas o están debidamente autorizados. Queda prohibida su reproducción, distribución o comunicación pública sin autorización expresa.",
+      },
+      {
+        heading: "5. Responsabilidad",
+        bodyHtml:
+          "La titular no se hace responsable de los daños que puedan derivarse del uso de la información contenida en este sitio web, ni de las interrupciones del servicio por causas técnicas ajenas a su control.",
+      },
+      {
+        heading: "6. Legislación aplicable",
+        bodyHtml:
+          "Este aviso legal se rige por la legislación española vigente, en particular por la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), y por el Reglamento (UE) 2016/679 (RGPD).",
+      },
+    ],
+    updated: "Última actualización: Junio de 2025",
   },
 };
 

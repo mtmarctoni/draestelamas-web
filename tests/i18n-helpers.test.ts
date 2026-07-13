@@ -1,36 +1,43 @@
 import { describe, expect, it } from "vitest";
-import { isLocale, getLocaleFromPath, getLocalizedPath } from "../src/i18n/types";
+import { homePath, localizePath, stripLocalePrefix } from "../src/i18n/config";
 
-describe("isLocale", () => {
-  it("accepts valid locales", () => {
-    expect(isLocale("ca")).toBe(true);
-    expect(isLocale("es")).toBe(true);
-    expect(isLocale("en")).toBe(true);
+describe("stripLocalePrefix", () => {
+  it("returns / for the root of every locale", () => {
+    expect(stripLocalePrefix("/")).toBe("/");
+    expect(stripLocalePrefix("/es/")).toBe("/");
+    expect(stripLocalePrefix("/en/")).toBe("/");
+    expect(stripLocalePrefix("/es")).toBe("/");
   });
-  it("rejects invalid locales", () => {
-    expect(isLocale("fr")).toBe(false);
-    expect(isLocale("")).toBe(false);
-    expect(isLocale("ca/")).toBe(false);
+
+  it("strips the locale prefix from nested paths", () => {
+    expect(stripLocalePrefix("/blog/salud-renal/")).toBe("/blog/salud-renal/");
+    expect(stripLocalePrefix("/es/blog/salud-renal/")).toBe("/blog/salud-renal/");
+    expect(stripLocalePrefix("/en/blog/salud-renal/")).toBe("/blog/salud-renal/");
+  });
+
+  it("does not strip lookalike segments", () => {
+    expect(stripLocalePrefix("/essay/")).toBe("/essay/");
+    expect(stripLocalePrefix("/enrol/")).toBe("/enrol/");
   });
 });
 
-describe("getLocaleFromPath", () => {
-  it("extracts locale from prefixed path", () => {
-    expect(getLocaleFromPath("/es/about")).toBe("es");
-    expect(getLocaleFromPath("/en/contact")).toBe("en");
+describe("localizePath", () => {
+  it("keeps the default locale unprefixed", () => {
+    expect(localizePath("/", "ca")).toBe("/");
+    expect(localizePath("/blog/salud-renal/", "ca")).toBe("/blog/salud-renal/");
   });
-  it("defaults to ca for root path", () => {
-    expect(getLocaleFromPath("/")).toBe("ca");
-    expect(getLocaleFromPath("/about")).toBe("ca");
+
+  it("prefixes non-default locales", () => {
+    expect(localizePath("/", "es")).toBe("/es/");
+    expect(localizePath("/", "en")).toBe("/en/");
+    expect(localizePath("/blog/salud-renal/", "en")).toBe("/en/blog/salud-renal/");
   });
 });
 
-describe("getLocalizedPath", () => {
-  it("returns root path for ca", () => {
-    expect(getLocalizedPath("ca", "/about")).toBe("/about");
-  });
-  it("prefixes other locales", () => {
-    expect(getLocalizedPath("es", "/about")).toBe("/es/about");
-    expect(getLocalizedPath("en", "/contact")).toBe("/en/contact");
+describe("homePath", () => {
+  it("maps locales to home URLs", () => {
+    expect(homePath("ca")).toBe("/");
+    expect(homePath("es")).toBe("/es/");
+    expect(homePath("en")).toBe("/en/");
   });
 });
