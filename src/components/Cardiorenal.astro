@@ -1,0 +1,136 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import { getTranslations, localizePath } from "../i18n";
+import type { Locale } from "../i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+const posts = (await getCollection("blog", (entry) => entry.id.startsWith(`${locale}/`))).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const postUrl = (id: string) => localizePath(`/blog/${id.split("/")[1]}/`, locale);
+---
+
+<section id="cardiorenal">
+  <div class="section-inner">
+    <p class="section-label blog-eyebrow fade-up">{t.blog.eyebrow}</p>
+    <h2 class="section-title fade-up" set:html={t.blog.titleHtml} />
+    <div class="blog-grid">
+      {
+        posts.map((post, i) => (
+          <a class="blog-card fade-up" href={postUrl(post.id)} style={`transition-delay:${(i % 4) * 0.04}s`}>
+            <div class:list={["blog-img", { warm: i % 2 === 1 }]}>
+              {post.data.image ? (
+                <Image
+                  src={post.data.image}
+                  alt=""
+                  widths={[600, 1200]}
+                  sizes="(max-width: 960px) 100vw, 520px"
+                  loading="lazy"
+                />
+              ) : (
+                "◆"
+              )}
+            </div>
+            <div class="blog-body">
+              <p class="blog-cat">{post.data.category}</p>
+              <h3>{post.data.title}</h3>
+              <p>{post.data.summary}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  #cardiorenal {
+    background: var(--color-ivory);
+  }
+  .blog-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid rgba(181, 98, 42, 0.35);
+    border-radius: 20px;
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+  .blog-eyebrow::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-burnt);
+    flex-shrink: 0;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .blog-card {
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(43, 74, 106, 0.07);
+    transition: box-shadow 0.25s;
+    cursor: pointer;
+  }
+  .blog-card:hover {
+    box-shadow: 0 8px 32px rgba(43, 74, 106, 0.1);
+  }
+  .blog-img {
+    aspect-ratio: 12 / 5;
+    background: linear-gradient(135deg, var(--color-navy), var(--color-sky));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.2);
+  }
+  .blog-img.warm {
+    background: linear-gradient(135deg, var(--color-burnt), var(--color-amber));
+  }
+  .blog-img :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .blog-body {
+    padding: 1.4rem;
+  }
+  .blog-cat {
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-burnt);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+  .blog-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.18rem;
+    font-weight: 400;
+    color: var(--color-navy);
+    margin-bottom: 0.4rem;
+    line-height: 1.25;
+  }
+  .blog-card .blog-body p:last-child {
+    font-size: 0.81rem;
+    color: var(--color-muted);
+    font-weight: 300;
+  }
+  @media (max-width: 960px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
