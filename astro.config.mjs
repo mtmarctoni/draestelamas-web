@@ -2,7 +2,6 @@
 import { defineConfig, fontProviders } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
 import sitemap from "@astrojs/sitemap";
-import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   site: process.env.BASE_URL || "https://draestelamas.marctonimas.com",
@@ -56,7 +55,6 @@ export default defineConfig({
     },
   ],
   vite: {
-    plugins: [tailwindcss()],
     optimizeDeps: {
       exclude: ["@astrojs/cloudflare"],
     },
