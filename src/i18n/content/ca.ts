@@ -191,7 +191,7 @@ const ca: TranslationContent = {
       {
         heading: "4. Base legal",
         bodyHtml:
-          "El tractament es basa en el <strong>consentiment exprés</strong> de la persona interessada, atorgat en el moment d'enviar el formulari (art. 6.1.a del RGPD).",
+          "El tractament es basa en l'<strong>interès legítim</strong> de respondre a la consulta espontània (art. 6.1.f del RGPD) o, si es tracta d'una sol·licitud de pressupost, en mesures <strong>precontractuals</strong> a petició de la persona interessada (art. 6.1.b del RGPD).",
       },
       {
         heading: "5. Conservació de les dades",
@@ -251,7 +251,7 @@ const ca: TranslationContent = {
           "Aquest avís legal es regeix per la legislació espanyola vigent, en particular per la Llei 34/2002, d'11 de juliol, de Serveis de la Societat de la Informació i de Comerç Electrònic (LSSI-CE), i pel Reglament (UE) 2016/679 (RGPD).",
       },
     ],
-    updated: "Darrera actualització: Juny de 2025",
+    updated: "Darrera actualització: Juliol de 2026",
   },
 };
 

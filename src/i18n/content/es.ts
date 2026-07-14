@@ -191,7 +191,7 @@ const es: TranslationContent = {
       {
         heading: "4. Base legal",
         bodyHtml:
-          "El tratamiento se basa en el <strong>consentimiento expreso</strong> de la persona interesada, otorgado en el momento de enviar el formulario (art. 6.1.a del RGPD).",
+          "El tratamiento se basa en el <strong>interés legítimo</strong> de responder a la consulta espontánea (art. 6.1.f del RGPD) o, si se trata de una solicitud de presupuesto, en medidas <strong>precontractuales</strong> a petición de la persona interesada (art. 6.1.b del RGPD).",
       },
       {
         heading: "5. Conservación de los datos",
@@ -251,7 +251,7 @@ const es: TranslationContent = {
           "Este aviso legal se rige por la legislación española vigente, en particular por la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), y por el Reglamento (UE) 2016/679 (RGPD).",
       },
     ],
-    updated: "Última actualización: Junio de 2025",
+    updated: "Última actualización: Julio de 2026",
   },
 };
 

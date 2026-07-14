@@ -190,7 +190,7 @@ const en: TranslationContent = {
       {
         heading: "4. Legal basis",
         bodyHtml:
-          "Processing is based on the <strong>explicit consent</strong> of the data subject, given at the time of submitting the form (Art. 6.1.a GDPR).",
+          "Processing is based on the <strong>legitimate interest</strong> of responding to a spontaneous enquiry (Art. 6.1.f GDPR) or, where the enquiry is a budget request, on <strong>pre-contractual measures</strong> at the data subject's request (Art. 6.1.b GDPR).",
       },
       {
         heading: "5. Data retention",
@@ -250,7 +250,7 @@ const en: TranslationContent = {
           "This legal notice is governed by current Spanish legislation, in particular Law 34/2002 of 11 July on Information Society Services and Electronic Commerce (LSSI-CE), and Regulation (EU) 2016/679 (GDPR).",
       },
     ],
-    updated: "Last updated: June 2025",
+    updated: "Last updated: July 2026",
   },
 };
 
