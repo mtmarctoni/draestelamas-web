@@ -106,10 +106,12 @@ const items = await Promise.all(
     index = (i + items.length) % items.length;
     const item = items[index];
     if (!img || !title || !desc || !item) return;
+    img.style.opacity = "0";
     img.src = item.dataset.full ?? "";
     img.alt = item.dataset.title ?? "";
     title.textContent = item.dataset.title ?? "";
     desc.textContent = item.dataset.caption ?? "";
+    img.onload = () => { img.style.opacity = "1"; };
   }
 
   items.forEach((item) => {
@@ -132,6 +134,19 @@ const items = await Promise.all(
     if (event.key === "ArrowRight") show(index + 1);
     if (event.key === "ArrowLeft") show(index - 1);
   });
+
+  // Touch swipe for mobile navigation
+  let touchStartX = 0;
+  dialog?.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  dialog?.addEventListener("touchend", (e) => {
+    const touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      show(index + (diff > 0 ? 1 : -1));
+    }
+  }, { passive: true });
 </script>
 
 <style>
@@ -231,6 +246,7 @@ const items = await Promise.all(
     object-fit: contain;
     border-radius: 3px;
     box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+    transition: opacity 0.2s;
   }
   .lightbox-caption {
     text-align: center;
@@ -293,7 +309,9 @@ const items = await Promise.all(
   @media (max-width: 600px) {
     .lightbox-prev,
     .lightbox-next {
-      display: none;
+      display: block;
+      font-size: 1.2rem;
+      padding: 0.3rem 0.6rem;
     }
   }
 </style>
