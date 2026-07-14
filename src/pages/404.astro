@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getTranslations, homePath } from "../i18n";
+
+const path = Astro.url.pathname;
+const locale = path.startsWith("/es/") ? "es" : path.startsWith("/en/") ? "en" : "ca";
+const t = getTranslations(locale);
+---
+
+<BaseLayout locale={locale} title={`404 — ${t.meta.title}`} preloadHero={false}>
+  <main class="not-found">
+    <div class="section-inner">
+      <h1>404</h1>
+      <p>{locale === "ca" ? "Aquesta pàgina no existeix." : locale === "es" ? "Esta página no existe." : "This page does not exist."}</p>
+      <a href={homePath(locale)} class="btn btn-primary">
+        {locale === "ca" ? "Tornar a l'inici" : locale === "es" ? "Volver al inicio" : "Back to home"}
+      </a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .not-found {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+  }
+  .not-found h1 {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    color: var(--color-navy);
+    margin-bottom: 1rem;
+  }
+  .not-found p {
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+  }
+</style>
