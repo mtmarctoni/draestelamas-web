@@ -4,7 +4,7 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://challenges.cloudflare.com 'sha256-yk0G6i0nUXU9y241xtavKZFPWn2zU5C0racTqe/Taos=' 'sha256-h0XNcExwrPPxInmySDFitLWbDH6rHDBux01+pHl3jqY=' 'sha256-AjAD/UeoDLo3FTD+F21Q9q3t3z/SGSdNV8w2ZKulv2k='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://api.resend.com https://challenges.cloudflare.com; form-action 'self'; frame-src https://challenges.cloudflare.com; base-uri 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://challenges.cloudflare.com 'sha256-79JBjzpHb6KtpEG3zuY8XhzTuAKq6JP1xJEgUaQAVC8=' 'sha256-auhIgUQ9wfh7nhrrS533m1uNblBwkp7np5YGIKSnsSM=' 'sha256-Ux4h1OrLY536+Mb7ErKCuhaj0i4ok5JcOhOui2liE90='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://api.resend.com https://challenges.cloudflare.com; form-action 'self'; frame-src https://challenges.cloudflare.com; base-uri 'self'; object-src 'none'
   X-XSS-Protection: 1; mode=block
 
 /_astro/*
