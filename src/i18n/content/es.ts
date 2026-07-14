@@ -156,6 +156,8 @@ const es: TranslationContent = {
     email: "info@draestelamas.com",
     labels: { name: "Nombre", surname: "Apellidos", email: "Email", message: "Mensaje" },
     gdpr: "Sus datos serán tratados con total confidencialidad conforme al RGPD. No serán cedidos a terceros.",
+    privacyLink: "Política de Privacidad completa",
+    art13: "Información básica sobre protección de datos: Responsable: Estela de los Ángeles Mas Ródenas. Finalidad: responder a su consulta. Base legal: interés legítimo (consulta espontánea) o medidas precontractuales (solicitud de presupuesto). Derechos: puede ejercer sus derechos de acceso, rectificación, supresión, oposición y portabilidad escribiendo a info@draestelamas.com.",
     submit: "Enviar",
     sending: "Enviando...",
     success: "✓ Mensaje enviado. La Dra. Mas Ródenas se pondrá en contacto con usted en breve.",

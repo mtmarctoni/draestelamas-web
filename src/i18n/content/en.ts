@@ -155,6 +155,8 @@ const en: TranslationContent = {
     email: "info@draestelamas.com",
     labels: { name: "Name", surname: "Surname", email: "Email", message: "Message" },
     gdpr: "Your data will be treated with full confidentiality in accordance with GDPR. It will not be shared with third parties.",
+    privacyLink: "Full Privacy Policy",
+    art13: "Basic information on data protection: Controller: Estela de los Ángeles Mas Ródenas. Purpose: to respond to your enquiry. Legal basis: legitimate interest (spontaneous enquiry) or pre-contractual measures (budget request). Rights: you may exercise your rights of access, rectification, erasure, objection and portability by writing to info@draestelamas.com.",
     submit: "Send",
     sending: "Sending...",
     success: "✓ Message sent. Dr. Mas Ródenas will be in touch with you shortly.",

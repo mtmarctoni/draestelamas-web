@@ -1,5 +1,5 @@
 ---
-import { getTranslations } from "../i18n";
+import { getTranslations, privacyPath } from "../i18n";
 import type { Locale } from "../i18n";
 
 interface Props {
@@ -60,7 +60,11 @@ const t = getTranslations(locale);
         <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY"></div>
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
         */}
-        <p class="form-note">{t.contact.gdpr}</p>
+        <p class="form-note">
+          {t.contact.gdpr}
+          <a href={privacyPath(locale)}>{t.contact.privacyLink}</a>
+        </p>
+        <p class="form-art13">{t.contact.art13}</p>
         <button type="submit" class="btn btn-primary submit-btn" id="submit-btn">{t.contact.submit}</button>
       </form>
     </div>
@@ -195,6 +199,18 @@ const t = getTranslations(locale);
     font-size: 0.69rem;
     color: var(--color-muted);
     line-height: 1.6;
+  }
+  .form-note :global(a) {
+    color: var(--color-sky);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .form-art13 {
+    font-size: 0.65rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+    opacity: 0.8;
+    margin-top: 0.5rem;
   }
   .form-success {
     background: rgba(181, 98, 42, 0.08);

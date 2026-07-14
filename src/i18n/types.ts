@@ -70,6 +70,8 @@ export interface TranslationContent {
     email: string;
     labels: { name: string; surname: string; email: string; message: string };
     gdpr: string;
+    privacyLink: string;
+    art13: string;
     submit: string;
     sending: string;
     success: string;
