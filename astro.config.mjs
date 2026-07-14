@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig, fontProviders } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
-import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: process.env.BASE_URL || "https://draestelamas.marctonimas.com",
@@ -16,14 +15,7 @@ export default defineConfig({
     quality: 65,
     format: ["webp"],
   },
-  integrations: [
-    sitemap({
-      i18n: {
-        defaultLocale: "ca",
-        locales: { ca: "ca", es: "es", en: "en" },
-      },
-    }),
-  ],
+  integrations: [],
   fonts: [
     {
       provider: fontProviders.local(),
