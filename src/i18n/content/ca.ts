@@ -169,6 +169,7 @@ const ca: TranslationContent = {
   },
   privacy: {
     title: "Política de Privacitat",
+    back: "Tornar a l'inici",
     sections: [
       {
         heading: "1. Responsable del tractament",
@@ -215,6 +216,7 @@ const ca: TranslationContent = {
   },
   legal: {
     title: "Avís Legal",
+    back: "Tornar a l'inici",
     sections: [
       {
         heading: "1. Titular del lloc web",

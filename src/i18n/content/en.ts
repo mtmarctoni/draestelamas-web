@@ -168,6 +168,7 @@ const en: TranslationContent = {
   },
   privacy: {
     title: "Privacy Policy",
+    back: "Back to home",
     sections: [
       {
         heading: "1. Data controller",
@@ -214,6 +215,7 @@ const en: TranslationContent = {
   },
   legal: {
     title: "Legal Notice",
+    back: "Back to home",
     sections: [
       {
         heading: "1. Website owner",

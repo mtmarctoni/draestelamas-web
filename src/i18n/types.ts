@@ -81,6 +81,6 @@ export interface TranslationContent {
     privacyLabel: string;
     legalLabel: string;
   };
-  privacy: { title: string; sections: LegalSection[]; updated: string };
-  legal: { title: string; sections: LegalSection[]; updated: string };
+  privacy: { title: string; back: string; sections: LegalSection[]; updated: string };
+  legal: { title: string; back: string; sections: LegalSection[]; updated: string };
 }

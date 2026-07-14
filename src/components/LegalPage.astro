@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getTranslations, homePath } from "../i18n";
+import type { Locale } from "../i18n";
+
+interface Props {
+  locale: Locale;
+  type: "privacy" | "legal";
+}
+
+const { locale, type } = Astro.props;
+const t = getTranslations(locale);
+const content = type === "privacy" ? t.privacy : t.legal;
+const backLabel = content.back;
+---
+
+<BaseLayout locale={locale} title={content.title} preloadHero={false}>
+  <main class="legal-page">
+    <div class="section-inner legal-inner">
+      <a class="legal-back" href={homePath(locale)}>{backLabel}</a>
+      <h1 class="legal-title">{content.title}</h1>
+      {content.sections.map((section) => (
+        <section class="legal-section">
+          <h2>{section.heading}</h2>
+          <div set:html={section.bodyHtml} />
+        </section>
+      ))}
+      <p class="legal-updated">{content.updated}</p>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding-top: calc(var(--nav-h) + 2rem);
+    min-height: 60vh;
+    background: #fff;
+  }
+  .legal-inner {
+    max-width: 720px;
+  }
+  .legal-back {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--color-sky);
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+  }
+  .legal-back:hover {
+    color: var(--color-burnt);
+  }
+  .legal-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 300;
+    color: var(--color-navy);
+    margin-bottom: 2rem;
+  }
+  .legal-section {
+    margin-bottom: 1.75rem;
+  }
+  .legal-section h2 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--color-navy);
+    margin-bottom: 0.5rem;
+  }
+  .legal-section :global(p) {
+    font-size: 0.88rem;
+    color: var(--color-muted);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+  .legal-section :global(strong) {
+    color: var(--color-navy);
+    font-weight: 500;
+  }
+  .legal-updated {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    opacity: 0.6;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--color-sand);
+    padding-top: 1rem;
+  }
+</style>

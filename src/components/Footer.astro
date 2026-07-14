@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import LegalModals from "./LegalModals.astro";
-import { getTranslations, socialLinks } from "../i18n";
+import { getTranslations, legalPath, privacyPath, socialLinks } from "../i18n";
 import type { Locale } from "../i18n";
 import logo from "../assets/img/logo.png";
 
@@ -26,14 +25,12 @@ const year = new Date().getFullYear();
     <a href={socialLinks.twitter.href} target="_blank" rel="noopener">{socialLinks.twitter.label}</a>
   </p>
   <p class="footer-row">
-    <button type="button" class="footer-link" data-open-modal="modal-privacy">{t.footer.privacyLabel}</button>
+    <a href={privacyPath(locale)}>{t.footer.privacyLabel}</a>
     &nbsp;·&nbsp;
-    <button type="button" class="footer-link" data-open-modal="modal-legal">{t.footer.legalLabel}</button>
+    <a href={legalPath(locale)}>{t.footer.legalLabel}</a>
   </p>
   <p class="footer-row">© {year} draestelamas.com</p>
 </footer>
-
-<LegalModals locale={locale} />
 
 <style>
   footer {
@@ -60,16 +57,12 @@ const year = new Date().getFullYear();
     opacity: 0.75;
     filter: brightness(0) invert(1);
   }
-  footer a,
-  .footer-link {
+  footer a {
     color: var(--color-amber);
+    transition: color 0.2s;
   }
-  .footer-link {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font: inherit;
-    padding: 0;
+  footer a:hover {
+    color: #fff;
   }
   .footer-row {
     margin-top: 0.75rem;
