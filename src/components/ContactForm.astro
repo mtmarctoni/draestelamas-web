@@ -36,6 +36,7 @@ const t = getTranslations(locale);
           <label for="important_field">Do not fill this field</label>
           <input type="text" id="important_field" name="important_field" tabindex="-1" autocomplete="off" />
         </div>
+        <input type="hidden" name="locale" value={locale} />
         <div class="form-row">
           <div class="field">
             <label for="name">{t.contact.labels.name}</label>

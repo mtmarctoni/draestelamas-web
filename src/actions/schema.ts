@@ -13,6 +13,7 @@ export const contactSchema = z.object({
   email: z.string().email("Valid email is required"),
   message: z.string().optional().default(""),
   important_field: z.string().max(0).optional(),
+  locale: z.enum(["ca", "es", "en"]).optional().default("ca"),
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;

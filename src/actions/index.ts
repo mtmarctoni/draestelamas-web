@@ -43,13 +43,37 @@ export const server = {
         });
       }
 
-      const subject = `Nova proposta de col·laboració — ${input.name} ${input.surname}`.trim();
+      const labels = {
+        ca: {
+          subject: `Nova proposta de col·laboració — ${input.name} ${input.surname}`,
+          name: "Nom",
+          email: "Email",
+          message: "Missatge",
+          empty: "(sense missatge)",
+        },
+        es: {
+          subject: `Nueva propuesta de colaboración — ${input.name} ${input.surname}`,
+          name: "Nombre",
+          email: "Email",
+          message: "Mensaje",
+          empty: "(sin mensaje)",
+        },
+        en: {
+          subject: `New collaboration enquiry — ${input.name} ${input.surname}`,
+          name: "Name",
+          email: "Email",
+          message: "Message",
+          empty: "(no message)",
+        },
+      };
+      const l = labels[input.locale] ?? labels.ca;
+      const subject = l.subject;
       const text = [
-        `Nom: ${input.name} ${input.surname}`.trim(),
-        `Email: ${input.email}`,
+        `${l.name}: ${input.name} ${input.surname}`.trim(),
+        `${l.email}: ${input.email}`,
         "",
-        "Missatge:",
-        input.message || "(sense missatge)",
+        `${l.message}:`,
+        input.message || l.empty,
       ].join("\n");
 
       const res = await fetch("https://api.resend.com/emails", {
