@@ -18,6 +18,12 @@ const { post } = Astro.props;
   locale="ca"
   title={`${post.data.title} | Dra. Estela Mas`}
   description={post.data.summary.split("\n")[0]}
+  schemaType="blog"
+  blogData={{
+    title: post.data.title,
+    date: post.data.date.toISOString(),
+    author: "Dra. Estela Mas Ródenas",
+  }}
 >
   <BlogPostArticle locale="ca" post={post} />
 </BaseLayout>

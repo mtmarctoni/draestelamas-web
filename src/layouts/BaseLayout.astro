@@ -13,6 +13,8 @@ interface Props {
   title?: string;
   description?: string;
   preloadHero?: boolean;
+  schemaType?: "physician" | "blog";
+  blogData?: { title: string; date: string; author: string; image?: string };
 }
 
 const { locale } = Astro.props;
@@ -23,19 +25,33 @@ const description = Astro.props.description ?? t.meta.description;
 
 const heroOptimized = await getImage({ src: heroImg, width: 420, height: 310, format: "webp", quality: 60 });
 
-const jsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Physician",
-  name: "Dra. Estela Mas Ródenas",
-  medicalSpecialty: "Nephrology",
-  description,
-  url: Astro.site?.href,
-  availableService: {
-    "@type": "MedicalProcedure",
-    name: "Consulta nefrològica online",
-  },
-  knowsLanguage: ["ca", "es", "en"],
-});
+const schemaType = Astro.props.schemaType ?? "physician";
+let jsonLd: string;
+
+if (schemaType === "blog" && Astro.props.blogData) {
+  jsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: Astro.props.blogData.title,
+    datePublished: Astro.props.blogData.date,
+    author: { "@type": "Person", name: Astro.props.blogData.author },
+    ...(Astro.props.blogData.image && { image: Astro.props.blogData.image }),
+  });
+} else {
+  jsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Physician",
+    name: "Dra. Estela Mas Ródenas",
+    medicalSpecialty: "Nephrology",
+    description,
+    url: Astro.site?.href,
+    availableService: {
+      "@type": "MedicalProcedure",
+      name: "Consulta nefrològica online",
+    },
+    knowsLanguage: ["ca", "es", "en"],
+  });
+}
 ---
 
 <!doctype html>
