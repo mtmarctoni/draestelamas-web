@@ -12,9 +12,11 @@ interface Props {
   locale: Locale;
   title?: string;
   description?: string;
+  preloadHero?: boolean;
 }
 
 const { locale } = Astro.props;
+const preloadHero = Astro.props.preloadHero ?? true;
 const t = getTranslations(locale);
 const title = Astro.props.title ?? t.meta.title;
 const description = Astro.props.description ?? t.meta.description;
@@ -46,7 +48,7 @@ const jsonLd = JSON.stringify({
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <Font cssVariable="--font-cormorant" preload />
     <Font cssVariable="--font-inter" preload />
-    <link rel="preload" as="image" href={heroOptimized.src} media="(min-width: 961px)" />
+    {preloadHero && <link rel="preload" as="image" href={heroOptimized.src} media="(min-width: 961px)" />}
     <SEO locale={locale} title={title} description={description} />
     <script type="application/ld+json" is:inline set:html={jsonLd} />
   </head>
