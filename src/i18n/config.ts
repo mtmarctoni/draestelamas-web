@@ -32,3 +32,37 @@ export function localizePath(basePath: string, locale: Locale): string {
 export function homePath(locale: Locale): string {
   return localizePath("/", locale);
 }
+
+const legalPaths: Record<Locale, string> = {
+  ca: "/avis-legal",
+  es: "/aviso-legal",
+  en: "/legal-notice",
+};
+
+const privacyPaths: Record<Locale, string> = {
+  ca: "/politica-privacitat",
+  es: "/politica-privacidad",
+  en: "/privacy-policy",
+};
+
+export function legalPath(locale: Locale): string {
+  return localizePath(legalPaths[locale], locale);
+}
+
+export function privacyPath(locale: Locale): string {
+  return localizePath(privacyPaths[locale], locale);
+}
+
+const localeSpecificRoutes: Record<Locale, string>[] = [legalPaths, privacyPaths];
+
+export function localizeUrl(pathname: string, targetLocale: Locale): string {
+  for (const routeMap of localeSpecificRoutes) {
+    for (const loc of locales) {
+      const route = localizePath(routeMap[loc], loc);
+      if (pathname === route || pathname === route + "/") {
+        return localizePath(routeMap[targetLocale], targetLocale);
+      }
+    }
+  }
+  return localizePath(stripLocalePrefix(pathname), targetLocale);
+}
