@@ -2,9 +2,9 @@ import type { TranslationContent } from "../types";
 
 const ca: TranslationContent = {
   meta: {
-    title: "Dra. Estela Mas | Nefròloga",
+    title: "Dra. Estela Mas | Nefròloga — Salut Cardiorenal",
     description:
-      "Nefròloga especialista en salut cardiorenometabòlica i prevenció del risc cardiovascular. Consulta nefrològica online amb un enfocament humanista i basat en l'evidència.",
+      "Nefròloga especialista en salut cardiorenometabòlica. Prevenció del risc cardiovascular i consulta nefrològica online.",
   },
   nav: {
     homeLabel: "Inici",

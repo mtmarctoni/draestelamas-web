@@ -2,9 +2,9 @@ import type { TranslationContent } from "../types";
 
 const en: TranslationContent = {
   meta: {
-    title: "Dra. Estela Mas | Nephrologist",
+    title: "Dra. Estela Mas | Nephrologist — Cardiorenal Health",
     description:
-      "Nephrologist specialising in cardiorenal metabolic health and cardiovascular risk prevention. Online nephrology consultation with a humanistic, evidence-based approach.",
+      "Nephrologist specialising in cardiorenal metabolic health and cardiovascular risk prevention.",
   },
   nav: {
     homeLabel: "Home",
