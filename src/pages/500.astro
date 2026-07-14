@@ -1,0 +1,58 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getTranslations, homePath } from "../i18n";
+import kidneyImg from "../assets/img/hero-obra.png";
+
+const path = Astro.url.pathname;
+const locale = path.startsWith("/es/") ? "es" : path.startsWith("/en/") ? "en" : "ca";
+const t = getTranslations(locale);
+---
+
+<BaseLayout locale={locale} title={`500 — ${t.meta.title}`} preloadHero={false}>
+  <main class="server-error">
+    <div class="section-inner">
+      <Image
+        class="server-error-img"
+        src={kidneyImg}
+        alt={locale === "ca" ? "Obra d'art — dos ronyons amb paisatge" : locale === "es" ? "Obra de arte — dos riñones con paisaje" : "Artwork — two kidneys with landscape"}
+        width={280}
+        quality={60}
+        loading="eager"
+      />
+      <h1>500</h1>
+      <p>{locale === "ca" ? "Alguna cosa ha fallat. Torna-ho a provar més tard." : locale === "es" ? "Algo ha fallado. Vuelve a intentarlo más tarde." : "Something went wrong. Please try again later."}</p>
+      <a href={homePath(locale)} class="btn btn-primary">
+        {locale === "ca" ? "Tornar a l'inici" : locale === "es" ? "Volver al inicio" : "Back to home"}
+      </a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .server-error {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+  }
+  .server-error-img {
+    width: 280px;
+    height: auto;
+    margin: 0 auto 2rem;
+    border-radius: 4px;
+    box-shadow: 0 8px 40px rgba(43, 74, 106, 0.12);
+    opacity: 0.85;
+  }
+  .server-error h1 {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    color: var(--color-navy);
+    margin-bottom: 1rem;
+  }
+  .server-error p {
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+  }
+</style>
