@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import { getTranslations, legalPath, privacyPath, socialLinks } from "../i18n";
+import type { Locale } from "../i18n";
+import logo from "../assets/img/logo.png";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="footer-logo">
+    <Image src={logo} alt="" width={68} densities={[1, 2]} loading="lazy" quality={50} />
+    {t.footer.name}
+  </div>
+  <p>{t.footer.specialty}</p>
+  <p class="footer-row">
+    <a href={socialLinks.linkedin.href} target="_blank" rel="noopener">{socialLinks.linkedin.label}</a>
+    &nbsp;·&nbsp;
+    <a href={socialLinks.twitter.href} target="_blank" rel="noopener">{socialLinks.twitter.label}</a>
+  </p>
+  <p class="footer-row">
+    <a href={privacyPath(locale)}>{t.footer.privacyLabel}</a>
+    &nbsp;·&nbsp;
+    <a href={legalPath(locale)}>{t.footer.legalLabel}</a>
+  </p>
+  <p class="footer-row">© {year} draestelamas.com</p>
+</footer>
+
+<style>
+  footer {
+    background: var(--color-ink);
+    color: rgba(255, 255, 255, 0.65);
+    text-align: center;
+    padding: 2.5rem 2rem;
+    font-size: 0.73rem;
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .footer-logo img {
+    height: 34px;
+    width: auto;
+    opacity: 0.75;
+    filter: brightness(0) invert(1);
+  }
+  footer a {
+    color: var(--color-amber);
+    transition: color 0.2s;
+  }
+  footer a:hover {
+    color: #fff;
+  }
+  .footer-row {
+    margin-top: 0.75rem;
+  }
+</style>

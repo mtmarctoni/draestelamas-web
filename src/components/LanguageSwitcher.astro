@@ -1,0 +1,70 @@
+---
+import { localizeUrl, locales } from "../i18n";
+import type { Locale } from "../i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+// Inline flag SVGs copied from the source site (senyera, rojigualda, union jack).
+const flags: Record<Locale, string> = {
+  ca: "<svg width='16' height='11' viewBox='0 0 16 11' aria-hidden='true'><rect width='16' height='11' fill='#FCDD09'/><rect y='0' width='16' height='1.57' fill='#C60B1E'/><rect y='3.14' width='16' height='1.57' fill='#C60B1E'/><rect y='6.29' width='16' height='1.57' fill='#C60B1E'/><rect y='9.43' width='16' height='1.57' fill='#C60B1E'/></svg>",
+  es: "<svg width='16' height='11' viewBox='0 0 16 11' aria-hidden='true'><rect width='16' height='11' fill='#c60b1e'/><rect y='2.75' width='16' height='5.5' fill='#f1bf00'/></svg>",
+  en: "<svg width='16' height='11' viewBox='0 0 16 11' aria-hidden='true'><rect width='16' height='11' fill='#012169'/><path d='M0,0 L16,11 M16,0 L0,11' stroke='white' stroke-width='2.2'/><path d='M0,0 L16,11 M16,0 L0,11' stroke='#C8102E' stroke-width='1.2'/><path d='M8,0 V11 M0,5.5 H16' stroke='white' stroke-width='3'/><path d='M8,0 V11 M0,5.5 H16' stroke='#C8102E' stroke-width='1.8'/></svg>",
+};
+
+const labels: Record<Locale, string> = { ca: "CA", es: "ES", en: "EN" };
+---
+
+<li class="lang-switcher">
+  {
+    locales.map((loc) => (
+      <a
+        class:list={["lang-btn", { active: loc === locale }]}
+        href={localizeUrl(Astro.url.pathname, loc)}
+        aria-current={loc === locale ? "true" : undefined}
+        lang={loc}
+      >
+        <Fragment set:html={flags[loc]} />
+        {labels[loc]}
+      </a>
+    ))
+  }
+</li>
+
+<style>
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .lang-btn {
+    font-size: 0.65rem;
+    font-weight: 500;
+    cursor: pointer;
+    background: none;
+    border: 1px solid var(--color-sand);
+    padding: 0.26rem 0.5rem;
+    border-radius: 2px;
+    transition: all 0.2s;
+    color: var(--color-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.22rem;
+    line-height: 1;
+  }
+  .lang-btn:hover {
+    border-color: var(--color-sky);
+    color: var(--color-sky);
+  }
+  .lang-btn.active {
+    border-color: var(--color-burnt);
+    color: var(--color-burnt);
+    background: rgba(181, 98, 42, 0.06);
+  }
+  .lang-btn :global(svg) {
+    border-radius: 1px;
+  }
+</style>

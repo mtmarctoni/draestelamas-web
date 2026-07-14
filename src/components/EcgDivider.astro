@@ -1,0 +1,25 @@
+{/* Full-bleed cardiac-monitor line. Repeating SVG tile; horizontal position is
+    driven by page scroll in BaseLayout's script (only animates while scrolling). */}
+<div class="ecg-wrap" aria-hidden="true">
+  <div class="ecg-line"></div>
+</div>
+
+<style>
+  .ecg-wrap {
+    background: #fff;
+    height: 128px;
+    overflow: hidden;
+  }
+  .ecg-line {
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='150'%20height='44'%3E%3Cpath%20d='M0,22%20L10,22%20L20,7%20L28,38%20L38,3%20L48,41%20L56,22%20L150,22'%20fill='none'%20stroke='%23B5622A'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: center center;
+    background-size: 150px 44px;
+  }
+  @media (max-width: 960px) {
+    .ecg-wrap {
+      height: 96px;
+    }
+  }
+</style>

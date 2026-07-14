@@ -1,0 +1,187 @@
+---
+import { Image } from "astro:assets";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import { getTranslations, homePath } from "../i18n";
+import type { Locale } from "../i18n";
+import logo from "../assets/img/logo.png";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+const home = homePath(locale);
+---
+
+<nav id="main-nav">
+  <a class="nav-logo" href={home}>
+    <Image src={logo} alt="" width={88} densities={[1, 2]} loading="eager" fetchpriority="high" quality={50} />
+    <span class="nav-logo-text">
+      Dra. Estela Mas
+      <span class="nav-logo-sub">Nefrologia</span>
+    </span>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href={`${home}#inicio`}>{t.nav.homeLabel}</a></li>
+    <li><a href={`${home}#sobre`}>{t.nav.aboutLabel}</a></li>
+    <li>
+      <a href={`${home}#cardiorenal`} class="nav-blog-link">
+        {t.nav.blogLabel}<span class="nav-blog-pill">{t.nav.blogPill}</span>
+      </a>
+    </li>
+    <li><a href={`${home}#digital`}>{t.nav.digitalLabel}</a></li>
+    <li><a href={`${home}#galeria`}>{t.nav.galleryLabel}</a></li>
+    <li><a href={`${home}#colaboracions`} set:html={t.nav.collaborationsHtml} /></li>
+    <li><a href={`${home}#contacto`} class="nav-cta">{t.nav.contactLabel}</a></li>
+    <LanguageSwitcher locale={locale} />
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    background: rgba(245, 242, 237, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(43, 74, 106, 0.1);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled {
+    box-shadow: 0 2px 24px rgba(43, 74, 106, 0.1);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .nav-logo img {
+    height: 44px;
+    width: auto;
+  }
+  .nav-logo-text {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+  .nav-logo-sub {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 0.68rem;
+    color: var(--color-burnt);
+    display: block;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links li {
+    display: flex;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--color-navy);
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .nav-links a:hover {
+    border-bottom-color: var(--color-burnt);
+    color: var(--color-burnt);
+  }
+  .nav-links a.nav-cta {
+    background: var(--color-navy);
+    color: #fff;
+    padding: 0.4rem 1rem;
+    border-radius: 2px;
+    border: none;
+    transition: background 0.2s;
+  }
+  .nav-links a.nav-cta:hover {
+    background: var(--color-burnt);
+  }
+  .nav-links a.nav-blog-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .nav-blog-pill {
+    background: var(--color-burnt);
+    color: #fff;
+    font-size: 0.54rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0.18rem 0.5rem;
+    border-radius: 20px;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .nav-blog-link:hover .nav-blog-pill {
+    background: var(--color-navy);
+  }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    width: 24px;
+    height: 2px;
+    background: var(--color-navy);
+    transition: 0.3s;
+  }
+  @media (max-width: 960px) {
+    .nav-links {
+      display: none;
+    }
+    .hamburger {
+      display: flex;
+    }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0;
+      right: 0;
+      background: var(--color-ivory);
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--color-sand);
+      gap: 1rem;
+      z-index: 99;
+    }
+  }
+</style>

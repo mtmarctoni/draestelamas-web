@@ -3,4 +3,7 @@ dist/
 .astro/
 .wrangler/
 .dev.vars
+.env
 .DS_Store
+.gstack/
+skills-lock.json

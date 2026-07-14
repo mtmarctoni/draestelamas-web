@@ -1,0 +1,12 @@
+{
+  "name": "draestelamas",
+  "main": "@astrojs/cloudflare/entrypoints/server",
+  "compatibility_date": "2025-07-13",
+  "assets": { "directory": "./dist", "binding": "ASSETS" },
+  "routes": [
+    {
+      "pattern": "draestelamas.marctonimas.com",
+      "custom_domain": true
+    }
+  ]
+}

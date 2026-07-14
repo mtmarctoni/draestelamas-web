@@ -1,0 +1,140 @@
+---
+import { Image } from "astro:assets";
+import { getTranslations } from "../i18n";
+import type { Locale } from "../i18n";
+import heroObra from "../assets/img/hero-obra.png";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+---
+
+<section id="inicio">
+  <div class="hero-text">
+    <p class="hero-eyebrow" set:html={t.hero.eyebrowHtml} />
+    <h1 class="hero-title" set:html={t.hero.titleHtml} />
+    <p class="hero-subtitle">{t.hero.subtitle}</p>
+    <div class="hero-btns">
+      <a href="#colaboracions" class="btn btn-online" set:html={t.hero.ctaCollaborationsHtml} />
+      <a href="#contacto" class="btn btn-outline">{t.hero.ctaContact}</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-blob"></div>
+    <Image
+      class="hero-image"
+      src={heroObra}
+      alt={t.hero.imageAlt}
+      widths={[420, 840]}
+      sizes="420px"
+      loading="eager"
+      fetchpriority="high"
+      quality={60}
+    />
+  </div>
+</section>
+
+<style>
+  #inicio {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding-top: var(--nav-h);
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    gap: 4rem;
+  }
+  .hero-text {
+    padding: 4rem 0;
+  }
+  .hero-eyebrow {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-sky);
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 4.5vw, 4rem);
+    font-weight: 300;
+    color: var(--color-navy);
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+  .hero-title :global(em) {
+    font-style: italic;
+    color: var(--color-burnt);
+  }
+  .hero-subtitle {
+    font-size: 0.97rem;
+    color: var(--color-muted);
+    font-weight: 300;
+    max-width: 460px;
+    margin-bottom: 2rem;
+    line-height: 1.85;
+  }
+  .hero-btns {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-blob {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, var(--color-navy), var(--color-sky));
+    border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+    opacity: 0.08;
+    position: absolute;
+  }
+  .hero-image {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 4px;
+    box-shadow: 0 8px 48px rgba(43, 74, 106, 0.15);
+    position: relative;
+    z-index: 1;
+  }
+  @media (max-width: 960px) {
+    #inicio {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      min-height: auto;
+      padding: calc(var(--nav-h) + 0.75rem) 1.5rem 3rem;
+    }
+    .hero-visual {
+      display: none;
+    }
+    .hero-text {
+      padding: 1rem 0 0;
+    }
+    .hero-title {
+      font-size: clamp(2rem, 7vw, 2.6rem);
+      margin-bottom: 1rem;
+    }
+    .hero-subtitle {
+      margin-bottom: 1.25rem;
+    }
+    .hero-eyebrow {
+      margin-bottom: 0.6rem;
+    }
+    .hero-btns {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+  }
+</style>
