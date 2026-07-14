@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getTranslations, homePath } from "../i18n";
+import kidneyImg from "../assets/img/hero-obra.png";
 
 const path = Astro.url.pathname;
 const locale = path.startsWith("/es/") ? "es" : path.startsWith("/en/") ? "en" : "ca";
@@ -10,6 +12,14 @@ const t = getTranslations(locale);
 <BaseLayout locale={locale} title={`404 — ${t.meta.title}`} preloadHero={false}>
   <main class="not-found">
     <div class="section-inner">
+      <Image
+        class="not-found-img"
+        src={kidneyImg}
+        alt={locale === "ca" ? "Obra d'art — dos ronyons amb paisatge" : locale === "es" ? "Obra de arte — dos riñones con paisaje" : "Artwork — two kidneys with landscape"}
+        width={280}
+        quality={60}
+        loading="eager"
+      />
       <h1>404</h1>
       <p>{locale === "ca" ? "Aquesta pàgina no existeix." : locale === "es" ? "Esta página no existe." : "This page does not exist."}</p>
       <a href={homePath(locale)} class="btn btn-primary">
@@ -26,6 +36,14 @@ const t = getTranslations(locale);
     align-items: center;
     text-align: center;
     background: #fff;
+  }
+  .not-found-img {
+    width: 280px;
+    height: auto;
+    margin: 0 auto 2rem;
+    border-radius: 4px;
+    box-shadow: 0 8px 40px rgba(43, 74, 106, 0.12);
+    opacity: 0.85;
   }
   .not-found h1 {
     font-family: var(--font-display);
