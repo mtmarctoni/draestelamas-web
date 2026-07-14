@@ -1,5 +1,5 @@
 ---
-import { localizePath, locales, stripLocalePrefix } from "../i18n";
+import { localizeUrl, locales } from "../i18n";
 import type { Locale } from "../i18n";
 
 interface Props {
@@ -7,7 +7,6 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const basePath = stripLocalePrefix(Astro.url.pathname);
 
 // Inline flag SVGs copied from the source site (senyera, rojigualda, union jack).
 const flags: Record<Locale, string> = {
@@ -24,7 +23,7 @@ const labels: Record<Locale, string> = { ca: "CA", es: "ES", en: "EN" };
     locales.map((loc) => (
       <a
         class:list={["lang-btn", { active: loc === locale }]}
-        href={localizePath(basePath, loc)}
+        href={localizeUrl(Astro.url.pathname, loc)}
         aria-current={loc === locale ? "true" : undefined}
         lang={loc}
       >
