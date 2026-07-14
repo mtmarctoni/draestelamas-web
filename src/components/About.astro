@@ -16,7 +16,7 @@ const t = getTranslations(locale);
   <div class="section-inner">
     <div class="sobre-grid">
       <div class="sobre-photo-wrap fade-up">
-        <Image src={portrait} alt={t.about.portraitAlt} widths={[400, 800]} sizes="(max-width: 960px) 100vw, 400px" loading="lazy" quality={60} />
+        <Image src={portrait} alt={t.about.portraitAlt} widths={[400, 800]} sizes="(max-width: 960px) 100vw, 400px" loading="eager" fetchpriority="high" quality={60} />
         <div class="sobre-accent"></div>
       </div>
       <div class="fade-up sobre-content-wrap">
