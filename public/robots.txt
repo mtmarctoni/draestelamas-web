@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.draestelamas.com/sitemap-index.xml
+Sitemap: https://draestelamas.marctonimas.com/sitemap.xml
