@@ -94,20 +94,6 @@ if (schemaType === "blog" && Astro.props.blogData) {
         a.addEventListener("click", () => links.classList.remove("open"));
       });
 
-      // Entrance animation.
-      const observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
-            }
-          }
-        },
-        { threshold: 0.12 }
-      );
-      document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
-
       // ECG divider: trace position driven by page scroll (guarded — divider exists from Task 14).
       const ecgLine = document.querySelector<HTMLElement>(".ecg-line");
       if (ecgLine && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -129,6 +115,23 @@ if (schemaType === "blog" && Astro.props.blogData) {
         );
         update();
       }
+
+      // Entrance animation: defer IntersectionObserver to idle to avoid forced reflow on LCP.
+      const defer = window.requestIdleCallback || ((cb: () => void) => setTimeout(cb, 0));
+      defer(() => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.12 }
+        );
+        document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
+      });
     </script>
   </body>
 </html>
