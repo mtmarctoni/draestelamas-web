@@ -13,6 +13,10 @@ export default defineConfig({
     defaultLocale: "ca",
     routing: { prefixDefaultLocale: false },
   },
+  image: {
+    quality: 65,
+    format: ["webp"],
+  },
   integrations: [
     sitemap({
       i18n: {

@@ -1,11 +1,12 @@
 ---
-import { Font } from "astro:assets";
+import { Font, getImage } from "astro:assets";
 import SEO from "../components/SEO.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { getTranslations } from "../i18n";
 import type { Locale } from "../i18n";
 import "../styles/global.css";
+import heroImg from "../assets/img/hero-obra.png";
 
 interface Props {
   locale: Locale;
@@ -17,6 +18,8 @@ const { locale } = Astro.props;
 const t = getTranslations(locale);
 const title = Astro.props.title ?? t.meta.title;
 const description = Astro.props.description ?? t.meta.description;
+
+const heroOptimized = await getImage({ src: heroImg, width: 420, height: 310, format: "webp", quality: 60 });
 
 const jsonLd = JSON.stringify({
   "@context": "https://schema.org",
@@ -43,6 +46,7 @@ const jsonLd = JSON.stringify({
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <Font cssVariable="--font-cormorant" preload />
     <Font cssVariable="--font-inter" preload />
+    <link rel="preload" as="image" href={heroOptimized.src} media="(min-width: 961px)" />
     <SEO locale={locale} title={title} description={description} />
     <script type="application/ld+json" is:inline set:html={jsonLd} />
   </head>

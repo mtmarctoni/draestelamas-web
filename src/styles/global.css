@@ -2,13 +2,13 @@
 
 @theme {
   --color-navy: #2b4a6a;
-  --color-sky: #4a7b9b;
-  --color-burnt: #b5622a;
+  --color-sky: #3d6d8d;
+  --color-burnt: #8a491f;
   --color-amber: #d4943a;
   --color-sand: #eae2d4;
   --color-ivory: #f5f2ed;
   --color-ink: #252830;
-  --color-muted: #6b7888;
+  --color-muted: #5a6878;
 
   --font-display: var(--font-cormorant);
   --font-body: var(--font-inter);

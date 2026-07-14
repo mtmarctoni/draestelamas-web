@@ -13,7 +13,7 @@ const t = getTranslations(locale);
 ---
 
 <section id="inicio">
-  <div class="hero-text fade-up">
+  <div class="hero-text">
     <p class="hero-eyebrow" set:html={t.hero.eyebrowHtml} />
     <h1 class="hero-title" set:html={t.hero.titleHtml} />
     <p class="hero-subtitle">{t.hero.subtitle}</p>
@@ -25,13 +25,14 @@ const t = getTranslations(locale);
   <div class="hero-visual">
     <div class="hero-blob"></div>
     <Image
-      class="hero-image fade-up"
+      class="hero-image"
       src={heroObra}
       alt={t.hero.imageAlt}
       widths={[420, 840]}
       sizes="420px"
       loading="eager"
       fetchpriority="high"
+      quality={60}
     />
   </div>
 </section>
@@ -106,7 +107,6 @@ const t = getTranslations(locale);
     box-shadow: 0 8px 48px rgba(43, 74, 106, 0.15);
     position: relative;
     z-index: 1;
-    transition-delay: 0.2s;
   }
   @media (max-width: 960px) {
     #inicio {

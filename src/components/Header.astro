@@ -16,7 +16,7 @@ const home = homePath(locale);
 
 <nav id="main-nav">
   <a class="nav-logo" href={home}>
-    <Image src={logo} alt="" width={88} densities={[1, 2]} loading="eager" />
+    <Image src={logo} alt="" width={88} densities={[1, 2]} loading="eager" fetchpriority="high" quality={50} />
     <span class="nav-logo-text">
       Dra. Estela Mas
       <span class="nav-logo-sub">Nefrologia</span>

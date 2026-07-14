@@ -40,7 +40,7 @@ const items = await Promise.all(
   t.gallery.artworks.map(async (artwork) => ({
     ...artwork,
     thumb: thumbs[artwork.id],
-    full: await getImage({ src: fulls[artwork.id], width: 1600, format: "webp" }),
+    full: await getImage({ src: fulls[artwork.id], width: 1024, format: "webp", quality: 50 }),
   }))
 );
 ---
@@ -65,9 +65,10 @@ const items = await Promise.all(
               class="galeria-img"
               src={item.thumb}
               alt={item.title}
-              widths={[400, 800]}
+              widths={[350, 700]}
               sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 350px"
               loading="lazy"
+              quality={50}
             />
             <span class="galeria-caption">
               <span class="galeria-title">{item.title}</span>

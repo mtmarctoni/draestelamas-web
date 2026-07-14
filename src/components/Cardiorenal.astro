@@ -29,9 +29,10 @@ const postUrl = (id: string) => localizePath(`/blog/${id.split("/")[1]}/`, local
                 <Image
                   src={post.data.image}
                   alt=""
-                  widths={[600, 1200]}
+                  widths={[520, 1040]}
                   sizes="(max-width: 960px) 100vw, 520px"
                   loading="lazy"
+                  quality={55}
                 />
               ) : (
                 "◆"
