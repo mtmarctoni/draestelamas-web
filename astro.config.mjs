@@ -6,6 +6,23 @@ export default defineConfig({
   site: process.env.BASE_URL || "https://draestelamas.marctonimas.com",
   // output: 'static' is the default. Pages are prerendered; only Actions run on the Worker.
   adapter: cloudflare(),
+  security: {
+    csp: {
+      directives: [
+        "default-src 'self'",
+        "img-src 'self' data: https:",
+        "font-src 'self'",
+        "connect-src 'self' https://api.resend.com https://challenges.cloudflare.com",
+        "form-action 'self'",
+        "frame-src https://challenges.cloudflare.com",
+        "base-uri 'self'",
+        "object-src 'none'",
+      ],
+      scriptDirective: {
+        resources: ["'self'", "https://challenges.cloudflare.com"],
+      },
+    },
+  },
   i18n: {
     locales: ["ca", "es", "en"],
     defaultLocale: "ca",
