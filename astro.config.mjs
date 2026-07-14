@@ -15,7 +15,10 @@ export default defineConfig({
     quality: 65,
     format: ["webp"],
   },
-  integrations: [],
+  prefetch: {
+    prefetchAll: false,
+    defaultStrategy: "hover",
+  },
   fonts: [
     {
       provider: fontProviders.local(),
