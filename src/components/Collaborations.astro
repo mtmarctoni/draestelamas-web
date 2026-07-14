@@ -9,8 +9,8 @@ interface Props {
 const { locale } = Astro.props;
 const t = getTranslations(locale);
 const columns = [
-  { title: t.collaborations.areasTitle, items: t.collaborations.areas, delay: 0 },
-  { title: t.collaborations.entitiesTitle, items: t.collaborations.entities, delay: 0.1 },
+  { title: t.collaborations.areasTitle, items: t.collaborations.areas, delayClass: "delay-0" },
+  { title: t.collaborations.entitiesTitle, items: t.collaborations.entities, delayClass: "delay-01" },
 ];
 ---
 
@@ -21,7 +21,7 @@ const columns = [
     <div class="colab-cols">
       {
         columns.map((column) => (
-          <div class="colab-col fade-up" style={`transition-delay:${column.delay}s`}>
+          <div class:list={["colab-col", "fade-up", column.delayClass]}>
             <h3>{column.title}</h3>
             <ul class="colab-list">
               {column.items.map((item) => (

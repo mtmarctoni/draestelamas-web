@@ -54,8 +54,7 @@ const items = await Promise.all(
         items.map((item, i) => (
           <button
             type="button"
-            class="galeria-item fade-up"
-            style={`transition-delay:${i * 0.08}s`}
+            class:list={["galeria-item", "fade-up", `delay-${["0","008","016","024","032"][i]}`]}
             data-lightbox-index={i}
             data-full={item.full.src}
             data-title={item.title}

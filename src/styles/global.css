@@ -16,6 +16,18 @@
   --max-w: 1100px;
 }
 
+/* ── Entrance animation delays (CSP-safe, replaces inline styles) ── */
+.delay-0 { transition-delay: 0s; }
+.delay-004 { transition-delay: 0.04s; }
+.delay-005 { transition-delay: 0.05s; }
+.delay-008 { transition-delay: 0.08s; }
+.delay-01 { transition-delay: 0.1s; }
+.delay-012 { transition-delay: 0.12s; }
+.delay-015 { transition-delay: 0.15s; }
+.delay-016 { transition-delay: 0.16s; }
+.delay-024 { transition-delay: 0.24s; }
+.delay-032 { transition-delay: 0.32s; }
+
 /* ── Minimal reset ── */
 *,
 *::before,

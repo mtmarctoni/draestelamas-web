@@ -23,7 +23,7 @@ const postUrl = (id: string) => localizePath(`/blog/${id.split("/")[1]}/`, local
     <div class="blog-grid">
       {
         posts.map((post, i) => (
-          <a class="blog-card fade-up" href={postUrl(post.id)} style={`transition-delay:${(i % 4) * 0.04}s`}>
+          <a class:list={["blog-card", "fade-up", `delay-${["0","004","008","012"][i % 4]}`]} href={postUrl(post.id)}>
             <div class:list={["blog-img", { warm: i % 2 === 1 }]}>
               {post.data.image ? (
                 <Image

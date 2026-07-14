@@ -18,7 +18,7 @@ const icons = [
   "<svg viewBox='0 0 24 24'><path d='M9 11l3 3L22 4'/><path d='M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11'/></svg>",
   "<svg viewBox='0 0 24 24'><circle cx='12' cy='12' r='3'/><path d='M12 1v6M12 17v6M4.2 4.2l4.3 4.3M15.5 15.5l4.3 4.3M1 12h6M17 12h6M4.2 19.8l4.3-4.3M15.5 8.5l4.3-4.3'/></svg>",
 ];
-const delays = [0, 0.05, 0.1, 0.05, 0.1, 0.15];
+const delayClasses = ["delay-0", "delay-005", "delay-01", "delay-005", "delay-01", "delay-015"];
 ---
 
 <section id="digital">
@@ -29,7 +29,7 @@ const delays = [0, 0.05, 0.1, 0.05, 0.1, 0.15];
     <div class="digital-grid">
       {
         t.digital.areas.map((area, i) => (
-          <div class="digital-card fade-up" style={`transition-delay:${delays[i]}s`}>
+          <div class:list={["digital-card", "fade-up", delayClasses[i]]}>
             <div class="digital-card-icon" set:html={icons[i]} />
             <p>{area}</p>
           </div>
