@@ -99,6 +99,6 @@ Si este cambio de enfoque se consolida, podría mejorar no solo la salud renal, 
 * **La prevención y la salud digital pueden transformar la forma de cuidar los riñones.**
 * **El gran reto del futuro será mantener la salud renal, no solo tratar la enfermedad cuando ya ha aparecido.**
 
-#### *¿Te interesa aprender más sobre prevención cardiovascular, salud renal, hipertensión y longevidad saludable?*
+### *¿Te interesa aprender más sobre prevención cardiovascular, salud renal, hipertensión y longevidad saludable?*
 
 En este blog encontrarás información basada en la evidencia científica para ayudarte a cuidar tu salud y comprender mejor cómo prevenir las enfermedades antes de que aparezcan.

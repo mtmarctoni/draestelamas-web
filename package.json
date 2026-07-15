@@ -3,17 +3,28 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@10.25.0",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.15.0"
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "rm -rf node_modules/.vite && astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "clean": "rm -rf node_modules/.vite dist",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "knip": "knip",
+    "depcruise": "depcruise src tests",
     "test": "vitest run",
-    "deploy": "rm -rf node_modules/.vite && pnpm build && wrangler deploy",
+    "deploy": "pnpm build && wrangler deploy",
+    "prepare": "simple-git-hooks",
     "astro": "astro"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec biome check --staged --no-errors-on-unmatched --files-ignore-unknown=true"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.0.0",
@@ -21,11 +32,12 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.0",
+    "@biomejs/biome": "2.5.3",
+    "dependency-cruiser": "^18.0.0",
+    "knip": "^6.25.0",
+    "simple-git-hooks": "^2.13.1",
     "typescript": "^5.8.0",
     "vitest": "^3.0.0",
     "wrangler": "^4.0.0"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp", "workerd"]
   }
 }

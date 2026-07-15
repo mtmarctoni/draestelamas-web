@@ -1,11 +1,12 @@
 import { ActionError, defineAction } from "astro:actions";
+import { env } from "cloudflare:workers";
 import { contactSchema } from "./schema";
 
 export const server = {
   contact: defineAction({
     accept: "form",
     input: contactSchema,
-    handler: async (input, ctx) => {
+    handler: async (input) => {
       // LAYER 1 (honeypot) has already run: Zod rejected any submission with
       // a filled important_field before this handler was invoked.
 
@@ -22,7 +23,7 @@ export const server = {
       //   method: "POST",
       //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
       //   body: new URLSearchParams({
-      //     secret: ctx.locals.runtime.env.TURNSTILE_SECRET_KEY ?? "",
+      //     secret: env.TURNSTILE_SECRET_KEY ?? "",
       //     response: turnstileToken,
       //   }),
       // });
@@ -32,9 +33,9 @@ export const server = {
       // }
       // --- End Layer 3 ---
 
-      // Cloudflare env access — NOT process.env. Optional chaining keeps the
-      // error explicit when the platform proxy is absent locally.
-      const apiKey = ctx.locals.cfContext?.env?.RESEND_API_KEY;
+      // Cloudflare env access — NOT process.env and NOT locals (Astro v6
+      // removed locals.runtime.env; locals.cfContext is only the ExecutionContext).
+      const apiKey = env.RESEND_API_KEY;
 
       if (!apiKey) {
         throw new ActionError({

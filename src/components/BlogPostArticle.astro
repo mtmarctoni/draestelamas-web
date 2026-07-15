@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import { render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import { dateLocale, getTranslations, homePath } from "../i18n";
+import { render } from "astro:content";
 import type { Locale } from "../i18n";
+import { dateLocale, getTranslations, homePath } from "../i18n";
 
 interface Props {
   locale: Locale;
@@ -125,7 +125,6 @@ const formattedDate = new Intl.DateTimeFormat(dateLocale[locale], {
   .post-date {
     font-size: 0.75rem;
     color: var(--color-muted);
-    opacity: 0.6;
     margin-top: 2rem;
     border-top: 1px solid var(--color-sand);
     padding-top: 1rem;

@@ -19,8 +19,7 @@ const ca: TranslationContent = {
   hero: {
     eyebrowHtml:
       "Especialista en Nefrologia<br />Salut cardiorenometabòlica<br />Prevenció del risc cardiovascular",
-    titleHtml:
-      "Darrere de cada pacient,<br />hi ha una <em>obra d'art</em><br />irrepetible.",
+    titleHtml: "Darrere de cada pacient,<br />hi ha una <em>obra d'art</em><br />irrepetible.",
     subtitle:
       "Nefròloga especialitzada en salut cardiorenometabòlica i prevenció del risc cardiovascular. Uneixo la medicina basada en l'evidència, la innovació en salut digital i IA, i una mirada humanista centrada en la persona.",
     ctaCollaborationsHtml: "Col<span class='l-geminada'>·</span>laboracions",
@@ -102,7 +101,8 @@ const ca: TranslationContent = {
         title: "Ciència i paisatge",
         medium: "Llapis sobre paper",
         technique: "Llapis sobre paper",
-        description: "La mirada científica i la dimensió humana de la medicina renal, retratades juntes.",
+        description:
+          "La mirada científica i la dimensió humana de la medicina renal, retratades juntes.",
       },
       {
         id: "obra-03",
@@ -157,7 +157,8 @@ const ca: TranslationContent = {
     labels: { name: "Nom", surname: "Cognoms", email: "Email", message: "Missatge" },
     gdpr: "Les seves dades seran tractades amb total confidencialitat d'acord amb el RGPD. No es cediran a tercers.",
     privacyLink: "Política de Privacitat completa",
-    art13: "Informació bàsica sobre protecció de dades: Responsable: Estela de los Ángeles Mas Ródenas. Finalitat: respondre a la seva consulta. Base legal: interès legítim (consulta espontània) o mesures precontractuals (sol·licitud de pressupost). Drets: pot exercir els seus drets d'accés, rectificació, supressió, oposició i portabilitat escrivint a info@draestelamas.com.",
+    art13:
+      "Informació bàsica sobre protecció de dades: Responsable: Estela de los Ángeles Mas Ródenas. Finalitat: respondre a la seva consulta. Base legal: interès legítim (consulta espontània) o mesures precontractuals (sol·licitud de pressupost). Drets: pot exercir els seus drets d'accés, rectificació, supressió, oposició i portabilitat escrivint a info@draestelamas.com.",
     submit: "Enviar",
     sending: "Enviant...",
     success: "✓ Missatge enviat. La Dra. Mas Ródenas es posarà en contacte amb vostè en breu.",
@@ -168,6 +169,12 @@ const ca: TranslationContent = {
     specialty: "Especialista en Nefrologia · Salut cardiorenometabòlica · Mallorca",
     privacyLabel: "Política de privacitat",
     legalLabel: "Avís legal",
+  },
+  errors: {
+    imageAlt: "Obra d'art — dos ronyons amb paisatge",
+    notFound: "Aquesta pàgina no existeix.",
+    serverError: "Alguna cosa ha fallat. Torna-ho a provar més tard.",
+    backHome: "Tornar a l'inici",
   },
   privacy: {
     title: "Política de Privacitat",

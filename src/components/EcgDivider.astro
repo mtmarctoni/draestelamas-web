@@ -1,8 +1,31 @@
 {/* Full-bleed cardiac-monitor line. Repeating SVG tile; horizontal position is
-    driven by page scroll in BaseLayout's script (only animates while scrolling). */}
+    driven by page scroll (only animates while scrolling). */}
 <div class="ecg-wrap" aria-hidden="true">
   <div class="ecg-line"></div>
 </div>
+
+<script>
+  const ecgLine = document.querySelector<HTMLElement>(".ecg-line");
+  if (ecgLine && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const ECG_SPEED = 0.4; // px of trace movement per px scrolled
+    let ticking = false;
+    const update = () => {
+      ecgLine.style.backgroundPositionX = `${-scrollY * ECG_SPEED}px`;
+      ticking = false;
+    };
+    addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(update);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+    update();
+  }
+</script>
 
 <style>
   .ecg-wrap {

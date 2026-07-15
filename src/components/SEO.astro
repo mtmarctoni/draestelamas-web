@@ -1,13 +1,13 @@
 ---
+import type { Locale } from "../i18n";
 import {
   defaultLocale,
   getTranslations,
   localeHreflang,
-  localizeUrl,
   locales,
+  localizeUrl,
   ogLocale,
 } from "../i18n";
-import type { Locale } from "../i18n";
 
 interface Props {
   locale: Locale;
@@ -18,7 +18,8 @@ interface Props {
 
 const { locale, title, description, imageAlt } = Astro.props;
 const t = getTranslations(locale);
-const site = Astro.site!;
+const site = Astro.site;
+if (!site) throw new Error("`site` must be set in astro.config.mjs — canonical URLs depend on it.");
 const urlFor = (loc: Locale) => new URL(localizeUrl(Astro.url.pathname, loc), site).href;
 const ogImage = new URL("/og-image.jpg", site).href;
 ---

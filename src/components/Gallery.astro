@@ -1,7 +1,5 @@
 ---
-import { Image, getImage } from "astro:assets";
-import { getTranslations } from "../i18n";
-import type { ArtworkId, Locale } from "../i18n";
+import { getImage, Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import galeria01 from "../assets/img/galeria-01.jpg";
 import galeria02 from "../assets/img/galeria-02.jpg";
@@ -13,6 +11,8 @@ import obra02 from "../assets/img/obra-02.jpg";
 import obra03 from "../assets/img/obra-03.jpg";
 import obra04 from "../assets/img/obra-04.jpg";
 import obra05 from "../assets/img/obra-05.jpg";
+import type { ArtworkId, Locale } from "../i18n";
+import { getTranslations } from "../i18n";
 
 interface Props {
   locale: Locale;
@@ -41,7 +41,7 @@ const items = await Promise.all(
     ...artwork,
     thumb: thumbs[artwork.id],
     full: await getImage({ src: fulls[artwork.id], width: 1024, format: "webp", quality: 50 }),
-  }))
+  })),
 );
 ---
 

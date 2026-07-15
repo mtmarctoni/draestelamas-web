@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dra. Estela Mas — Web Renewal Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2f4a;
+    --navy-deep: #0f1d2f;
+    --sky: #4a7b9b;
+    --burnt: #c4712a;
+    --amber: #d4943a;
+    --gold: #e8b94a;
+    --sand: #f0ebe3;
+    --ivory: #faf8f5;
+    --white: #ffffff;
+    --dark: #1a1d22;
+    --muted: #6b7888;
+    --green: #22c55e;
+    --green-glow: rgba(34, 197, 94, 0.15);
+    --red: #ef4444;
+    --red-soft: rgba(239, 68, 68, 0.08);
+    --green-soft: rgba(34, 197, 94, 0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--ivory);
+    color: var(--dark);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 40%, #1e3a5c 100%);
+    overflow: hidden;
+    padding: 4rem 2rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(196, 113, 42, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 20s ease-in-out infinite;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -15%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(74, 123, 155, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 25s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, -30px) scale(1.05); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 900px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.55);
+    max-width: 560px;
+    margin: 0 auto 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SCORE STRIP ── */
+  .score-strip {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .score-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: background 0.3s;
+  }
+
+  .score-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .score-card .label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0.75rem;
+  }
+
+  .score-card .value {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .score-card .sub {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  .score-card .old {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.25);
+    margin-top: 0.35rem;
+  }
+
+  .score-card .old span {
+    color: var(--red);
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+
+  /* ── SECTION CONTAINER ── */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-number {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--burnt);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--burnt);
+  }
+
+  .section-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 600px;
+    font-weight: 300;
+  }
+
+  /* ── COMPARISON ROWS ── */
+  .compare-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: #e5e2dc;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .compare-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: var(--white);
+    transition: background 0.2s;
+  }
+
+  .compare-row:hover {
+    background: #fdfcfa;
+  }
+
+  .compare-cell {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .compare-cell:not(:last-child) {
+    border-right: 1px solid #f0ede8;
+  }
+
+  .compare-cell.feature {
+    background: var(--navy-deep);
+    color: var(--white);
+    font-weight: 500;
+    font-size: 0.85rem;
+  }
+
+  .compare-cell.old-val {
+    background: var(--red-soft);
+    color: #991b1b;
+    font-size: 0.85rem;
+  }
+
+  .compare-cell.new-val {
+    background: var(--green-soft);
+    color: #166534;
+    font-size: 0.85rem;
+  }
+
+  .compare-cell .icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .compare-cell.feature .icon {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .compare-cell.old-val .icon {
+    background: rgba(239, 68, 68, 0.1);
+  }
+
+  .compare-cell.new-val .icon {
+    background: rgba(34, 197, 94, 0.1);
+  }
+
+  .cell-text {
+    line-height: 1.4;
+  }
+
+  .cell-text strong {
+    font-weight: 600;
+  }
+
+  /* ── METRIC BARS ── */
+  .metric-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .metric-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #eae7e0;
+    transition: box-shadow 0.3s;
+  }
+
+  .metric-card:hover {
+    box-shadow: 0 8px 32px rgba(26, 47, 74, 0.06);
+  }
+
+  .metric-card .metric-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .metric-bar-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .metric-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .metric-bar .tag {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    width: 36px;
+    flex-shrink: 0;
+  }
+
+  .metric-bar .tag.old { color: var(--red); }
+  .metric-bar .tag.new { color: var(--green); }
+
+  .metric-bar .bar-track {
+    flex: 1;
+    height: 8px;
+    background: #f0ede8;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .metric-bar .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 0;
+  }
+
+  .metric-bar .bar-fill.old { background: var(--red); opacity: 0.6; }
+  .metric-bar .bar-fill.new { background: var(--green); }
+
+  .metric-bar .bar-val {
+    font-size: 0.78rem;
+    font-weight: 600;
+    width: 60px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .metric-bar .bar-val.old { color: var(--red); }
+  .metric-bar .bar-val.new { color: #166534; }
+
+  /* ── SECURITY GRID ── */
+  .security-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .security-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #eae7e0;
+    transition: all 0.3s;
+  }
+
+  .security-card:hover {
+    border-color: var(--green);
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.08);
+  }
+
+  .security-card .shield {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--green-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .security-card h4 {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+
+  .security-card p {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .security-card .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.75rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .security-card .status.active { color: var(--green); }
+  .security-card .status.missing { color: var(--red); }
+
+  .security-card .status::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+
+  .security-card .status.active::before { background: var(--green); }
+  .security-card .status.missing::before { background: var(--red); }
+
+  /* ── i18n VISUAL ── */
+  .i18n-compare {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0;
+    align-items: stretch;
+    margin-top: 2rem;
+  }
+
+  .i18n-panel {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #eae7e0;
+  }
+
+  .i18n-panel.old {
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+
+  .i18n-panel.new {
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+
+  .i18n-panel h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+
+  .i18n-panel .url-example {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.75rem;
+    background: var(--navy-deep);
+    color: #a5d6ff;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    overflow-x: auto;
+  }
+
+  .i18n-panel .url-example .hl { color: var(--gold); }
+  .i18n-panel .url-example .dim { color: rgba(165, 214, 255, 0.4); }
+
+  .i18n-panel .note {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .i18n-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--green);
+  }
+
+  .i18n-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+
+  .i18n-tag.old { background: var(--red-soft); color: #991b1b; }
+  .i18n-tag.new { background: var(--green-soft); color: #166534; }
+
+  /* ── LIGHTHOUSE GAUGE ── */
+  .gauge-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .gauge-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #eae7e0;
+    text-align: center;
+  }
+
+  .gauge-ring {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1rem;
+  }
+
+  .gauge-ring svg {
+    transform: rotate(-90deg);
+    width: 120px;
+    height: 120px;
+  }
+
+  .gauge-ring .track {
+    fill: none;
+    stroke: #f0ede8;
+    stroke-width: 8;
+  }
+
+  .gauge-ring .fill {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 339.292;
+    transition: stroke-dashoffset 2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gauge-ring .fill.green { stroke: var(--green); }
+  .gauge-ring .fill.amber { stroke: var(--amber); }
+
+  .gauge-ring .score-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .gauge-ring .score-text.green { color: var(--green); }
+  .gauge-ring .score-text.amber { color: var(--amber); }
+
+  .gauge-card h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+
+  .gauge-card .gauge-sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .gauge-card .gauge-delta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 100px;
+  }
+
+  .gauge-card .gauge-delta.up { background: var(--green-soft); color: #166534; }
+  .gauge-card .gauge-delta.perfect { background: var(--green); color: var(--white); }
+
+  /* ── SUMMARY ── */
+  .summary {
+    background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 100%);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .summary h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .summary h2 em { color: var(--gold); font-style: italic; }
+
+  .summary p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    max-width: 520px;
+    margin: 0 auto 3rem;
+    font-weight: 300;
+  }
+
+  .summary-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .summary-stat {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2rem 1rem;
+  }
+
+  .summary-stat .num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .summary-stat .desc {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 0.5rem;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d6d3cc, transparent);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── FOOTER ── */
+  .footer-note {
+    text-align: center;
+    padding: 3rem 2rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .score-strip { grid-template-columns: repeat(2, 1fr); }
+    .metric-section { grid-template-columns: 1fr; }
+    .security-grid { grid-template-columns: 1fr; }
+    .gauge-row { grid-template-columns: 1fr; }
+    .summary-stats { grid-template-columns: repeat(2, 1fr); }
+    .i18n-compare { grid-template-columns: 1fr; gap: 1rem; }
+    .i18n-arrow { transform: rotate(90deg); }
+    .compare-row { grid-template-columns: 1fr; }
+    .compare-cell:not(:last-child) { border-right: none; border-bottom: 1px solid #f0ede8; }
+    .compare-cell.feature { order: -1; }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════ HERO ════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Web Renewal Report</div>
+    <h1>A new home for<br>Dra. Estela Mas <em>online</em></h1>
+    <p class="hero-sub">Performance, security, and accessibility measured across both sites. The numbers speak for themselves.</p>
+
+    <div class="score-strip">
+      <div class="score-card">
+        <div class="label">Lighthouse</div>
+        <div class="value">100</div>
+        <div class="sub">Accessibility</div>
+        <div class="old">was <span>89</span></div>
+      </div>
+      <div class="score-card">
+        <div class="label">Lighthouse</div>
+        <div class="value">100</div>
+        <div class="sub">SEO</div>
+        <div class="old">was <span>92</span></div>
+      </div>
+      <div class="score-card">
+        <div class="label">TTFB</div>
+        <div class="value">35<small style="font-size:0.5em;opacity:0.6">ms</small></div>
+        <div class="sub">Time to First Byte</div>
+        <div class="old">was <span>119 ms</span></div>
+      </div>
+      <div class="score-card">
+        <div class="label">LCP</div>
+        <div class="value">216<small style="font-size:0.5em;opacity:0.6">ms</small></div>
+        <div class="sub">Largest Contentful Paint</div>
+        <div class="old">was <span>320 ms</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ LIGHTHOUSE ════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-number">01</div>
+    <h2 class="section-title">Lighthouse <em>Scores</em></h2>
+    <p class="section-desc">Google Lighthouse grades both sites on accessibility, SEO, and best practices. The new site scores perfect across the board.</p>
+  </div>
+
+  <div class="gauge-row reveal">
+    <div class="gauge-card">
+      <div class="gauge-ring">
+        <svg viewBox="0 0 120 120">
+          <circle class="track" cx="60" cy="60" r="54"/>
+          <circle class="fill green" cx="60" cy="60" r="54" data-target="0"/>
+        </svg>
+        <div class="score-text green">100</div>
+      </div>
+      <h4>Accessibility</h4>
+      <div class="gauge-sub">Desktop & Mobile</div>
+      <div class="gauge-delta perfect">+11 from 89</div>
+    </div>
+    <div class="gauge-card">
+      <div class="gauge-ring">
+        <svg viewBox="0 0 120 120">
+          <circle class="track" cx="60" cy="60" r="54"/>
+          <circle class="fill green" cx="60" cy="60" r="54" data-target="0"/>
+        </svg>
+        <div class="score-text green">100</div>
+      </div>
+      <h4>SEO</h4>
+      <div class="gauge-sub">Desktop & Mobile</div>
+      <div class="gauge-delta perfect">+8 from 92</div>
+    </div>
+    <div class="gauge-card">
+      <div class="gauge-ring">
+        <svg viewBox="0 0 120 120">
+          <circle class="track" cx="60" cy="60" r="54"/>
+          <circle class="fill green" cx="60" cy="60" r="54" data-target="0"/>
+        </svg>
+        <div class="score-text green">100</div>
+      </div>
+      <h4>Best Practices</h4>
+      <div class="gauge-sub">Tied with old site</div>
+      <div class="gauge-delta perfect">Maintained</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════ SPEED ════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-number">02</div>
+    <h2 class="section-title">Speed & <em>Performance</em></h2>
+    <p class="section-desc">The new site loads faster at every measurement point. Static rendering on Cloudflare's edge network vs server-side processing.</p>
+  </div>
+
+  <div class="metric-section reveal">
+    <div class="metric-card">
+      <div class="metric-label">Time to First Byte</div>
+      <div class="metric-bar-group">
+        <div class="metric-bar">
+          <span class="tag old">Old</span>
+          <div class="bar-track"><div class="bar-fill old" data-width="100"></div></div>
+          <span class="bar-val old">119 ms</span>
+        </div>
+        <div class="metric-bar">
+          <span class="tag new">New</span>
+          <div class="bar-track"><div class="bar-fill new" data-width="29"></div></div>
+          <span class="bar-val new">35 ms</span>
+        </div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Largest Contentful Paint</div>
+      <div class="metric-bar-group">
+        <div class="metric-bar">
+          <span class="tag old">Old</span>
+          <div class="bar-track"><div class="bar-fill old" data-width="100"></div></div>
+          <span class="bar-val old">320 ms</span>
+        </div>
+        <div class="metric-bar">
+          <span class="tag new">New</span>
+          <div class="bar-track"><div class="bar-fill new" data-width="67"></div></div>
+          <span class="bar-val new">216 ms</span>
+        </div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Third-Party Scripts</div>
+      <div class="metric-bar-group">
+        <div class="metric-bar">
+          <span class="tag old">Old</span>
+          <div class="bar-track"><div class="bar-fill old" data-width="100"></div></div>
+          <span class="bar-val old">1 CDN</span>
+        </div>
+        <div class="metric-bar">
+          <span class="tag new">New</span>
+          <div class="bar-track"><div class="bar-fill new" data-width="0"></div></div>
+          <span class="bar-val new">0</span>
+        </div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Image Format</div>
+      <div class="metric-bar-group">
+        <div class="metric-bar">
+          <span class="tag old">Old</span>
+          <div class="bar-track"><div class="bar-fill old" data-width="100"></div></div>
+          <span class="bar-val old">PNG</span>
+        </div>
+        <div class="metric-bar">
+          <span class="tag new">New</span>
+          <div class="bar-track"><div class="bar-fill new" data-width="50"></div></div>
+          <span class="bar-val new">WebP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════ ACCESSIBILITY ════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-number">03</div>
+    <h2 class="section-title">Accessibility <em>Fixes</em></h2>
+    <p class="section-desc">The old site failed 4 Lighthouse accessibility audits. All are resolved in the new site.</p>
+  </div>
+
+  <div class="compare-grid reveal">
+    <div class="compare-row">
+      <div class="compare-cell feature">
+        <div class="icon">Aa</div>
+        <div class="cell-text"><strong>Color Contrast</strong></div>
+      </div>
+      <div class="compare-cell old-val">
+        <div class="icon">&times;</div>
+        <div class="cell-text">Low contrast on nav logo, language switcher, and footer text</div>
+      </div>
+      <div class="compare-cell new-val">
+        <div class="icon">&check;</div>
+        <div class="cell-text">All text passes WCAG AA contrast ratios</div>
+      </div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell feature">
+        <div class="icon">H</div>
+        <div class="cell-text"><strong>Heading Order</strong></div>
+      </div>
+      <div class="compare-cell old-val">
+        <div class="icon">&times;</div>
+        <div class="cell-text">Skips from h2 directly to h4</div>
+      </div>
+      <div class="compare-cell new-val">
+        <div class="icon">&check;</div>
+        <div class="cell-text">Proper h1 &rarr; h2 &rarr; h3 hierarchy throughout</div>
+      </div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell feature">
+        <div class="icon">M</div>
+        <div class="cell-text"><strong>Landmark Regions</strong></div>
+      </div>
+      <div class="compare-cell old-val">
+        <div class="icon">&times;</div>
+        <div class="cell-text">No &lt;main&gt; element. Screen readers cannot navigate efficiently</div>
+      </div>
+      <div class="compare-cell new-val">
+        <div class="icon">&check;</div>
+        <div class="cell-text">&lt;main&gt; wraps all content. Proper nav, footer landmarks</div>
+      </div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell feature">
+        <div class="icon">#</div>
+        <div class="cell-text"><strong>Canonical URL</strong></div>
+      </div>
+      <div class="compare-cell old-val">
+        <div class="icon">&times;</div>
+        <div class="cell-text">Missing on all pages. Search engines cannot deduplicate content</div>
+      </div>
+      <div class="compare-cell new-val">
+        <div class="icon">&check;</div>
+        <div class="cell-text">Proper canonical on every page with hreflang annotations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════ SECURITY ════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-number">04</div>
+    <h2 class="section-title">Security <em>Headers</em></h2>
+    <p class="section-desc">The old site sends zero security headers. The new site sends nine, protecting against XSS, clickjacking, and other attacks.</p>
+  </div>
+
+  <div class="security-grid reveal">
+    <div class="security-card">
+      <div class="shield">&#x1f6e1;</div>
+      <h4>Content Security Policy</h4>
+      <p>Whitelists only the domains the site actually uses. Blocks inline script injection.</p>
+      <div class="status active">Active</div>
+    </div>
+    <div class="security-card">
+      <div class="shield">&#x1f512;</div>
+      <h4>HSTS</h4>
+      <p>Forces HTTPS for 1 year. Includes subdomains and preload list.</p>
+      <div class="status active">Active</div>
+    </div>
+    <div class="security-card">
+      <div class="shield">&#x1f6aa;</div>
+      <h4>X-Frame-Options</h4>
+      <p>Prevents the site from being embedded in iframes (clickjacking protection).</p>
+      <div class="status active">Active</div>
+    </div>
+    <div class="security-card">
+      <div class="shield">&#x1f4f1;</div>
+      <h4>X-Content-Type-Options</h4>
+      <p>Prevents browsers from MIME-type sniffing responses.</p>
+      <div class="status active">Active</div>
+    </div>
+    <div class="security-card">
+      <div class="shield">&#x1f6ab;</div>
+      <h4>Permissions Policy</h4>
+      <p>Blocks camera, microphone, and geolocation access.</p>
+      <div class="status active">Active</div>
+    </div>
+    <div class="security-card">
+      <div class="shield">&#x1f310;</div>
+      <h4>Cross-Origin Policies</h4>
+      <p>COOP and CORP headers prevent cross-origin resource abuse.</p>
+      <div class="status active">Active</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════ i18n ════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-number">05</div>
+    <h2 class="section-title">Internationalization <em>& Routing</em></h2>
+    <p class="section-desc">The old site toggles languages with CSS display:none. The new site uses proper URL-based routing.</p>
+  </div>
+
+  <div class="i18n-compare reveal">
+    <div class="i18n-panel old">
+      <div class="i18n-tag old">Old Site</div>
+      <h4>Query Parameter Routing</h4>
+      <div class="url-example">
+        <span class="dim">https://</span>draestelamas.com<span class="dim">/?lang=</span><span class="hl">ca</span>
+      </div>
+      <div class="url-example">
+        <span class="dim">https://</span>draestelamas.com<span class="dim">/?lang=</span><span class="hl">es</span>
+      </div>
+      <p class="note">All 3 languages loaded in HTML, hidden via CSS. Sharing a link does not preserve language. Search engines see duplicate content.</p>
+    </div>
+    <div class="i18n-arrow">&rarr;</div>
+    <div class="i18n-panel new">
+      <div class="i18n-tag new">New Site</div>
+      <h4>URL Path Routing</h4>
+      <div class="url-example">
+        <span class="dim">https://</span>draestelamas.com<span class="hl">/</span>
+      </div>
+      <div class="url-example">
+        <span class="dim">https://</span>draestelamas.com<span class="hl">/es/</span>
+      </div>
+      <div class="url-example">
+        <span class="dim">https://</span>draestelamas.com<span class="hl">/en/</span>
+      </div>
+      <p class="note">Each language has its own URL. Sharing a link preserves language. Search engines index each language independently with proper hreflang.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════ EXTRAS ════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-number">06</div>
+    <h2 class="section-title">What Else <em>Changed</em></h2>
+    <p class="section-desc">Beyond the headline metrics, the new site adds capabilities the old one never had.</p>
+  </div>
+
+  <div class="compare-grid reveal">
+    <div class="compare-row">
+      <div class="compare-cell feature">
+        <div class="icon">!</div>
+        <div class="cell-text"><strong>Error Pages</strong></div>
+      </div>
+      <div class="compare-cell old-val">
+        <div class="icon">&times;</div>
+        <div class="cell-text">No 404 or 500 pages. Broken links show generic server errors</div>
+      </div>
+      <div class="compare-cell new-val">
+        <div class="icon">&check;</div>
+        <div class="cell-text">Trilingual 404 and 500 pages with navigation and illustrations</div>
+      </div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell feature">
+        <div class="icon">{ }</div>
+        <div class="cell-text"><strong>Contact Form</strong></div>
+      </div>
+      <div class="compare-cell old-val">
+        <div class="icon">&times;</div>
+        <div class="cell-text">Client-side only. No server processing. No email delivery</div>
+      </div>
+      <div class="compare-cell new-val">
+        <div class="icon">&check;</div>
+        <div class="cell-text">Server-side processing via Astro Actions. Emails delivered through Resend. Honeypot spam protection</div>
+      </div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell feature">
+        <div class="icon">S</div>
+        <div class="cell-text"><strong>Sitemap</strong></div>
+      </div>
+      <div class="compare-cell old-val">
+        <div class="icon">&times;</div>
+        <div class="cell-text">No sitemap.xml</div>
+      </div>
+      <div class="compare-cell new-val">
+        <div class="icon">&check;</div>
+        <div class="cell-text">Auto-generated sitemap with hreflang annotations for all pages and locales</div>
+      </div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell feature">
+        <div class="icon">L</div>
+        <div class="cell-text"><strong>Legal Pages</strong></div>
+      </div>
+      <div class="compare-cell old-val">
+        <div class="icon">~</div>
+        <div class="cell-text">Query-param URLs (not indexable per language)</div>
+      </div>
+      <div class="compare-cell new-val">
+        <div class="icon">&check;</div>
+        <div class="cell-text">Locale-specific slugs: /avis-legal, /es/aviso-legal, /en/legal-notice</div>
+      </div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell feature">
+        <div class="icon">&#x1f310;</div>
+        <div class="cell-text"><strong>Structured Data</strong></div>
+      </div>
+      <div class="compare-cell old-val">
+        <div class="icon">~</div>
+        <div class="cell-text">Basic Physician schema only</div>
+      </div>
+      <div class="compare-cell new-val">
+        <div class="icon">&check;</div>
+        <div class="cell-text">Physician + MedicalProcedure + availableService. Richer search results</div>
+      </div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell feature">
+        <div class="icon">&#x1f6e1;</div>
+        <div class="cell-text"><strong>security.txt</strong></div>
+      </div>
+      <div class="compare-cell old-val">
+        <div class="icon">&times;</div>
+        <div class="cell-text">Not published</div>
+      </div>
+      <div class="compare-cell new-val">
+        <div class="icon">&check;</div>
+        <div class="cell-text">Published at /.well-known/security.txt with contact info and supported languages</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ SUMMARY ════════════════════════════════════════════ -->
+<section class="summary">
+  <h2>The new site is<br><em>strictly better</em></h2>
+  <p>Every metric improved. Nothing regressed. Here is the full picture.</p>
+
+  <div class="summary-stats">
+    <div class="summary-stat">
+      <div class="num">100</div>
+      <div class="desc">Lighthouse Score</div>
+    </div>
+    <div class="summary-stat">
+      <div class="num">3x</div>
+      <div class="desc">Faster TTFB</div>
+    </div>
+    <div class="summary-stat">
+      <div class="num">9</div>
+      <div class="desc">Security Headers</div>
+    </div>
+    <div class="summary-stat">
+      <div class="num">0</div>
+      <div class="desc">Third-Party Scripts</div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-note">
+  Report generated July 2026 &middot; audited with Google Lighthouse & Chrome DevTools
+</div>
+
+<script>
+// ── Scroll reveal ──
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+
+// ── Animate gauge rings ──
+const circumference = 2 * Math.PI * 54; // r=54
+document.querySelectorAll('.gauge-ring .fill').forEach(circle => {
+  circle.style.strokeDasharray = circumference;
+  circle.style.strokeDashoffset = circumference;
+});
+
+const gaugeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.gauge-ring .fill').forEach(circle => {
+        circle.style.strokeDashoffset = '0';
+      });
+      gaugeObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.gauge-card').forEach(card => gaugeObserver.observe(card));
+
+// ── Animate metric bars ──
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.bar-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+      barObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.metric-card').forEach(card => barObserver.observe(card));
+</script>
+</body>
+</html>

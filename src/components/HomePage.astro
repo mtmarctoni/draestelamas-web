@@ -1,14 +1,14 @@
 ---
+import type { Locale } from "../i18n";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "./Hero.astro";
-import EcgDivider from "./EcgDivider.astro";
 import About from "./About.astro";
 import Cardiorenal from "./Cardiorenal.astro";
-import DigitalHealth from "./DigitalHealth.astro";
-import Gallery from "./Gallery.astro";
 import Collaborations from "./Collaborations.astro";
 import ContactForm from "./ContactForm.astro";
-import type { Locale } from "../i18n";
+import DigitalHealth from "./DigitalHealth.astro";
+import EcgDivider from "./EcgDivider.astro";
+import Gallery from "./Gallery.astro";
+import Hero from "./Hero.astro";
 
 interface Props {
   locale: Locale;
@@ -27,3 +27,28 @@ const { locale } = Astro.props;
   <Collaborations locale={locale} />
   <ContactForm locale={locale} />
 </BaseLayout>
+
+<script>
+  // Legacy URLs: the old site used /?lang=es|en — redirect them to the locale routes.
+  const legacyLang = new URLSearchParams(location.search).get("lang");
+  if ((legacyLang === "es" || legacyLang === "en") && location.pathname === "/") {
+    location.replace(`/${legacyLang}/`);
+  }
+
+  // Entrance animation: defer IntersectionObserver to idle to avoid forced reflow on LCP.
+  const defer = window.requestIdleCallback || ((cb: () => void) => setTimeout(cb, 0));
+  defer(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
+  });
+</script>

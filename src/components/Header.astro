@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import LanguageSwitcher from "./LanguageSwitcher.astro";
-import { getTranslations, homePath } from "../i18n";
-import type { Locale } from "../i18n";
 import logo from "../assets/img/logo.png";
+import type { Locale } from "../i18n";
+import { getTranslations, homePath } from "../i18n";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
 
 interface Props {
   locale: Locale;
@@ -36,10 +36,30 @@ const home = homePath(locale);
     <li><a href={`${home}#contacto`} class="nav-cta">{t.nav.contactLabel}</a></li>
     <LanguageSwitcher locale={locale} />
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú" aria-controls="nav-links">
+  <button class="hamburger" id="hamburger" aria-label="Menú" aria-controls="nav-links" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
+
+<script>
+  // Fixed nav: shadow once scrolled.
+  const nav = document.getElementById("main-nav");
+  addEventListener("scroll", () => nav?.classList.toggle("scrolled", scrollY > 20), {
+    passive: true,
+  });
+
+  // Mobile menu.
+  const links = document.getElementById("nav-links");
+  const hamburger = document.getElementById("hamburger");
+  const setOpen = (open: boolean) => {
+    links?.classList.toggle("open", open);
+    hamburger?.setAttribute("aria-expanded", String(open));
+  };
+  hamburger?.addEventListener("click", () => setOpen(!links?.classList.contains("open")));
+  links?.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => setOpen(false));
+  });
+</script>
 
 <style>
   nav {

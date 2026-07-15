@@ -1,6 +1,6 @@
 ---
-import { getTranslations } from "../i18n";
 import type { Locale } from "../i18n";
+import { getTranslations } from "../i18n";
 
 interface Props {
   locale: Locale;
@@ -10,7 +10,11 @@ const { locale } = Astro.props;
 const t = getTranslations(locale);
 const columns = [
   { title: t.collaborations.areasTitle, items: t.collaborations.areas, delayClass: "delay-0" },
-  { title: t.collaborations.entitiesTitle, items: t.collaborations.entities, delayClass: "delay-01" },
+  {
+    title: t.collaborations.entitiesTitle,
+    items: t.collaborations.entities,
+    delayClass: "delay-01",
+  },
 ];
 ---
 

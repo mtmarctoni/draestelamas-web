@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import ca from "../src/i18n/content/ca";
-import es from "../src/i18n/content/es";
 import en from "../src/i18n/content/en";
+import es from "../src/i18n/content/es";
 import type { TranslationContent } from "../src/i18n/types";
 
 /** Replace every leaf with its type name so structures can be compared across locales. */
@@ -11,7 +11,7 @@ function shape(value: unknown): unknown {
     return Object.fromEntries(
       Object.entries(value as Record<string, unknown>)
         .sort(([a], [b]) => a.localeCompare(b))
-        .map(([k, v]) => [k, shape(v)])
+        .map(([k, v]) => [k, shape(v)]),
     );
   }
   return typeof value;

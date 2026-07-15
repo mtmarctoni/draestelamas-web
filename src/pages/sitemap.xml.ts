@@ -1,41 +1,47 @@
 import type { APIRoute } from "astro";
-import { locales, defaultLocale, localizeUrl } from "../i18n";
+import type { Locale } from "../i18n";
+import {
+  defaultLocale,
+  legalPath,
+  localeHreflang,
+  locales,
+  localizeUrl,
+  privacyPath,
+} from "../i18n";
+import { blogPostPath, getBlogPosts } from "../lib/blog";
 
 export const GET: APIRoute = async ({ site }) => {
   if (!site) return new Response("Site not configured", { status: 500 });
   const base = site.href.replace(/\/$/, "");
 
-  // Each page group: one <url> with hreflang alternates for all locales.
-  const pageGroups = [
-    { all: locales.map((l) => localizeUrl("/", l)) },
-    { all: locales.map((l) => localizeUrl("/blog/salud-renal-prevencion-enfermedad-renal/", l)) },
-    { all: ["/avis-legal/", "/es/aviso-legal/", "/en/legal-notice/"] },
-    { all: ["/politica-privacitat/", "/es/politica-privacidad/", "/en/privacy-policy/"] },
-  ];
+  // Each group renders one <url> (canonical = default locale, which is first
+  // in `locales`) with hreflang alternates for every locale.
+  const groupFor = (pathFor: (locale: Locale) => string) =>
+    locales.map((locale) => ({ locale, path: pathFor(locale) }));
 
-  // Map URL path -> locale
-  const localeForPath = (path: string): string => {
-    if (path.startsWith("/es/")) return "es";
-    if (path.startsWith("/en/")) return "en";
-    return "ca";
-  };
+  const posts = await getBlogPosts(defaultLocale);
+  const pageGroups = [
+    groupFor((locale) => localizeUrl("/", locale)),
+    ...posts.map((post) => groupFor((locale) => blogPostPath(post, locale))),
+    groupFor((locale) => `${legalPath(locale)}/`),
+    groupFor((locale) => `${privacyPath(locale)}/`),
+  ];
 
   const urlEntries = pageGroups
     .map((group) => {
-      const canonical = group.all[0];
-      const loc = `${base}${canonical}`;
+      const canonical = `${base}${group[0].path}`;
 
-      const alternates = group.all
-        .map((altPath) => {
-          const altLocale = localeForPath(altPath);
-          return `    <xhtml:link rel="alternate" hreflang="${altLocale}" href="${base}${altPath}"/>`;
-        })
+      const alternates = group
+        .map(
+          ({ locale, path }) =>
+            `    <xhtml:link rel="alternate" hreflang="${localeHreflang[locale]}" href="${base}${path}"/>`,
+        )
         .join("\n");
 
-      const xDefault = `    <xhtml:link rel="alternate" hreflang="x-default" href="${base}${canonical}"/>`;
+      const xDefault = `    <xhtml:link rel="alternate" hreflang="x-default" href="${canonical}"/>`;
 
       return `  <url>
-    <loc>${loc}</loc>
+    <loc>${canonical}</loc>
 ${alternates}
 ${xDefault}
   </url>`;
