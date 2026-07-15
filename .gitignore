@@ -1,9 +1,14 @@
 node_modules/
 dist/
 .astro/
+.lighthouseci/
 .wrangler/
 .dev.vars
 .env
 .DS_Store
 .gstack/
 skills-lock.json
+lighthouse-old/
+lighthouse-old-mobile/
+lighthouse-new/
+lighthouse-new-mobile/

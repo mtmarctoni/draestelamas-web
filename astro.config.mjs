@@ -1,6 +1,7 @@
 // @ts-check
-import { defineConfig, fontProviders } from "astro/config";
+
 import cloudflare from "@astrojs/cloudflare";
+import { defineConfig, fontProviders } from "astro/config";
 
 export default defineConfig({
   site: process.env.BASE_URL || "https://draestelamas.marctonimas.com",
@@ -44,11 +45,31 @@ export default defineConfig({
       fallbacks: ["Georgia", "serif"],
       options: {
         variants: [
-          { src: ["./src/assets/fonts/cormorant-garamond-normal-300.woff2"], weight: 300, style: "normal" },
-          { src: ["./src/assets/fonts/cormorant-garamond-normal-300.woff2"], weight: 400, style: "normal" },
-          { src: ["./src/assets/fonts/cormorant-garamond-normal-300.woff2"], weight: 600, style: "normal" },
-          { src: ["./src/assets/fonts/cormorant-garamond-italic-300.woff2"], weight: 300, style: "italic" },
-          { src: ["./src/assets/fonts/cormorant-garamond-italic-300.woff2"], weight: 400, style: "italic" },
+          {
+            src: ["./src/assets/fonts/cormorant-garamond-normal-300.woff2"],
+            weight: 300,
+            style: "normal",
+          },
+          {
+            src: ["./src/assets/fonts/cormorant-garamond-normal-300.woff2"],
+            weight: 400,
+            style: "normal",
+          },
+          {
+            src: ["./src/assets/fonts/cormorant-garamond-normal-300.woff2"],
+            weight: 600,
+            style: "normal",
+          },
+          {
+            src: ["./src/assets/fonts/cormorant-garamond-italic-300.woff2"],
+            weight: 300,
+            style: "italic",
+          },
+          {
+            src: ["./src/assets/fonts/cormorant-garamond-italic-300.woff2"],
+            weight: 400,
+            style: "italic",
+          },
         ],
       },
     },

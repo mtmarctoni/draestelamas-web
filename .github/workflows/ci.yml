@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint and format (Biome)
+        run: pnpm exec biome ci .
+
+      - name: Typecheck (astro check)
+        run: pnpm check
+
+      - name: Unit tests (Vitest)
+        run: pnpm test
+
+      - name: Unused files, exports and dependencies (Knip)
+        run: pnpm knip
+
+      - name: Dependency rules (dependency-cruiser)
+        run: pnpm depcruise
+
+      - name: Build
+        run: pnpm build
