@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+import kidneyImg from "../assets/img/hero-obra.png";
+import type { Locale } from "../i18n";
+import { getTranslations, homePath } from "../i18n";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface Props {
+  code: 404 | 500;
+}
+
+const { code } = Astro.props;
+
+// These pages are prerendered once from their own pathname, so this resolves
+// to the default locale at build time. The detection is kept in case the
+// pages ever render on demand.
+const path = Astro.url.pathname;
+const locale: Locale = path.startsWith("/es/") ? "es" : path.startsWith("/en/") ? "en" : "ca";
+const t = getTranslations(locale);
+const message = code === 404 ? t.errors.notFound : t.errors.serverError;
+---
+
+<BaseLayout locale={locale} title={`${code} — ${t.meta.title}`} preloadHero={false}>
+  <div class="error-page">
+    <div class="section-inner">
+      <Image
+        class="error-page-img"
+        src={kidneyImg}
+        alt={t.errors.imageAlt}
+        width={280}
+        quality={60}
+        loading="eager"
+      />
+      <h1>{code}</h1>
+      <p>{message}</p>
+      <a href={homePath(locale)} class="btn btn-primary">{t.errors.backHome}</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .error-page {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+  }
+  .error-page-img {
+    width: 280px;
+    height: auto;
+    margin: 0 auto 2rem;
+    border-radius: 4px;
+    box-shadow: 0 8px 40px rgba(43, 74, 106, 0.12);
+    opacity: 0.85;
+  }
+  .error-page h1 {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    color: var(--color-navy);
+    margin-bottom: 1rem;
+  }
+  .error-page p {
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+  }
+</style>

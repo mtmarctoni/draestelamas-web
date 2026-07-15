@@ -1,14 +1,10 @@
 ---
-import { getCollection } from "astro:content";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
 import BlogPostArticle from "../../../components/BlogPostArticle.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getBlogStaticPaths } from "../../../lib/blog";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog", (entry) => entry.id.startsWith("en/"));
-  return posts.map((post) => ({
-    params: { slug: post.id.split("/")[1] },
-    props: { post },
-  }));
+  return getBlogStaticPaths("en");
 }
 
 const { post } = Astro.props;

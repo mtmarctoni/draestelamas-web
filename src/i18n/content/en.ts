@@ -19,8 +19,7 @@ const en: TranslationContent = {
   hero: {
     eyebrowHtml:
       "Specialist in Nephrology<br />Cardiorenal metabolic health<br />Cardiovascular risk prevention",
-    titleHtml:
-      "Behind every patient,<br />lies an <em>irreplaceable</em><br />work of art.",
+    titleHtml: "Behind every patient,<br />lies an <em>irreplaceable</em><br />work of art.",
     subtitle:
       "Nephrologist specialising in cardiorenal metabolic health and cardiovascular risk prevention. I combine evidence-based medicine, digital health and AI innovation, and a humanistic, person-centred approach.",
     ctaCollaborationsHtml: "Collaborations",
@@ -102,7 +101,8 @@ const en: TranslationContent = {
         title: "Science and Landscape",
         medium: "Pencil on paper",
         technique: "Pencil on paper",
-        description: "The scientific gaze and the human dimension of renal medicine, portrayed together.",
+        description:
+          "The scientific gaze and the human dimension of renal medicine, portrayed together.",
       },
       {
         id: "obra-03",
@@ -117,7 +117,8 @@ const en: TranslationContent = {
         title: "Kidneys at Dusk",
         medium: "Acrylic on canvas",
         technique: "Acrylic on canvas",
-        description: "Sunset as a metaphor for resilience: the beauty that exists even in difficult moments.",
+        description:
+          "Sunset as a metaphor for resilience: the beauty that exists even in difficult moments.",
       },
       {
         id: "obra-05",
@@ -156,7 +157,8 @@ const en: TranslationContent = {
     labels: { name: "Name", surname: "Surname", email: "Email", message: "Message" },
     gdpr: "Your data will be treated with full confidentiality in accordance with GDPR. It will not be shared with third parties.",
     privacyLink: "Full Privacy Policy",
-    art13: "Basic information on data protection: Controller: Estela de los Ángeles Mas Ródenas. Purpose: to respond to your enquiry. Legal basis: legitimate interest (spontaneous enquiry) or pre-contractual measures (budget request). Rights: you may exercise your rights of access, rectification, erasure, objection and portability by writing to info@draestelamas.com.",
+    art13:
+      "Basic information on data protection: Controller: Estela de los Ángeles Mas Ródenas. Purpose: to respond to your enquiry. Legal basis: legitimate interest (spontaneous enquiry) or pre-contractual measures (budget request). Rights: you may exercise your rights of access, rectification, erasure, objection and portability by writing to info@draestelamas.com.",
     submit: "Send",
     sending: "Sending...",
     success: "✓ Message sent. Dr. Mas Ródenas will be in touch with you shortly.",
@@ -167,6 +169,12 @@ const en: TranslationContent = {
     specialty: "Specialist in Nephrology · Cardiorenal metabolic health · Mallorca",
     privacyLabel: "Privacy policy",
     legalLabel: "Legal notice",
+  },
+  errors: {
+    imageAlt: "Artwork — two kidneys with landscape",
+    notFound: "This page does not exist.",
+    serverError: "Something went wrong. Please try again later.",
+    backHome: "Back to home",
   },
   privacy: {
     title: "Privacy Policy",

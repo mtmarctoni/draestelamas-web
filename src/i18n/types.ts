@@ -8,7 +8,7 @@ export type ArtworkId = "obra-01" | "obra-02" | "obra-03" | "obra-04" | "obra-05
  * `medium` (grid caption) and `technique` (lightbox line) differ for obra-01
  * in the source site — both are preserved verbatim.
  */
-export interface Artwork {
+interface Artwork {
   id: ArtworkId;
   title: string;
   medium: string;
@@ -16,7 +16,7 @@ export interface Artwork {
   description: string;
 }
 
-export interface LegalSection {
+interface LegalSection {
   heading: string;
   /** Trusted first-party HTML copied from the source site (contains <strong>, <br/>). */
   bodyHtml: string;
@@ -82,6 +82,12 @@ export interface TranslationContent {
     specialty: string;
     privacyLabel: string;
     legalLabel: string;
+  };
+  errors: {
+    imageAlt: string;
+    notFound: string;
+    serverError: string;
+    backHome: string;
   };
   privacy: { title: string; back: string; sections: LegalSection[]; updated: string };
   legal: { title: string; back: string; sections: LegalSection[]; updated: string };

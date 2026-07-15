@@ -10,10 +10,8 @@ import { z } from "astro/zod";
 export const contactSchema = z.object({
   name: z.string().min(2, "Name is required"),
   surname: z.string().optional().default(""),
-  email: z.string().email("Valid email is required"),
+  email: z.email("Valid email is required"),
   message: z.string().optional().default(""),
   important_field: z.string().max(0).optional(),
   locale: z.enum(["ca", "es", "en"]).optional().default("ca"),
 });
-
-export type ContactInput = z.infer<typeof contactSchema>;

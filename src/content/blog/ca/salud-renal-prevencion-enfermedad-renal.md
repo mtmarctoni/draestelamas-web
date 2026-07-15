@@ -99,6 +99,6 @@ Si aquest canvi d’enfocament es consolida, podria millorar no només la salut 
 * **La prevenció i la salut digital poden transformar la manera de cuidar els ronyons.**
 * **El gran repte del futur serà mantenir la salut renal, i no només tractar la malaltia quan ja hagi aparegut.**
 
-#### *T’interessa aprendre més sobre prevenció cardiovascular, salut renal, hipertensió i longevitat saludable?*
+### *T’interessa aprendre més sobre prevenció cardiovascular, salut renal, hipertensió i longevitat saludable?*
 
 En aquest blog trobaràs informació basada en l’evidència científica per ajudar-te a cuidar la teva salut i comprendre millor com prevenir les malalties abans que apareguin.

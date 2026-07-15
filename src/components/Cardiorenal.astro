@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
-import { getTranslations, localizePath } from "../i18n";
 import type { Locale } from "../i18n";
+import { getTranslations } from "../i18n";
+import { blogPostPath, getBlogPosts } from "../lib/blog";
 
 interface Props {
   locale: Locale;
@@ -10,10 +10,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getTranslations(locale);
-const posts = (await getCollection("blog", (entry) => entry.id.startsWith(`${locale}/`))).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
-const postUrl = (id: string) => localizePath(`/blog/${id.split("/")[1]}/`, locale);
+const posts = await getBlogPosts(locale);
 ---
 
 <section id="cardiorenal">
@@ -23,7 +20,7 @@ const postUrl = (id: string) => localizePath(`/blog/${id.split("/")[1]}/`, local
     <div class="blog-grid">
       {
         posts.map((post, i) => (
-          <a class:list={["blog-card", "fade-up", `delay-${["0","004","008","012"][i % 4]}`]} href={postUrl(post.id)}>
+          <a class:list={["blog-card", "fade-up", `delay-${["0","004","008","012"][i % 4]}`]} href={blogPostPath(post, locale)}>
             <div class:list={["blog-img", { warm: i % 2 === 1 }]}>
               {post.data.image ? (
                 <Image

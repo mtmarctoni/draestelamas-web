@@ -101,6 +101,6 @@ If this shift in perspective becomes widely adopted, it could improve not only k
 * **Prevention and digital health have the potential to transform kidney care.**
 * **The greatest challenge for the future of nephrology is not simply treating kidney disease, but preserving kidney health before disease develops.**
 
-#### *Interested in learning more about cardiovascular prevention, kidney health, hypertension, and healthy longevity?*
+### *Interested in learning more about cardiovascular prevention, kidney health, hypertension, and healthy longevity?*
 
 In this blog, you’ll find evidence-based information to help you understand your health and discover how many diseases can be prevented before they develop.

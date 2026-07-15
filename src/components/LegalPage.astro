@@ -1,7 +1,7 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { getTranslations, homePath } from "../i18n";
 import type { Locale } from "../i18n";
+import { getTranslations, homePath } from "../i18n";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 interface Props {
   locale: Locale;
@@ -15,7 +15,7 @@ const backLabel = content.back;
 ---
 
 <BaseLayout locale={locale} title={content.title} preloadHero={false}>
-  <main class="legal-page">
+  <div class="legal-page">
     <div class="section-inner legal-inner">
       <a class="legal-back" href={homePath(locale)}>{backLabel}</a>
       <h1 class="legal-title">{content.title}</h1>
@@ -27,7 +27,7 @@ const backLabel = content.back;
       ))}
       <p class="legal-updated">{content.updated}</p>
     </div>
-  </main>
+  </div>
 </BaseLayout>
 
 <style>
@@ -82,7 +82,6 @@ const backLabel = content.back;
   .legal-updated {
     font-size: 0.75rem;
     color: var(--color-muted);
-    opacity: 0.6;
     margin-top: 2.5rem;
     border-top: 1px solid var(--color-sand);
     padding-top: 1rem;

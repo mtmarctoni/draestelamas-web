@@ -1,10 +1,10 @@
 ---
 import { Font, getImage } from "astro:assets";
-import SEO from "../components/SEO.astro";
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { getTranslations } from "../i18n";
+import Header from "../components/Header.astro";
+import SEO from "../components/SEO.astro";
 import type { Locale } from "../i18n";
+import { getTranslations } from "../i18n";
 import "../styles/global.css";
 import heroImg from "../assets/img/hero-obra.png";
 
@@ -23,7 +23,13 @@ const t = getTranslations(locale);
 const title = Astro.props.title ?? t.meta.title;
 const description = Astro.props.description ?? t.meta.description;
 
-const heroOptimized = await getImage({ src: heroImg, width: 420, height: 310, format: "webp", quality: 60 });
+const heroOptimized = await getImage({
+  src: heroImg,
+  width: 420,
+  height: 310,
+  format: "webp",
+  quality: 60,
+});
 
 const schemaType = Astro.props.schemaType ?? "physician";
 let jsonLd: string;
@@ -59,7 +65,6 @@ if (schemaType === "blog" && Astro.props.blogData) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="view-transition" content="same-origin" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.jpg" />
     <Font cssVariable="--font-cormorant" preload />
@@ -72,66 +77,5 @@ if (schemaType === "blog" && Astro.props.blogData) {
     <Header locale={locale} />
     <main><slot /></main>
     <Footer locale={locale} />
-    <script>
-      // Legacy URLs: the old site used /?lang=es|en — redirect them to the locale routes.
-      const legacyLang = new URLSearchParams(location.search).get("lang");
-      if ((legacyLang === "es" || legacyLang === "en") && location.pathname === "/") {
-        location.replace(`/${legacyLang}/`);
-      }
-
-      // Fixed nav: shadow once scrolled.
-      const nav = document.getElementById("main-nav");
-      addEventListener("scroll", () => nav?.classList.toggle("scrolled", scrollY > 20), {
-        passive: true,
-      });
-
-      // Mobile menu.
-      const links = document.getElementById("nav-links");
-      document.getElementById("hamburger")?.addEventListener("click", () => {
-        links?.classList.toggle("open");
-      });
-      links?.querySelectorAll("a").forEach((a) => {
-        a.addEventListener("click", () => links.classList.remove("open"));
-      });
-
-      // ECG divider: trace position driven by page scroll (guarded — divider exists from Task 14).
-      const ecgLine = document.querySelector<HTMLElement>(".ecg-line");
-      if (ecgLine && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        const ECG_SPEED = 0.4; // px of trace movement per px scrolled
-        let ticking = false;
-        const update = () => {
-          ecgLine.style.backgroundPositionX = `${-scrollY * ECG_SPEED}px`;
-          ticking = false;
-        };
-        addEventListener(
-          "scroll",
-          () => {
-            if (!ticking) {
-              requestAnimationFrame(update);
-              ticking = true;
-            }
-          },
-          { passive: true }
-        );
-        update();
-      }
-
-      // Entrance animation: defer IntersectionObserver to idle to avoid forced reflow on LCP.
-      const defer = window.requestIdleCallback || ((cb: () => void) => setTimeout(cb, 0));
-      defer(() => {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            for (const entry of entries) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                observer.unobserve(entry.target);
-              }
-            }
-          },
-          { threshold: 0.12 }
-        );
-        document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
-      });
-    </script>
   </body>
 </html>

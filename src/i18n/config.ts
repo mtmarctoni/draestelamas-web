@@ -17,9 +17,12 @@ export const socialLinks = {
   twitter: { href: "https://twitter.com/EstelaNefro", label: "@EstelaNefro" },
 } as const;
 
+const nonDefaultLocales = locales.filter((locale) => locale !== defaultLocale);
+const localePrefixPattern = new RegExp(`^/(${nonDefaultLocales.join("|")})(?=/|$)`);
+
 /** "/es/blog/x/" -> "/blog/x/"; "/en/" -> "/"; "/blog/x/" -> "/blog/x/" */
 export function stripLocalePrefix(pathname: string): string {
-  const stripped = pathname.replace(/^\/(es|en)(?=\/|$)/, "");
+  const stripped = pathname.replace(localePrefixPattern, "");
   return stripped === "" ? "/" : stripped;
 }
 
@@ -59,7 +62,7 @@ export function localizeUrl(pathname: string, targetLocale: Locale): string {
   for (const routeMap of localeSpecificRoutes) {
     for (const loc of locales) {
       const route = localizePath(routeMap[loc], loc);
-      if (pathname === route || pathname === route + "/") {
+      if (pathname === route || pathname === `${route}/`) {
         return localizePath(routeMap[targetLocale], targetLocale);
       }
     }
