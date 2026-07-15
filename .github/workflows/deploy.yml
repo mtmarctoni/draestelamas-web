@@ -1,0 +1,84 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  # Separate queues so a production deploy never cancels a staging deploy.
+  group: deploy-${{ github.event_name == 'workflow_dispatch' && 'production' || 'staging' }}
+  cancel-in-progress: false
+
+jobs:
+  staging:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Stamp build metadata
+        id: meta
+        run: echo "time=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
+      - name: Build
+        run: pnpm build
+        env:
+          PUBLIC_GIT_SHA: ${{ github.sha }}
+          PUBLIC_BUILD_TIME: ${{ steps.meta.outputs.time }}
+      - name: Deploy to staging
+        id: deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          pnpm exec wrangler deploy --env staging 2>&1 | tee deploy.log
+          url=$(grep -oiE 'https://[a-z0-9.-]+\.workers\.dev' deploy.log | tail -1)
+          if [ -z "$url" ]; then echo "no staging URL captured"; exit 1; fi
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+      - name: Smoke test staging
+        run: node scripts/smoke.mjs "${{ steps.deploy.outputs.url }}" "${{ github.sha }}"
+
+  production:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://draestelamas.marctonimas.com
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Stamp build metadata
+        id: meta
+        run: echo "time=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
+      - name: Build
+        run: pnpm build
+        env:
+          PUBLIC_GIT_SHA: ${{ github.sha }}
+          PUBLIC_BUILD_TIME: ${{ steps.meta.outputs.time }}
+      - name: Deploy to production
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: pnpm exec wrangler deploy
+      - name: Smoke test production
+        run: |
+          sleep 5
+          node scripts/smoke.mjs "https://draestelamas.marctonimas.com" "${{ github.sha }}"
