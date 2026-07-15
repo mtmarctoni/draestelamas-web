@@ -53,8 +53,8 @@ on GitHub Actions (free for this public repo).
 
 | Environment | Worker | URL | Trigger |
 | --- | --- | --- | --- |
-| Production | `draestelamas` | `draestelamas.marctonimas.com` | Manual: Actions -> Deploy -> Run workflow |
-| Staging | `draestelamas-staging` | `*.workers.dev` | Automatic on merge to `main` |
+| Production | `draestelamas` | `draestelamas.com` | Manual: Actions -> Deploy -> Run workflow |
+| Staging | `draestelamas-staging` | `draestelamas.marctonimas.com` | Automatic on merge to `main` |
 | Preview | preview version of staging | per-PR `*.workers.dev` URL | Every push to a PR (non-fork) |
 
 Every deploy runs `scripts/smoke.mjs`, which verifies the deployed
@@ -94,7 +94,7 @@ failed smoke test fails the deploy.
 ### Uptime and alerting
 
 - Point a free UptimeRobot monitor (5-minute interval) at
-  `https://draestelamas.marctonimas.com/health.json`, alerting by email/webhook.
+  `https://draestelamas.com/health.json`, alerting by email/webhook.
 - Enable Cloudflare's free SSL/TLS certificate-expiry notification in the dashboard.
 
 There is deliberately no GitHub Actions cron health check: GitHub disables
