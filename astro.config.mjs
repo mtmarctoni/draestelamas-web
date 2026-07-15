@@ -6,7 +6,11 @@ import { defineConfig, fontProviders } from "astro/config";
 export default defineConfig({
   site: process.env.BASE_URL || "https://draestelamas.marctonimas.com",
   // output: 'static' is the default. Pages are prerendered; only Actions run on the Worker.
-  adapter: cloudflare(),
+  // imageService "compile": process images with sharp at build time into static hashed
+  // assets. The default ("cloudflare-binding") rewrites <img> srcs to the runtime
+  // /_image endpoint absolutized with `site`, so previews and static serving would
+  // fetch images from the production domain (and 404 without the Worker).
+  adapter: cloudflare({ imageService: "compile" }),
   security: {
     csp: {
       directives: [
