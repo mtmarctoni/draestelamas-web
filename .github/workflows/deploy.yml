@@ -76,6 +76,4 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: pnpm exec wrangler deploy
       - name: Smoke test production
-        run: |
-          sleep 5
-          node scripts/smoke.mjs "https://draestelamas.com" "${{ github.sha }}"
+        run: node scripts/smoke.mjs "https://draestelamas.com" "${{ github.sha }}"
