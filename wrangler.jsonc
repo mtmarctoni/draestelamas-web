@@ -3,10 +3,21 @@
   "main": "@astrojs/cloudflare/entrypoints/server",
   "compatibility_date": "2025-07-13",
   "assets": { "directory": "./dist", "binding": "ASSETS" },
+  // Production is served ONLY from the custom domain, never *.workers.dev.
+  "workers_dev": false,
   "routes": [
     {
       "pattern": "draestelamas.marctonimas.com",
       "custom_domain": true
     }
-  ]
+  ],
+  "env": {
+    // Staging inherits main/compatibility_date/assets from the top level.
+    // It has no custom route, so it (and PR preview versions of it) is served
+    // from *.workers.dev.
+    "staging": {
+      "name": "draestelamas-staging",
+      "workers_dev": true
+    }
+  }
 }
