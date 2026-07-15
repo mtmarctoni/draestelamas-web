@@ -31,3 +31,9 @@ jobs:
 
       - name: Lighthouse CI (mobile emulation)
         run: npx --yes @lhci/cli@0.15.x autorun
+
+      - name: Internal link check (non-blocking)
+        uses: lycheeverse/lychee-action@v2.9.0
+        with:
+          args: --offline --base ./dist 'dist/client/**/*.html'
+          fail: false
