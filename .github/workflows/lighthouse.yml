@@ -35,5 +35,7 @@ jobs:
       - name: Internal link check (non-blocking)
         uses: lycheeverse/lychee-action@v2.9.0
         with:
-          args: --offline --base ./dist 'dist/client/**/*.html'
+          # base must be the site docroot (dist/client) so root-relative links
+          # like /es/ resolve to real files instead of reporting false 404s.
+          args: --offline --base ./dist/client 'dist/client/**/*.html'
           fail: false
