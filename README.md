@@ -114,6 +114,12 @@ warns (never fails) when page HTML still shows the previous build's
    which has a safety valve that skips deletion if the GitHub side is entirely
    empty while the Worker still has secrets (a withheld context, e.g. a
    Dependabot-triggered run) rather than mass-deleting.
+
+   Don't give a variable and a secret the same name: `wrangler deploy --var`
+   silently overwrites — destroys — an existing secret of the same name with a
+   plaintext var (verified live; no error, no warning). `scripts/deploy.sh`
+   detects this and drops the colliding variable with a warning, but a name
+   should only ever be a secret or a variable, never both.
 4. Enable free GitHub security features:
    ```bash
    gh api -X PUT repos/mtmarctoni/draestelamas-web/vulnerability-alerts
