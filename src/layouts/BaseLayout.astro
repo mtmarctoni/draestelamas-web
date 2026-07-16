@@ -71,6 +71,7 @@ if (schemaType === "blog" && Astro.props.blogData) {
     <Font cssVariable="--font-inter" preload />
     {preloadHero && <link rel="preload" as="image" href={heroOptimized.src} media="(min-width: 961px)" />}
     <SEO locale={locale} title={title} description={description} />
+    <meta name="build-commit" content={import.meta.env.PUBLIC_GIT_SHA ?? "dev"} />
     <script type="application/ld+json" is:inline set:html={jsonLd} />
   </head>
   <body>

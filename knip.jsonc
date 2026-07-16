@@ -2,7 +2,5 @@
   "$schema": "https://unpkg.com/knip@6/schema.json",
   // `cloudflare:workers` is a Workers-runtime module (typed in src/env.d.ts),
   // not the npm "cloudflare" package.
-  "ignoreDependencies": ["cloudflare"],
-  // Standalone Node CLI invoked by the deploy workflows, not imported anywhere.
-  "ignore": ["scripts/smoke.mjs"]
+  "ignoreDependencies": ["cloudflare"]
 }
