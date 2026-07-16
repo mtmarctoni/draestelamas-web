@@ -85,14 +85,22 @@ warns (never fails) when page HTML still shows the previous build's
    gh secret set CLOUDFLARE_API_TOKEN        # paste the token
    gh secret set CLOUDFLARE_ACCOUNT_ID --body aecff6d6a8642c4ba3fc40a1cfbe2bed
    ```
-3. Set the Resend secret on all three Workers (staging/preview may use a
-   separate test key so non-production form submissions do not affect
-   production email reputation):
+3. Add application secrets and variables as GitHub secrets/variables. Every
+   deploy automatically syncs **all** GitHub secrets and variables to
+   Cloudflare — no workflow edits needed when adding or removing them.
    ```bash
-   wrangler secret put RESEND_API_KEY                 # production
-   wrangler secret put RESEND_API_KEY --env staging   # staging
-   wrangler secret put RESEND_API_KEY --env preview   # PR previews
+   # Secrets (encrypted, available to the Worker at runtime)
+   gh secret set RESEND_API_KEY              # paste the key
+
+   # Variables (non-sensitive, available at build time via Vite .env)
+   gh variable set SOME_FLAG --body "true"
    ```
+   Secrets and variables can be set at repo level or per environment
+   (`staging`, `production`, `preview`). Environment-level values override
+   repo-level ones. The only excluded secrets are `CLOUDFLARE_API_TOKEN`
+   and `CLOUDFLARE_ACCOUNT_ID` (used by the workflow itself, not the Worker).
+   Removing a secret or variable in GitHub will remove it from Cloudflare
+   on the next deploy.
 4. Enable free GitHub security features:
    ```bash
    gh api -X PUT repos/mtmarctoni/draestelamas-web/vulnerability-alerts

@@ -34,6 +34,10 @@ jobs:
       - name: Stamp build metadata
         id: meta
         run: echo "time=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
+      - name: Inject GitHub Variables
+        env:
+          VARS_CONTEXT: ${{ toJSON(vars) }}
+        run: echo "$VARS_CONTEXT" | jq -r 'to_entries[] | "\(.key)=\(.value)"' > .env
       - name: Build
         run: pnpm build
         env:
@@ -48,6 +52,12 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: pnpm exec wrangler deploy
+      - name: Sync Cloudflare secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          SECRETS_CONTEXT: ${{ toJSON(secrets) }}
+        run: bash scripts/sync-secrets.sh
       - name: Smoke test staging
         run: node scripts/smoke.mjs "$SITE_URL" "${{ github.sha }}"
 
@@ -71,6 +81,10 @@ jobs:
       - name: Stamp build metadata
         id: meta
         run: echo "time=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
+      - name: Inject GitHub Variables
+        env:
+          VARS_CONTEXT: ${{ toJSON(vars) }}
+        run: echo "$VARS_CONTEXT" | jq -r 'to_entries[] | "\(.key)=\(.value)"' > .env
       - name: Build
         run: pnpm build
         env:
@@ -82,5 +96,11 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: pnpm exec wrangler deploy
+      - name: Sync Cloudflare secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          SECRETS_CONTEXT: ${{ toJSON(secrets) }}
+        run: bash scripts/sync-secrets.sh
       - name: Smoke test production
         run: node scripts/smoke.mjs "$SITE_URL" "${{ github.sha }}"
