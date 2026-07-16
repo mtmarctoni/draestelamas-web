@@ -11,8 +11,10 @@ if (!baseArg) {
 
 const base = baseArg.replace(/\/$/, "");
 const PATHS = ["/", "/es/", "/en/", "/blog/salud-renal-prevencion-enfermedad-renal/"];
-const HEALTH_RETRIES = 5;
-const HEALTH_RETRY_DELAY_MS = 3000;
+// Worker version propagation is usually seconds but has been observed to take
+// over 15s; give it a full minute before declaring the deploy stale.
+const HEALTH_RETRIES = 10;
+const HEALTH_RETRY_DELAY_MS = 6000;
 const failures = [];
 
 function sleep(ms) {
