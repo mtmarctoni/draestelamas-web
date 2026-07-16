@@ -86,23 +86,34 @@ warns (never fails) when page HTML still shows the previous build's
    gh secret set CLOUDFLARE_ACCOUNT_ID --body aecff6d6a8642c4ba3fc40a1cfbe2bed
    ```
 3. Add application secrets and variables as GitHub secrets/variables. Every
-   deploy automatically syncs **all** GitHub secrets and variables to
-   Cloudflare — no workflow edits needed when adding or removing them.
+   deploy propagates them to Cloudflare — no workflow edits needed when adding
+   or removing them.
    ```bash
-   # Secrets (encrypted, available to the Worker at runtime)
+   # Secrets: encrypted, reconciled onto the Worker at runtime via
+   # `wrangler secret bulk` (scripts/sync-secrets.sh).
    gh secret set RESEND_API_KEY              # paste the key
+   gh secret set RESEND_FROM --body "contact@marctonimas.com"
+   gh secret set RESEND_TO   --body "info@marctonimas.com"
 
-   # Variables (non-sensitive, available at build time via Vite .env)
+   # Variables: non-sensitive.
+   #   non-PUBLIC_ -> Worker runtime `var` bindings via `wrangler deploy --var`
+   #   PUBLIC_     -> build-time only, baked into the static output (import.meta.env)
    gh variable set SOME_FLAG --body "true"
    ```
+   `RESEND_FROM`/`RESEND_TO` are read at runtime (`cloudflare:workers` env), so
+   set them as **secrets** or non-`PUBLIC_` **variables** — not `PUBLIC_` ones,
+   which never reach the Worker. They fall back to `contact@marctonimas.com` /
+   `info@marctonimas.com` if unset. The `from` domain must be verified in Resend.
+
    Secrets and variables can be set at repo level or per environment
-   (`staging`, `production`, `preview`). Environment-level values override
-   repo-level ones. Excluded from the sync: `CLOUDFLARE_*` (workflow deploy
-   creds) and `GITHUB_TOKEN` (GitHub's auto-injected ephemeral token).
-   Removing a secret or variable in GitHub will remove it from Cloudflare
-   on the next deploy — with one safety valve: if the GitHub side is
-   completely empty while the Worker still has secrets (a withheld context,
-   e.g. a Dependabot-triggered run), the sync skips instead of mass-deleting.
+   (`staging`, `production`, `preview`); environment-level values override
+   repo-level ones. Excluded everywhere: `CLOUDFLARE_*` (deploy creds) and
+   `GITHUB_TOKEN` (GitHub's ephemeral token). Removing a value in GitHub removes
+   it from Cloudflare on the next deploy: variables are reconciled by
+   `wrangler deploy` (`keep_vars` is false), and secrets by the sync script —
+   which has a safety valve that skips deletion if the GitHub side is entirely
+   empty while the Worker still has secrets (a withheld context, e.g. a
+   Dependabot-triggered run) rather than mass-deleting.
 4. Enable free GitHub security features:
    ```bash
    gh api -X PUT repos/mtmarctoni/draestelamas-web/vulnerability-alerts

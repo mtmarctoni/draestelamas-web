@@ -77,6 +77,9 @@ export const server = {
         input.message || l.empty,
       ].join("\n");
 
+      const from = env.RESEND_FROM || "contact@marctonimas.com";
+      const to = env.RESEND_TO || "info@marctonimas.com";
+
       const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
@@ -84,8 +87,8 @@ export const server = {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "contact@draestelamas.com",
-          to: "info@draestelamas.com",
+          from,
+          to,
           reply_to: input.email,
           subject,
           text,
@@ -93,6 +96,11 @@ export const server = {
       });
 
       if (!res.ok) {
+        // Log the upstream detail to Workers Logs (observability is enabled) for
+        // debugging; return a generic message so we never leak Resend internals
+        // to the client. The form shows its own localized error text regardless.
+        const detail = await res.text();
+        console.error(`Resend send failed: ${res.status} ${detail}`);
         throw new ActionError({
           code: "INTERNAL_SERVER_ERROR",
           message: "Failed to send email.",
