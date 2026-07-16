@@ -17,6 +17,14 @@ jobs:
     # Fork PRs cannot access secrets; skip them (they still get ci.yml + static Lighthouse).
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
+    env:
+      # The account's workers.dev subdomain is stable; needed at BUILD time
+      # (canonical URLs / sitemap / robots.txt), so it cannot be discovered
+      # from the deploy output.
+      PREVIEW_URL: https://draestelamas-preview.mtmarctoni.workers.dev
+    environment:
+      name: preview
+      url: https://draestelamas-preview.mtmarctoni.workers.dev
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -33,35 +41,32 @@ jobs:
         run: pnpm build
         env:
           CLOUDFLARE_ENV: preview
+          BASE_URL: ${{ env.PREVIEW_URL }}
           PUBLIC_GIT_SHA: ${{ github.event.pull_request.head.sha }}
           PUBLIC_BUILD_TIME: ${{ steps.meta.outputs.time }}
       - name: Deploy preview
-        id: preview
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: |
-          pnpm exec wrangler deploy 2>&1 | tee deploy.log
-          subdomain=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/subdomain" \
-            | python3 -c "import sys,json; print(json.load(sys.stdin)['result']['subdomain'])")
-          echo "url=https://draestelamas-preview.${subdomain}.workers.dev" >> "$GITHUB_OUTPUT"
+        run: pnpm exec wrangler deploy
       - name: Smoke test preview
-        run: node scripts/smoke.mjs "${{ steps.preview.outputs.url }}" "${{ github.event.pull_request.head.sha }}"
+        run: node scripts/smoke.mjs "$PREVIEW_URL" "${{ github.event.pull_request.head.sha }}"
       - name: Comment preview URL on PR
         uses: actions/github-script@v9
         env:
-          PREVIEW_URL: ${{ steps.preview.outputs.url }}
+          COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
         with:
           script: |
             const url = process.env.PREVIEW_URL;
+            const sha = process.env.COMMIT_SHA;
             const marker = "<!-- preview-bot -->";
             const body = [
               marker,
               "### Preview deployed",
               "",
               `- Preview: ${url}/`,
-              `- Health: ${url}/health.json`,
+              `- Health: ${url}/api/health`,
+              `- Commit: ${sha}`,
             ].join("\n");
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,

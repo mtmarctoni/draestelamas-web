@@ -53,14 +53,28 @@ on GitHub Actions (free for this public repo).
 
 | Environment | Worker | URL | Trigger |
 | --- | --- | --- | --- |
-| Production | `draestelamas` | `draestelamas.com` | Manual: Actions -> Deploy -> Run workflow |
+| Production | `draestelamas` | `draestelamas.com` (domain not in Cloudflare yet) | Manual: Actions -> Deploy -> Run workflow |
 | Staging | `draestelamas-staging` | `draestelamas.marctonimas.com` | Automatic on merge to `main` |
-| Preview | preview version of staging | per-PR `*.workers.dev` URL | Every push to a PR (non-fork) |
+| Preview | `draestelamas-preview` | `draestelamas-preview.mtmarctoni.workers.dev` | Every push to a PR (non-fork) |
+
+The Astro Cloudflare adapter resolves the Wrangler environment at BUILD time:
+CI sets `CLOUDFLARE_ENV=staging|preview` before `pnpm build`, and
+`wrangler deploy` then uses the generated config (no `--env` flag at deploy
+time). Each build also sets `BASE_URL` to its environment's URL so canonical
+URLs, `og:url`, the sitemap and `robots.txt` never point at another
+environment's domain.
 
 Every deploy runs `scripts/smoke.mjs`, which verifies the deployed
-`/health.json` commit matches the built commit (propagation check), that all
-locales and a blog post return 200, and that security headers are present. A
-failed smoke test fails the deploy.
+`/api/health` commit matches the built commit, that all locales and a blog
+post return 200, and that security headers are present on pages. A failed
+smoke test fails the deploy.
+
+`/api/health` is intentionally a runtime (non-prerendered) endpoint: Worker
+script versions swap atomically on deploy, while prerendered files are served
+through the Workers Assets edge cache, which can return the previous deploy's
+body for a few minutes per location. For the same reason the smoke test only
+warns (never fails) when page HTML still shows the previous build's
+`build-commit` meta right after a deploy.
 
 ### One-time setup
 
@@ -71,14 +85,13 @@ failed smoke test fails the deploy.
    gh secret set CLOUDFLARE_API_TOKEN        # paste the token
    gh secret set CLOUDFLARE_ACCOUNT_ID --body aecff6d6a8642c4ba3fc40a1cfbe2bed
    ```
-3. Bootstrap the staging Worker once (previews require it to exist), and set the
-   Resend secret on both environments (staging may use a separate test key so
-   preview form submissions do not affect production email reputation):
+3. Set the Resend secret on all three Workers (staging/preview may use a
+   separate test key so non-production form submissions do not affect
+   production email reputation):
    ```bash
-   pnpm build
-   wrangler deploy --env staging
    wrangler secret put RESEND_API_KEY                 # production
-   wrangler secret put RESEND_API_KEY --env staging   # staging/preview
+   wrangler secret put RESEND_API_KEY --env staging   # staging
+   wrangler secret put RESEND_API_KEY --env preview   # PR previews
    ```
 4. Enable free GitHub security features:
    ```bash
@@ -94,7 +107,10 @@ failed smoke test fails the deploy.
 ### Uptime and alerting
 
 - Point a free UptimeRobot monitor (5-minute interval) at
-  `https://draestelamas.com/health.json`, alerting by email/webhook.
+  `https://draestelamas.marctonimas.com/api/health` (move to
+  `https://draestelamas.com/api/health` once that domain is live), alerting by
+  email/webhook. The endpoint runs on the Worker, so it verifies the Worker is
+  actually serving, not just that a CDN cache answers.
 - Enable Cloudflare's free SSL/TLS certificate-expiry notification in the dashboard.
 
 There is deliberately no GitHub Actions cron health check: GitHub disables

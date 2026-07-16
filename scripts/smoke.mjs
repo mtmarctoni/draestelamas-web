@@ -11,9 +11,9 @@ if (!baseArg) {
 
 const base = baseArg.replace(/\/$/, "");
 const PATHS = ["/", "/es/", "/en/", "/blog/salud-renal-prevencion-enfermedad-renal/"];
-const failures = [];
 const HEALTH_RETRIES = 5;
 const HEALTH_RETRY_DELAY_MS = 3000;
+const failures = [];
 
 function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
@@ -29,24 +29,24 @@ async function check(label, fn) {
   }
 }
 
+// /api/health is served by the Worker script (never prerendered, never
+// edge-cached), so its commit SHA flips atomically with the deploy. Retries
+// only cover the seconds-scale global propagation of a new Worker version.
 async function assertHealth() {
-  const res = await fetch(`${base}/health.json`);
+  const res = await fetch(`${base}/api/health`);
   if (res.status !== 200) throw new Error(`status ${res.status}`);
+  if (res.headers.get("cache-control") !== "no-store") {
+    throw new Error("health response must be Cache-Control: no-store (is it prerendered again?)");
+  }
   const body = await res.json();
   if (body.status !== "ok") throw new Error(`status field "${body.status}"`);
   if (expectedSha && body.commit !== expectedSha) {
     throw new Error(`commit ${body.commit} != expected ${expectedSha} (stale deploy?)`);
   }
-  if (res.headers.get("x-content-type-options") !== "nosniff") {
-    throw new Error("missing X-Content-Type-Options: nosniff");
-  }
-  if (!res.headers.get("content-security-policy")) {
-    throw new Error("missing Content-Security-Policy");
-  }
 }
 
 async function main() {
-  await check("GET /health.json", async () => {
+  await check("GET /api/health", async () => {
     let lastErr;
     for (let i = 0; i < HEALTH_RETRIES; i++) {
       try {
@@ -63,11 +63,33 @@ async function main() {
     throw lastErr;
   });
 
-  for (const path of PATHS) {
+  let homeHtml = "";
+  await check("GET / (with security headers)", async () => {
+    const res = await fetch(`${base}/`);
+    if (res.status !== 200) throw new Error(`status ${res.status}`);
+    // Static pages get their headers from public/_headers via Workers Assets;
+    // assert them here, on a real page, where they protect actual users.
+    if (res.headers.get("x-content-type-options") !== "nosniff") {
+      throw new Error("missing X-Content-Type-Options: nosniff");
+    }
+    if (!res.headers.get("content-security-policy")) {
+      throw new Error("missing Content-Security-Policy");
+    }
+    homeHtml = await res.text();
+  });
+
+  for (const path of PATHS.slice(1)) {
     await check(`GET ${path}`, async () => {
       const res = await fetch(`${base}${path}`);
       if (res.status !== 200) throw new Error(`status ${res.status}`);
     });
+  }
+
+  // Advisory only: static assets revalidate through the edge cache, so pages
+  // can lag a deploy by a few minutes at any given location. Not a failure --
+  // the cache converges on its own -- but worth surfacing in the deploy log.
+  if (expectedSha && homeHtml && !homeHtml.includes(`content="${expectedSha}"`)) {
+    console.log("warn / still serves a previous build (edge cache converging, not fatal)");
   }
 
   if (failures.length > 0) {
