@@ -51,7 +51,10 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: pnpm exec wrangler deploy
+          # GitHub Variables become Worker `var` bindings, injected atomically
+          # with the deploy (see scripts/deploy.sh).
+          VARS_CONTEXT: ${{ toJSON(vars) }}
+        run: bash scripts/deploy.sh
       - name: Sync Cloudflare secrets
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -95,7 +98,8 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: pnpm exec wrangler deploy
+          VARS_CONTEXT: ${{ toJSON(vars) }}
+        run: bash scripts/deploy.sh
       - name: Sync Cloudflare secrets
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

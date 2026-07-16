@@ -3,6 +3,8 @@
 /** Worker secrets — set via `wrangler secret put` in production, `.dev.vars` locally. */
 interface CloudflareEnv {
   RESEND_API_KEY: string;
+  RESEND_FROM?: string;
+  RESEND_TO?: string;
   TURNSTILE_SECRET_KEY?: string;
 }
 

@@ -8,6 +8,7 @@
   "files": {
     "includes": [
       "**",
+      "!**/.astro",
       "!docs/plan/source-snapshot",
       "!comparison.html",
       "!lighthouse-old",
@@ -79,6 +80,16 @@
     },
     {
       "includes": ["scripts/**"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noConsole": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/actions/**"],
       "linter": {
         "rules": {
           "suspicious": {
