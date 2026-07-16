@@ -97,10 +97,12 @@ warns (never fails) when page HTML still shows the previous build's
    ```
    Secrets and variables can be set at repo level or per environment
    (`staging`, `production`, `preview`). Environment-level values override
-   repo-level ones. The only excluded secrets are `CLOUDFLARE_API_TOKEN`
-   and `CLOUDFLARE_ACCOUNT_ID` (used by the workflow itself, not the Worker).
+   repo-level ones. Excluded from the sync: `CLOUDFLARE_*` (workflow deploy
+   creds) and `GITHUB_TOKEN` (GitHub's auto-injected ephemeral token).
    Removing a secret or variable in GitHub will remove it from Cloudflare
-   on the next deploy.
+   on the next deploy — with one safety valve: if the GitHub side is
+   completely empty while the Worker still has secrets (a withheld context,
+   e.g. a Dependabot-triggered run), the sync skips instead of mass-deleting.
 4. Enable free GitHub security features:
    ```bash
    gh api -X PUT repos/mtmarctoni/draestelamas-web/vulnerability-alerts

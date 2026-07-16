@@ -14,8 +14,12 @@ concurrency:
 
 jobs:
   preview:
-    # Fork PRs cannot access secrets; skip them (they still get ci.yml + static Lighthouse).
-    if: github.event.pull_request.head.repo.full_name == github.repository
+    # Fork PRs cannot access secrets; skip them (they still get ci.yml + static
+    # Lighthouse). Dependabot-triggered runs get Dependabot secrets, not repo
+    # secrets, so the deploy would fail and the secret sync would see an empty
+    # context — skip those too (pushing to a Dependabot branch yourself
+    # re-triggers as your own actor and deploys normally).
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     env:
       # The account's workers.dev subdomain is stable; needed at BUILD time
@@ -40,7 +44,7 @@ jobs:
       - name: Inject GitHub Variables
         env:
           VARS_CONTEXT: ${{ toJSON(vars) }}
-        run: echo "$VARS_CONTEXT" | jq -r 'to_entries[] | "\(.key)=\(.value)"' > .env
+        run: echo "$VARS_CONTEXT" | jq -r 'to_entries[] | "\(.key)=\(.value|@json)"' > .env
       - name: Build
         run: pnpm build
         env:
