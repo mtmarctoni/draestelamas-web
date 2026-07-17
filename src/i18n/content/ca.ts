@@ -163,6 +163,10 @@ const ca: TranslationContent = {
     sending: "Enviant...",
     success: "✓ Missatge enviat. La Dra. Mas Ródenas es posarà en contacte amb vostè en breu.",
     error: "Hi ha hagut un error. Contacti per correu electrònic.",
+    fieldErrors: {
+      name: "Introduïu el vostre nom (mínim 2 caràcters).",
+      email: "Introduïu una adreça de correu electrònic vàlida.",
+    },
   },
   footer: {
     name: "Dra. Estela Mas Ródenas",

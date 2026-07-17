@@ -12,6 +12,7 @@
     "build": "rm -rf node_modules/.vite && astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "checks": "rm -rf node_modules/.vite && pnpm lint && pnpm knip && pnpm depcruise && pnpm test && pnpm check && pnpm build",
     "clean": "rm -rf node_modules/.vite dist",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
