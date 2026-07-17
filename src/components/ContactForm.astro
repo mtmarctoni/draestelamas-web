@@ -28,8 +28,11 @@ const t = getTranslations(locale);
       <form
         class="contact-form"
         id="contact-form"
+        novalidate
         data-sending={t.contact.sending}
         data-submit={t.contact.submit}
+        data-error-name={t.contact.fieldErrors.name}
+        data-error-email={t.contact.fieldErrors.email}
       >
         {/* LAYER 1: honeypot — visually removed, bots fill it, Zod rejects it. */}
         <div class="honeypot" aria-hidden="true">
@@ -40,7 +43,8 @@ const t = getTranslations(locale);
         <div class="form-row">
           <div class="field">
             <label for="name">{t.contact.labels.name}</label>
-            <input type="text" id="name" name="name" required minlength="2" autocomplete="given-name" />
+            <input type="text" id="name" name="name" required minlength="2" autocomplete="given-name" aria-describedby="name-error" />
+            <p class="field-error" id="name-error" aria-live="polite" hidden></p>
           </div>
           <div class="field">
             <label for="surname">{t.contact.labels.surname}</label>
@@ -49,7 +53,8 @@ const t = getTranslations(locale);
         </div>
         <div class="field">
           <label for="email">{t.contact.labels.email}</label>
-          <input type="email" id="email" name="email" required autocomplete="email" />
+          <input type="email" id="email" name="email" required autocomplete="email" aria-describedby="email-error" />
+          <p class="field-error" id="email-error" aria-live="polite" hidden></p>
         </div>
         <div class="field">
           <label for="message">{t.contact.labels.message}</label>
@@ -73,29 +78,114 @@ const t = getTranslations(locale);
 </section>
 
 <script>
-  import { actions } from "astro:actions";
+  import { actions, isInputError } from "astro:actions";
 
   const form = document.getElementById("contact-form") as HTMLFormElement | null;
   const success = document.getElementById("form-success");
   const errorBox = document.getElementById("form-error");
   const submit = document.getElementById("submit-btn") as HTMLButtonElement | null;
+  const nameInput = document.getElementById("name") as HTMLInputElement | null;
+  const emailInput = document.getElementById("email") as HTMLInputElement | null;
+
+  function showFieldError(field: "name" | "email") {
+    const input = field === "name" ? nameInput : emailInput;
+    const errorEl = document.getElementById(`${field}-error`);
+    if (!input || !errorEl || !form) return;
+    errorEl.textContent = form.dataset[`error${field.charAt(0).toUpperCase() + field.slice(1)}` as "errorName" | "errorEmail"] ?? "";
+    errorEl.hidden = false;
+    input.setAttribute("aria-invalid", "true");
+    input.closest(".field")?.classList.add("invalid");
+  }
+
+  function hideFieldError(field: "name" | "email") {
+    const input = field === "name" ? nameInput : emailInput;
+    const errorEl = document.getElementById(`${field}-error`);
+    if (!input || !errorEl) return;
+    errorEl.textContent = "";
+    errorEl.hidden = true;
+    input.removeAttribute("aria-invalid");
+    input.closest(".field")?.classList.remove("invalid");
+  }
+
+  function resetButton() {
+    if (!submit || !form) return;
+    submit.disabled = false;
+    submit.textContent = form.dataset.submit ?? "";
+  }
+
+  function validateFields(): "name" | "email" | null {
+    if (nameInput && nameInput.value.length < 2) {
+      showFieldError("name");
+    } else {
+      hideFieldError("name");
+    }
+
+    if (emailInput && !emailInput.checkValidity()) {
+      showFieldError("email");
+    } else {
+      hideFieldError("email");
+    }
+
+    if (nameInput && nameInput.value.length < 2) return "name";
+    if (emailInput && !emailInput.checkValidity()) return "email";
+    return null;
+  }
+
+  nameInput?.addEventListener("blur", () => {
+    if (nameInput.value.length < 2) {
+      showFieldError("name");
+    } else {
+      hideFieldError("name");
+    }
+  });
+
+  emailInput?.addEventListener("blur", () => {
+    if (!emailInput.checkValidity()) {
+      showFieldError("email");
+    } else {
+      hideFieldError("email");
+    }
+  });
 
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!submit) return;
+
+    const firstInvalid = validateFields();
+    if (firstInvalid) {
+      const input = firstInvalid === "name" ? nameInput : emailInput;
+      input?.focus();
+      return;
+    }
+
     submit.disabled = true;
     submit.textContent = form.dataset.sending ?? "";
     errorBox?.setAttribute("hidden", "");
 
-    const { error } = await actions.contact(new FormData(form));
+    try {
+      const { error } = await actions.contact(new FormData(form));
 
-    if (!error) {
-      form.hidden = true;
-      success?.removeAttribute("hidden");
-    } else {
+      if (!error) {
+        form.hidden = true;
+        success?.removeAttribute("hidden");
+        return;
+      }
+
+      if (isInputError(error)) {
+        if (error.fields.name) showFieldError("name");
+        if (error.fields.email) showFieldError("email");
+        const firstField = error.fields.name ? "name" : error.fields.email ? "email" : null;
+        if (firstField) {
+          const input = firstField === "name" ? nameInput : emailInput;
+          input?.focus();
+        }
+      } else {
+        errorBox?.removeAttribute("hidden");
+      }
+    } catch {
       errorBox?.removeAttribute("hidden");
-      submit.disabled = false;
-      submit.textContent = form.dataset.submit ?? "";
+    } finally {
+      resetButton();
     }
   });
 </script>
@@ -233,8 +323,18 @@ const t = getTranslations(locale);
     margin-bottom: 1rem;
   }
   .form-success[hidden],
-  .form-error[hidden] {
+  .form-error[hidden],
+  .field-error[hidden] {
     display: none;
+  }
+  .field-error {
+    font-size: 0.75rem;
+    color: #c0392b;
+    margin: 0;
+  }
+  .field.invalid input,
+  .field.invalid textarea {
+    border-color: #c0392b;
   }
   .submit-btn {
     width: 100%;
