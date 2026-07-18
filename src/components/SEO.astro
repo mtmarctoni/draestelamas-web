@@ -22,12 +22,13 @@ const site = Astro.site;
 if (!site) throw new Error("`site` must be set in astro.config.mjs — canonical URLs depend on it.");
 const urlFor = (loc: Locale) => new URL(localizeUrl(Astro.url.pathname, loc), site).href;
 const ogImage = new URL("/og-image.jpg", site).href;
+const indexable = import.meta.env.PUBLIC_ALLOW_INDEXING === "true";
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
 <meta name="author" content="Dra. Estela Mas Ródenas" />
-<meta name="robots" content="index, follow" />
+<meta name="robots" content={indexable ? "index, follow" : "noindex, nofollow"} />
 <link rel="canonical" href={urlFor(locale)} />
 
 {locales.map((loc) => <link rel="alternate" hreflang={localeHreflang[loc]} href={urlFor(loc)} />)}

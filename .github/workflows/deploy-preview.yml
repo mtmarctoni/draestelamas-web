@@ -52,6 +52,7 @@ jobs:
           BASE_URL: ${{ env.PREVIEW_URL }}
           PUBLIC_GIT_SHA: ${{ github.event.pull_request.head.sha }}
           PUBLIC_BUILD_TIME: ${{ steps.meta.outputs.time }}
+          PUBLIC_ALLOW_INDEXING: "false"
       - name: Deploy preview
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
