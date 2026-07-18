@@ -79,14 +79,30 @@ function unauthorizedResponse(realm) {
 }
 
 var handler = {
-  fetch: function (request, env, ctx) {
+  fetch: async function (request, env, ctx) {
     var gate = basicAuthGate(
       env.AUTH_USER,
       env.AUTH_PASS,
       request.headers.get("authorization"),
     );
     if (gate) return gate;
-    return astroHandler.fetch(request, env, ctx);
+
+    var response = await astroHandler.fetch(request, env, ctx);
+
+    // When auth is active, prevent the edge cache from storing auth-gated
+    // responses — otherwise an unauthenticated request could receive a
+    // cached page that was fetched with valid credentials.
+    if (env.AUTH_USER && env.AUTH_PASS) {
+      var headers = new Headers(response.headers);
+      headers.set("Cache-Control", "no-store, s-maxage=0");
+      return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: headers,
+      });
+    }
+
+    return response;
   },
 };
 
