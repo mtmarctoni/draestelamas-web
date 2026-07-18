@@ -44,7 +44,7 @@ async function check(label, fn) {
 async function assertHealth() {
   const res = await fetch(`${base}/api/health`, { headers: AUTH_HEADER });
   if (res.status !== 200) throw new Error(`status ${res.status}`);
-  if (res.headers.get("cache-control") !== "no-store") {
+  if (res.headers.get("cache-control")?.includes("no-store") !== true) {
     throw new Error("health response must be Cache-Control: no-store (is it prerendered again?)");
   }
   const body = await res.json();
