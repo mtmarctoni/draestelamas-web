@@ -17,6 +17,13 @@ const HEALTH_RETRIES = 10;
 const HEALTH_RETRY_DELAY_MS = 6000;
 const failures = [];
 
+// Basic-auth: when AUTH_USER + AUTH_PASS are set (staging/preview), send
+// credentials so the smoke test isn't blocked by the auth gate.
+const AUTH_USER = process.env.AUTH_USER;
+const AUTH_PASS = process.env.AUTH_PASS;
+const AUTH_HEADER =
+  AUTH_USER && AUTH_PASS ? { Authorization: `Basic ${btoa(`${AUTH_USER}:${AUTH_PASS}`)}` } : {};
+
 function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
@@ -35,7 +42,7 @@ async function check(label, fn) {
 // edge-cached), so its commit SHA flips atomically with the deploy. Retries
 // only cover the seconds-scale global propagation of a new Worker version.
 async function assertHealth() {
-  const res = await fetch(`${base}/api/health`);
+  const res = await fetch(`${base}/api/health`, { headers: AUTH_HEADER });
   if (res.status !== 200) throw new Error(`status ${res.status}`);
   if (res.headers.get("cache-control") !== "no-store") {
     throw new Error("health response must be Cache-Control: no-store (is it prerendered again?)");
@@ -67,7 +74,7 @@ async function main() {
 
   let homeHtml = "";
   await check("GET / (with security headers)", async () => {
-    const res = await fetch(`${base}/`);
+    const res = await fetch(`${base}/`, { headers: AUTH_HEADER });
     if (res.status !== 200) throw new Error(`status ${res.status}`);
     // Static pages get their headers from public/_headers via Workers Assets;
     // assert them here, on a real page, where they protect actual users.
@@ -82,7 +89,7 @@ async function main() {
 
   for (const path of PATHS.slice(1)) {
     await check(`GET ${path}`, async () => {
-      const res = await fetch(`${base}${path}`);
+      const res = await fetch(`${base}${path}`, { headers: AUTH_HEADER });
       if (res.status !== 200) throw new Error(`status ${res.status}`);
     });
   }

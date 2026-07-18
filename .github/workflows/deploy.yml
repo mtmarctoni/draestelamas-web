@@ -66,6 +66,9 @@ jobs:
         run: bash scripts/sync-secrets.sh --env staging
       - name: Smoke test staging
         run: node scripts/smoke.mjs "$SITE_URL" "${{ github.sha }}"
+        env:
+          AUTH_USER: ${{ secrets.AUTH_USER }}
+          AUTH_PASS: ${{ secrets.AUTH_PASS }}
 
   production:
     if: github.event_name == 'workflow_dispatch'

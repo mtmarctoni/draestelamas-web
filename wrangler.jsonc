@@ -3,7 +3,7 @@
   "name": "draestelamas",
   "main": "@astrojs/cloudflare/entrypoints/server",
   "compatibility_date": "2026-07-01",
-  "assets": { "directory": "./dist", "binding": "ASSETS" },
+  "assets": { "directory": "./dist", "binding": "ASSETS", "run_worker_first": true },
   "observability": { "enabled": true },
   // Production route (draestelamas.com) — add once the domain is in Cloudflare.
   // "routes": [{ "pattern": "draestelamas.com", "custom_domain": true }],

@@ -6,6 +6,9 @@ interface CloudflareEnv {
   RESEND_FROM?: string;
   RESEND_TO?: string;
   TURNSTILE_SECRET_KEY?: string;
+  /** Basic-auth credentials. When both are set, staging/preview require HTTP Basic Auth. */
+  AUTH_USER?: string;
+  AUTH_PASS?: string;
 }
 
 declare module "cloudflare:workers" {

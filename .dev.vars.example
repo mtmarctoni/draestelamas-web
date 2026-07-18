@@ -1,3 +1,8 @@
 # Copy to .dev.vars (gitignored) and fill in for local development.
 RESEND_API_KEY=
 TURNSTILE_SECRET_KEY=
+
+# Basic-auth gate (staging/preview). When both are set, the site requires
+# HTTP Basic Auth. Leave empty/absent to disable.
+AUTH_USER=
+AUTH_PASS=
