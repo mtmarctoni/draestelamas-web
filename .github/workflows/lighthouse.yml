@@ -28,6 +28,12 @@ jobs:
 
       - name: Build
         run: pnpm build
+        env:
+          # Lighthouse validates the PRODUCTION config — SEO's is-crawlable
+          # audit requires indexable pages. The real preview deploy is built
+          # with PUBLIC_ALLOW_INDEXING=false in deploy-preview.yml.
+          PUBLIC_ALLOW_INDEXING: "true"
+          BASE_URL: https://draestelamas.com
 
       - name: Lighthouse CI (mobile emulation)
         run: npx --yes @lhci/cli@0.15.x autorun

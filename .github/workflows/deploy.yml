@@ -47,6 +47,7 @@ jobs:
           BASE_URL: ${{ env.SITE_URL }}
           PUBLIC_GIT_SHA: ${{ github.sha }}
           PUBLIC_BUILD_TIME: ${{ steps.meta.outputs.time }}
+          PUBLIC_ALLOW_INDEXING: "false"
       - name: Deploy to staging
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -96,6 +97,7 @@ jobs:
           BASE_URL: ${{ env.SITE_URL }}
           PUBLIC_GIT_SHA: ${{ github.sha }}
           PUBLIC_BUILD_TIME: ${{ steps.meta.outputs.time }}
+          PUBLIC_ALLOW_INDEXING: "true"
       - name: Deploy to production
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

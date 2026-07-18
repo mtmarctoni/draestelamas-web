@@ -17,6 +17,8 @@ interface ImportMetaEnv {
   readonly PUBLIC_GIT_SHA?: string;
   /** ISO build timestamp, injected in CI; "dev" locally. */
   readonly PUBLIC_BUILD_TIME?: string;
+  /** "true" to emit indexable pages/robots.txt; unset or any other value → noindex. */
+  readonly PUBLIC_ALLOW_INDEXING?: string;
 }
 
 type Runtime = import("@astrojs/cloudflare").Runtime;
