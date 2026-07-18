@@ -5,11 +5,9 @@ import { defineConfig, fontProviders } from "astro/config";
 
 export default defineConfig({
   site: process.env.BASE_URL || "https://draestelamas.com",
-  // output: 'static' is the default. Pages are prerendered; only Actions run on the Worker.
-  // imageService "compile": process images with sharp at build time into static hashed
-  // assets. The default ("cloudflare-binding") rewrites <img> srcs to the runtime
-  // /_image endpoint absolutized with `site`, so previews and static serving would
-  // fetch images from the production domain (and 404 without the Worker).
+  // imageService "compile": builds images at build time with sharp so static
+  // previews don't 404 (the default "cloudflare-binding" rewrites srcs to the
+  // runtime /_image endpoint which only works on the live Worker).
   adapter: cloudflare({ imageService: "compile" }),
   security: {
     csp: {
@@ -17,14 +15,18 @@ export default defineConfig({
         "default-src 'self'",
         "img-src 'self' data: https:",
         "font-src 'self'",
-        "connect-src 'self' https://api.resend.com https://challenges.cloudflare.com",
+        "connect-src 'self' https://challenges.cloudflare.com",
         "form-action 'self'",
         "frame-src https://challenges.cloudflare.com",
         "base-uri 'self'",
         "object-src 'none'",
+        "upgrade-insecure-requests",
       ],
       scriptDirective: {
         resources: ["'self'", "https://challenges.cloudflare.com"],
+      },
+      styleDirective: {
+        resources: ["'self'"],
       },
     },
   },
@@ -32,10 +34,6 @@ export default defineConfig({
     locales: ["ca", "es", "en"],
     defaultLocale: "ca",
     routing: { prefixDefaultLocale: false },
-  },
-  image: {
-    quality: 65,
-    format: ["webp"],
   },
   prefetch: {
     prefetchAll: false,
@@ -47,6 +45,8 @@ export default defineConfig({
       name: "Cormorant Garamond",
       cssVariable: "--font-cormorant",
       fallbacks: ["Georgia", "serif"],
+      subsets: ["latin"],
+      display: "swap",
       options: {
         variants: [
           {
@@ -55,12 +55,12 @@ export default defineConfig({
             style: "normal",
           },
           {
-            src: ["./src/assets/fonts/cormorant-garamond-normal-300.woff2"],
+            src: ["./src/assets/fonts/cormorant-garamond-normal-400.woff2"],
             weight: 400,
             style: "normal",
           },
           {
-            src: ["./src/assets/fonts/cormorant-garamond-normal-300.woff2"],
+            src: ["./src/assets/fonts/cormorant-garamond-normal-600.woff2"],
             weight: 600,
             style: "normal",
           },
@@ -70,7 +70,7 @@ export default defineConfig({
             style: "italic",
           },
           {
-            src: ["./src/assets/fonts/cormorant-garamond-italic-300.woff2"],
+            src: ["./src/assets/fonts/cormorant-garamond-italic-400.woff2"],
             weight: 400,
             style: "italic",
           },
@@ -82,11 +82,13 @@ export default defineConfig({
       name: "Inter",
       cssVariable: "--font-inter",
       fallbacks: ["system-ui", "sans-serif"],
+      subsets: ["latin"],
+      display: "swap",
       options: {
         variants: [
           { src: ["./src/assets/fonts/inter-normal-300.woff2"], weight: 300, style: "normal" },
-          { src: ["./src/assets/fonts/inter-normal-300.woff2"], weight: 400, style: "normal" },
-          { src: ["./src/assets/fonts/inter-normal-300.woff2"], weight: 500, style: "normal" },
+          { src: ["./src/assets/fonts/inter-normal-400.woff2"], weight: 400, style: "normal" },
+          { src: ["./src/assets/fonts/inter-normal-500.woff2"], weight: 500, style: "normal" },
         ],
       },
     },
