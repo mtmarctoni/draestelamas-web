@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "rm -rf node_modules/.vite && astro build",
+    "build": "rm -rf node_modules/.vite && astro build && node scripts/wrap-worker.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "clean": "rm -rf node_modules/.vite dist",
