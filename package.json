@@ -9,11 +9,11 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "rm -rf node_modules/.vite && astro build",
+    "build": "rm -rf node_modules/.vite node_modules/.astro/fonts .astro/fonts && astro build",
     "preview": "astro preview",
     "check": "astro check",
     "checks": "rm -rf node_modules/.vite && pnpm lint && pnpm knip && pnpm depcruise && pnpm test && pnpm check && pnpm build",
-    "clean": "rm -rf node_modules/.vite dist",
+    "clean": "rm -rf node_modules/.vite node_modules/.astro/fonts .astro/fonts dist",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
