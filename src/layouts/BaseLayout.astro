@@ -26,12 +26,14 @@ const t = getTranslations(locale);
 const title = Astro.props.title ?? t.meta.title;
 const description = Astro.props.description ?? t.meta.description;
 
+// Keep transform params in sync with the hero <Image> in Hero.astro so the
+// preload URL matches the 420w srcset candidate (a mismatch double-downloads).
 const heroOptimized = await getImage({
   src: heroImg,
   width: 420,
   height: 310,
   format: "webp",
-  quality: 60,
+  quality: 40,
 });
 
 const schemaType = Astro.props.schemaType ?? "physician";
