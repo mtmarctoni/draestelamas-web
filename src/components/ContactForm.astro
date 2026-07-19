@@ -93,6 +93,8 @@ const t = getTranslations(locale);
   let submitting = false;
 
   const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const isEmailValid = (value: string) => EMAIL_RE.test(value.trim());
   const formSuccess = document.getElementById("form-success");
   const errorBox = document.getElementById("form-error");
   const submit = document.getElementById("submit-btn") as HTMLButtonElement | null;
@@ -152,7 +154,7 @@ const t = getTranslations(locale);
       hideFieldError("surname");
     }
 
-    if (emailInput && !emailInput.checkValidity()) {
+    if (emailInput && !isEmailValid(emailInput.value)) {
       showFieldError("email");
     } else {
       hideFieldError("email");
@@ -166,7 +168,7 @@ const t = getTranslations(locale);
 
     if (nameInput && nameInput.value.trim().length < 2) return "name";
     if (surnameInput && surnameInput.value.trim().length < 1) return "surname";
-    if (emailInput && !emailInput.checkValidity()) return "email";
+    if (emailInput && !isEmailValid(emailInput.value)) return "email";
     if (messageInput && messageInput.value.trim().length < 1) return "message";
     return null;
   }
@@ -253,7 +255,7 @@ const t = getTranslations(locale);
   });
 
   emailInput?.addEventListener("blur", () => {
-    if (!emailInput.checkValidity()) {
+    if (!isEmailValid(emailInput.value)) {
       showFieldError("email");
     } else {
       hideFieldError("email");
