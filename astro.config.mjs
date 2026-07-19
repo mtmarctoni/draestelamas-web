@@ -48,29 +48,31 @@ export default defineConfig({
       subsets: ["latin"],
       display: "swap",
       options: {
+        // Google Fonts variable files (latin subset): one file per style
+        // covers the full weight range, so variants share a source.
         variants: [
           {
-            src: ["./src/assets/fonts/cormorant-garamond-normal-300.woff2"],
+            src: ["./src/assets/fonts/cormorant-garamond-normal.woff2"],
             weight: 300,
             style: "normal",
           },
           {
-            src: ["./src/assets/fonts/cormorant-garamond-normal-400.woff2"],
+            src: ["./src/assets/fonts/cormorant-garamond-normal.woff2"],
             weight: 400,
             style: "normal",
           },
           {
-            src: ["./src/assets/fonts/cormorant-garamond-normal-600.woff2"],
+            src: ["./src/assets/fonts/cormorant-garamond-normal.woff2"],
             weight: 600,
             style: "normal",
           },
           {
-            src: ["./src/assets/fonts/cormorant-garamond-italic-300.woff2"],
+            src: ["./src/assets/fonts/cormorant-garamond-italic.woff2"],
             weight: 300,
             style: "italic",
           },
           {
-            src: ["./src/assets/fonts/cormorant-garamond-italic-400.woff2"],
+            src: ["./src/assets/fonts/cormorant-garamond-italic.woff2"],
             weight: 400,
             style: "italic",
           },
@@ -86,9 +88,9 @@ export default defineConfig({
       display: "swap",
       options: {
         variants: [
-          { src: ["./src/assets/fonts/inter-normal-300.woff2"], weight: 300, style: "normal" },
-          { src: ["./src/assets/fonts/inter-normal-400.woff2"], weight: 400, style: "normal" },
-          { src: ["./src/assets/fonts/inter-normal-500.woff2"], weight: 500, style: "normal" },
+          { src: ["./src/assets/fonts/inter-normal.woff2"], weight: 300, style: "normal" },
+          { src: ["./src/assets/fonts/inter-normal.woff2"], weight: 400, style: "normal" },
+          { src: ["./src/assets/fonts/inter-normal.woff2"], weight: 500, style: "normal" },
         ],
       },
     },
