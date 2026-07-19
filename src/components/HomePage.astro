@@ -17,7 +17,7 @@ interface Props {
 const { locale } = Astro.props;
 ---
 
-<BaseLayout locale={locale}>
+<BaseLayout locale={locale} preloadCormorant>
   <Hero locale={locale} />
   <EcgDivider />
   <About locale={locale} />

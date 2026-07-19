@@ -13,12 +13,15 @@ interface Props {
   title?: string;
   description?: string;
   preloadHero?: boolean;
+  /** Home pages also use Cormorant 300/300-italic above the fold (hero title). */
+  preloadCormorant?: boolean;
   schemaType?: "physician" | "blog";
   blogData?: { title: string; date: string; author: string; image?: string };
 }
 
 const { locale } = Astro.props;
 const preloadHero = Astro.props.preloadHero ?? true;
+const preloadCormorant = Astro.props.preloadCormorant ?? false;
 const t = getTranslations(locale);
 const title = Astro.props.title ?? t.meta.title;
 const description = Astro.props.description ?? t.meta.description;
@@ -67,7 +70,22 @@ if (schemaType === "blog" && Astro.props.blogData) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.jpg" />
-    <Font cssVariable="--font-cormorant" preload />
+    {/* Preload only variants used above the fold: Cormorant 600 is the nav
+        logo on every page; 300/300-italic render the hero title (home only).
+        Everything else loads via @font-face with font-display: swap, avoiding
+        "preloaded but not used" warnings (e.g. 400/400-italic on home). */}
+    <Font
+      cssVariable="--font-cormorant"
+      preload={
+        preloadCormorant
+          ? [
+              { weight: 300, style: "normal" },
+              { weight: 300, style: "italic" },
+              { weight: 600, style: "normal" },
+            ]
+          : [{ weight: 600, style: "normal" }]
+      }
+    />
     <Font cssVariable="--font-inter" preload />
     {preloadHero && <link rel="preload" as="image" href={heroOptimized.src} media="(min-width: 961px)" />}
     <SEO locale={locale} title={title} description={description} />
