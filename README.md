@@ -55,7 +55,7 @@ on GitHub Actions (free for this public repo).
 | --- | --- | --- | --- |
 | Production | `draestelamas` | `draestelamas.com` (domain not in Cloudflare yet) | Manual: Actions -> Deploy -> Run workflow |
 | Staging | `draestelamas-staging` | `draestelamas.marctonimas.com` | Automatic on merge to `main` |
-| Preview | `draestelamas-preview` | `draestelamas-preview.mtmarctoni.workers.dev` | Every push to a PR (non-fork) |
+| Preview | `draestelamas-preview` | `draestelamas-preview.marctonimas.com` | Every push to a PR (non-fork) |
 
 The Astro Cloudflare adapter resolves the Wrangler environment at BUILD time:
 CI sets `CLOUDFLARE_ENV=staging|preview` before `pnpm build`, and
