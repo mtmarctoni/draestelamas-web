@@ -25,10 +25,10 @@ jobs:
       # The account's workers.dev subdomain is stable; needed at BUILD time
       # (canonical URLs / sitemap / robots.txt), so it cannot be discovered
       # from the deploy output.
-      PREVIEW_URL: https://draestelamas-preview.mtmarctoni.workers.dev
+      PREVIEW_URL: https://draestelamas-preview.marctonimas.com
     environment:
       name: preview
-      url: https://draestelamas-preview.mtmarctoni.workers.dev
+      url: https://draestelamas-preview.marctonimas.com
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6

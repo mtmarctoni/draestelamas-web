@@ -23,7 +23,13 @@
     // PR previews — separate Worker so staging and preview don't collide.
     "preview": {
       "name": "draestelamas-preview",
-      "workers_dev": true
+      "workers_dev": true,
+      "routes": [
+        {
+          "pattern": "draestelamas-preview.marctonimas.com",
+          "custom_domain": true
+        }
+      ]
     }
   }
 }
