@@ -16,7 +16,10 @@ const home = homePath(locale);
 
 <nav id="main-nav">
   <a class="nav-logo" href={home}>
-    <Image src={logo} alt="" width={88} densities={[1, 2]} loading="eager" fetchpriority="high" quality={50} />
+    <!-- 88px at 1x already gives ~1.5x density at the 44px-tall display size;
+         a 2x variant is wasted bytes. No fetchpriority="high": it would
+         compete with the hero image (the real LCP candidate) for bandwidth. -->
+    <Image src={logo} alt="" width={88} densities={[1]} loading="eager" quality={35} />
     <span class="nav-logo-text">
       Dra. Estela Mas
       <span class="nav-logo-sub">Nefrologia</span>
