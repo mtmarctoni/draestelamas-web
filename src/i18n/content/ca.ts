@@ -163,9 +163,12 @@ const ca: TranslationContent = {
     sending: "Enviant...",
     success: "✓ Missatge enviat. La Dra. Mas Ródenas es posarà en contacte amb vostè en breu.",
     error: "Hi ha hagut un error. Contacti per correu electrònic.",
+    sendAnother: "Envia un altre missatge",
     fieldErrors: {
-      name: "Introduïu el vostre nom (mínim 2 caràcters).",
-      email: "Introduïu una adreça de correu electrònic vàlida.",
+      name: "Si us plau, introduïu el vostre nom (mínim 2 caràcters).",
+      surname: "Si us plau, introduïu el vostre cognom.",
+      email: "Si us plau, introduïu una adreça de correu electrònic vàlida.",
+      message: "Si us plau, escriviu un missatge.",
     },
   },
   footer: {
@@ -192,7 +195,7 @@ const ca: TranslationContent = {
       {
         heading: "2. Dades que recollim",
         bodyHtml:
-          "A través del formulari de contacte recollim: nom, cognoms i adreça de correu electrònic. De manera opcional, un missatge.",
+          "A través del formulari de contacte recollim: nom, cognoms i adreça de correu electrònic. Missatge obligatori.",
       },
       {
         heading: "3. Finalitat del tractament",

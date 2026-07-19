@@ -76,7 +76,8 @@ export interface TranslationContent {
     sending: string;
     success: string;
     error: string;
-    fieldErrors: { name: string; email: string };
+    sendAnother: string;
+    fieldErrors: { name: string; surname: string; email: string; message: string };
   };
   footer: {
     name: string;

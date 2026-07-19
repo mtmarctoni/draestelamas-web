@@ -163,9 +163,12 @@ const es: TranslationContent = {
     sending: "Enviando...",
     success: "✓ Mensaje enviado. La Dra. Mas Ródenas se pondrá en contacto con usted en breve.",
     error: "Ha ocurrido un error. Contacte por correo electrónico.",
+    sendAnother: "Enviar otro mensaje",
     fieldErrors: {
-      name: "Introduzca su nombre (mínimo 2 caracteres).",
-      email: "Introduzca una dirección de correo electrónico válida.",
+      name: "Por favor, introduzca su nombre (mínimo 2 caracteres).",
+      surname: "Por favor, introduzca su apellido.",
+      email: "Por favor, introduzca una dirección de correo electrónico válida.",
+      message: "Por favor, escriba un mensaje.",
     },
   },
   footer: {
@@ -192,7 +195,7 @@ const es: TranslationContent = {
       {
         heading: "2. Datos que recogemos",
         bodyHtml:
-          "A través del formulario de contacto recogemos: nombre, apellidos y dirección de correo electrónico. De manera opcional, un mensaje.",
+          "A través del formulario de contacto recogemos: nombre, apellidos y dirección de correo electrónico. Mensaje obligatorio.",
       },
       {
         heading: "3. Finalidad del tratamiento",
