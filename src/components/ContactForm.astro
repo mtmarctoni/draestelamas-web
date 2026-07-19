@@ -90,6 +90,8 @@ const t = getTranslations(locale);
 
   type Field = "name" | "surname" | "email" | "message";
 
+  let submitting = false;
+
   const form = document.getElementById("contact-form") as HTMLFormElement | null;
   const formSuccess = document.getElementById("form-success");
   const errorBox = document.getElementById("form-error");
@@ -268,7 +270,7 @@ const t = getTranslations(locale);
 
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
-    if (!submit) return;
+    if (!submit || submitting) return;
 
     const firstInvalid = validateFields();
     if (firstInvalid) {
@@ -277,6 +279,7 @@ const t = getTranslations(locale);
       return;
     }
 
+    submitting = true;
     submit.disabled = true;
     submit.textContent = form.dataset.sending ?? "";
     errorBox?.setAttribute("hidden", "");
@@ -313,6 +316,7 @@ const t = getTranslations(locale);
     } catch {
       errorBox?.removeAttribute("hidden");
     } finally {
+      submitting = false;
       resetButton();
     }
   });
