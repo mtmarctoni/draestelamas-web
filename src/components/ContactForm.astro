@@ -315,11 +315,12 @@ const t = getTranslations(locale);
       } else {
         errorBox?.removeAttribute("hidden");
       }
+      resetButton();
     } catch {
       errorBox?.removeAttribute("hidden");
+      resetButton();
     } finally {
       submitting = false;
-      resetButton();
     }
   });
 
