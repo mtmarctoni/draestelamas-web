@@ -10,7 +10,7 @@ import { z } from "astro/zod";
 export const contactSchema = z.object({
   name: z.string().trim().min(2, "Name is required"),
   surname: z.string().trim().min(1, "Surname is required"),
-  email: z.email("Valid email is required"),
+  email: z.string().trim().pipe(z.email("Valid email is required")),
   message: z.string().trim().min(1, "Message is required"),
   important_field: z.string().max(0).optional(),
   locale: z.enum(["ca", "es", "en"]).optional().default("ca"),
