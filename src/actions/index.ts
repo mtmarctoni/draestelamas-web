@@ -50,21 +50,18 @@ export const server = {
           name: "Nom",
           email: "Email",
           message: "Missatge",
-          empty: "(sense missatge)",
         },
         es: {
           subject: `Nueva propuesta de colaboración — ${input.name} ${input.surname}`,
           name: "Nombre",
           email: "Email",
           message: "Mensaje",
-          empty: "(sin mensaje)",
         },
         en: {
           subject: `New collaboration enquiry — ${input.name} ${input.surname}`,
           name: "Name",
           email: "Email",
           message: "Message",
-          empty: "(no message)",
         },
       };
       const l = labels[input.locale] ?? labels.ca;
@@ -74,7 +71,7 @@ export const server = {
         `${l.email}: ${input.email}`,
         "",
         `${l.message}:`,
-        input.message || l.empty,
+        input.message,
       ].join("\n");
 
       const from = env.RESEND_FROM || "contact@marctonimas.com";

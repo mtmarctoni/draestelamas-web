@@ -163,9 +163,12 @@ const en: TranslationContent = {
     sending: "Sending...",
     success: "✓ Message sent. Dr. Mas Ródenas will be in touch with you shortly.",
     error: "An error occurred. Please contact us by email.",
+    sendAnother: "Send another message",
     fieldErrors: {
       name: "Please enter your name (at least 2 characters).",
+      surname: "Please enter your surname.",
       email: "Please enter a valid email address.",
+      message: "Please enter a message.",
     },
   },
   footer: {
@@ -192,7 +195,7 @@ const en: TranslationContent = {
       {
         heading: "2. Data we collect",
         bodyHtml:
-          "Through the contact form we collect: first name, surname and email address. Optionally, a message.",
+          "Through the contact form we collect: first name, surname and email address. Message required.",
       },
       {
         heading: "3. Purpose of processing",

@@ -15,13 +15,27 @@ describe("contactSchema", () => {
     expect(result.success).toBe(true);
   });
 
-  it("accepts missing surname and message (optional per source form)", () => {
-    const result = contactSchema.safeParse({ name: "Maria", email: "maria@example.com" });
-    expect(result.success).toBe(true);
-    if (result.success) {
-      expect(result.data.surname).toBe("");
-      expect(result.data.message).toBe("");
-    }
+  it("rejects missing surname", () => {
+    const result = contactSchema.safeParse({
+      name: "Maria",
+      email: "maria@example.com",
+      message: "Hola",
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects missing message", () => {
+    const result = contactSchema.safeParse({
+      name: "Maria",
+      surname: "Serra",
+      email: "maria@example.com",
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("trims whitespace-only surname/message to empty, then rejects", () => {
+    const result = contactSchema.safeParse({ ...valid, surname: "   ", message: "   " });
+    expect(result.success).toBe(false);
   });
 
   it("rejects a filled honeypot (Layer 1 spam defense)", () => {
