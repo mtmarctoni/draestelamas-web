@@ -48,6 +48,14 @@ describe("contactSchema", () => {
     expect(result.success).toBe(false);
   });
 
+  it("trims whitespace-wrapped email, then accepts if still valid", () => {
+    const result = contactSchema.safeParse({ ...valid, email: "  maria@example.com  " });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.email).toBe("maria@example.com");
+    }
+  });
+
   it("rejects a one-character name", () => {
     const result = contactSchema.safeParse({ ...valid, name: "M" });
     expect(result.success).toBe(false);
