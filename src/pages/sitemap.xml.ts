@@ -14,6 +14,20 @@ export const GET: APIRoute = async ({ site }) => {
   if (!site) return new Response("Site not configured", { status: 500 });
   const base = site.href.replace(/\/$/, "");
 
+  // Non-production builds render noindex/nofollow (see SEO.astro), so their
+  // pages must never be advertised for crawling/indexing via the sitemap
+  // either — an empty urlset keeps the route valid without listing URLs.
+  const indexable = import.meta.env.PUBLIC_ALLOW_INDEXING === "true";
+  if (!indexable) {
+    const empty = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+</urlset>`;
+    return new Response(empty, {
+      headers: { "Content-Type": "application/xml" },
+    });
+  }
+
   // Each group renders one <url> (canonical = default locale, which is first
   // in `locales`) with hreflang alternates for every locale.
   const groupFor = (pathFor: (locale: Locale) => string) =>
