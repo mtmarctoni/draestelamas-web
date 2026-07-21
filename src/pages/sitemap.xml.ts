@@ -1,13 +1,6 @@
 import type { APIRoute } from "astro";
 import type { Locale } from "../i18n";
-import {
-  defaultLocale,
-  legalPath,
-  localeHreflang,
-  locales,
-  localizeUrl,
-  privacyPath,
-} from "../i18n";
+import { defaultLocale, localeHreflang, locales, localizeUrl } from "../i18n";
 import { blogPostPath, getBlogPosts } from "../lib/blog";
 
 export const GET: APIRoute = async ({ site }) => {
@@ -33,16 +26,22 @@ export const GET: APIRoute = async ({ site }) => {
   const groupFor = (pathFor: (locale: Locale) => string) =>
     locales.map((locale) => ({ locale, path: pathFor(locale) }));
 
+  // `lastmod` is only emitted where we have an honest content date: blog posts
+  // carry one in frontmatter. The home page has none — build time would advance
+  // on every deploy even when nothing changed, and inaccurate lastmod values
+  // lead Google to distrust them site-wide. `priority`/`changefreq` are omitted
+  // entirely: Google ignores both.
   const posts = await getBlogPosts(defaultLocale);
-  const pageGroups = [
-    groupFor((locale) => localizeUrl("/", locale)),
-    ...posts.map((post) => groupFor((locale) => blogPostPath(post, locale))),
-    groupFor((locale) => `${legalPath(locale)}/`),
-    groupFor((locale) => `${privacyPath(locale)}/`),
+  const pageEntries: { group: { locale: Locale; path: string }[]; lastmod?: string }[] = [
+    { group: groupFor((locale) => localizeUrl("/", locale)) },
+    ...posts.map((post) => ({
+      group: groupFor((locale) => blogPostPath(post, locale)),
+      lastmod: post.data.date.toISOString(),
+    })),
   ];
 
-  const urlEntries = pageGroups
-    .map((group) => {
+  const urlEntries = pageEntries
+    .map(({ group, lastmod }) => {
       const canonical = `${base}${group[0].path}`;
 
       const alternates = group
@@ -53,9 +52,10 @@ export const GET: APIRoute = async ({ site }) => {
         .join("\n");
 
       const xDefault = `    <xhtml:link rel="alternate" hreflang="x-default" href="${canonical}"/>`;
+      const lastmodTag = lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : "";
 
       return `  <url>
-    <loc>${canonical}</loc>
+    <loc>${canonical}</loc>${lastmodTag}
 ${alternates}
 ${xDefault}
   </url>`;

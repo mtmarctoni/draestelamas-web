@@ -8,27 +8,31 @@ import {
   localizeUrl,
   ogLocale,
 } from "../i18n";
+import { robotsDirective } from "../lib/seo";
 
 interface Props {
   locale: Locale;
   title: string;
   description: string;
   imageAlt?: string;
+  /** Pages that should stay out of search results (e.g. legal/privacy) even when the environment allows indexing. Links are still followed. */
+  noindex?: boolean;
 }
 
-const { locale, title, description, imageAlt } = Astro.props;
+const { locale, title, description, imageAlt, noindex } = Astro.props;
 const t = getTranslations(locale);
 const site = Astro.site;
 if (!site) throw new Error("`site` must be set in astro.config.mjs — canonical URLs depend on it.");
 const urlFor = (loc: Locale) => new URL(localizeUrl(Astro.url.pathname, loc), site).href;
 const ogImage = new URL("/og-image.jpg", site).href;
-const indexable = import.meta.env.PUBLIC_ALLOW_INDEXING === "true";
+const envIndexable = import.meta.env.PUBLIC_ALLOW_INDEXING === "true";
+const robotsContent = robotsDirective(envIndexable, noindex);
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
 <meta name="author" content="Dra. Estela Mas Ródenas" />
-<meta name="robots" content={indexable ? "index, follow" : "noindex, nofollow"} />
+<meta name="robots" content={robotsContent} />
 <link rel="canonical" href={urlFor(locale)} />
 
 {locales.map((loc) => <link rel="alternate" hreflang={localeHreflang[loc]} href={urlFor(loc)} />)}

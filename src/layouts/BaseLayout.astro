@@ -17,6 +17,8 @@ interface Props {
   preloadCormorant?: boolean;
   schemaType?: "physician" | "blog";
   blogData?: { title: string; date: string; author: string; image?: string };
+  /** Excludes this page from search results even when the environment allows indexing. */
+  noindex?: boolean;
 }
 
 const { locale } = Astro.props;
@@ -78,7 +80,7 @@ if (schemaType === "blog" && Astro.props.blogData) {
     <Font cssVariable="--font-cormorant" preload={preloadCormorant ? true : [{ style: "normal" }]} />
     <Font cssVariable="--font-inter" preload />
     {preloadHero && <link rel="preload" as="image" href={heroOptimized.src} media="(min-width: 961px)" />}
-    <SEO locale={locale} title={title} description={description} />
+    <SEO locale={locale} title={title} description={description} noindex={Astro.props.noindex} />
     <meta name="build-commit" content={import.meta.env.PUBLIC_GIT_SHA ?? "dev"} />
     <script type="application/ld+json" is:inline set:html={jsonLd} />
   </head>
