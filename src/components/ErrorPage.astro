@@ -20,7 +20,7 @@ const t = getTranslations(locale);
 const message = code === 404 ? t.errors.notFound : t.errors.serverError;
 ---
 
-<BaseLayout locale={locale} title={`${code} — ${t.meta.title}`} preloadHero={false}>
+<BaseLayout locale={locale} title={`${code} — ${t.meta.title}`} preloadHero={false} noindex>
   <div class="error-page">
     <div class="section-inner">
       <Image

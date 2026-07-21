@@ -14,7 +14,7 @@ const content = type === "privacy" ? t.privacy : t.legal;
 const backLabel = content.back;
 ---
 
-<BaseLayout locale={locale} title={content.title} preloadHero={false}>
+<BaseLayout locale={locale} title={content.title} preloadHero={false} noindex>
   <div class="legal-page">
     <div class="section-inner legal-inner">
       <a class="legal-back" href={homePath(locale)}>{backLabel}</a>
