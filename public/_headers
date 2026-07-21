@@ -14,3 +14,12 @@
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+/
+  Link: </avis-legal>; rel="terms-of-service", </politica-privacitat>; rel="privacy-policy"
+
+/en/
+  Link: </en/legal-notice>; rel="terms-of-service", </en/privacy-policy>; rel="privacy-policy"
+
+/es/
+  Link: </es/aviso-legal>; rel="terms-of-service", </es/politica-privacidad>; rel="privacy-policy"
