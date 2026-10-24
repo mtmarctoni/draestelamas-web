@@ -1,5 +1,28 @@
-# 2026-07-15: esbuild 0.27.7 (CVSS 2.5, low) — build tool only, not runtime.
-# astro@6.4.8 pins esbuild ^0.27; fix blocked on astro 7 major upgrade.
+# 2026-10-24: fast-uri 3.1.8 is the newest 3.x release. These four advisories
+# are fixed in 2.4.8 / 3.1.9 / 4.2.3, and none of those is published yet (4.x
+# would not help anyway: ajv 8 declares fast-uri ^3). It comes in only through
+# `astro check`: @astrojs/check -> @astrojs/language-server ->
+# volar-service-yaml -> yaml-language-server -> ajv. Dev/CI type checking only,
+# never in the deployed Worker. Revisit when ignoreUntil passes.
+# (The earlier esbuild GHSA-g7r4-m6w7-qqqr entry was removed: the lockfile only
+# has esbuild 0.28.x, outside the affected range, and osv-scanner already
+# reported that ignore as unused on main.)
 [[IgnoredVulns]]
-id = "GHSA-g7r4-m6w7-qqqr"
-reason = "Build tool only; astro@6.4.8 pins esbuild ^0.27, fix requires astro 7 major."
+id = "GHSA-w74x-v6f9-j3xg"
+ignoreUntil = 2027-01-24
+reason = "fast-uri 3.1.8 via @astrojs/check -> @astrojs/language-server -> volar-service-yaml -> yaml-language-server -> ajv; dev-only (type checking); no fixed release (3.1.9) is published yet."
+
+[[IgnoredVulns]]
+id = "GHSA-wjr9-j795-jxcr"
+ignoreUntil = 2027-01-24
+reason = "fast-uri 3.1.8 via @astrojs/check -> @astrojs/language-server -> volar-service-yaml -> yaml-language-server -> ajv; dev-only (type checking); no fixed release (3.1.9) is published yet."
+
+[[IgnoredVulns]]
+id = "GHSA-333x-w4r6-6crp"
+ignoreUntil = 2027-01-24
+reason = "fast-uri 3.1.8 via @astrojs/check -> @astrojs/language-server -> volar-service-yaml -> yaml-language-server -> ajv; dev-only (type checking); no fixed release (3.1.9) is published yet."
+
+[[IgnoredVulns]]
+id = "GHSA-xhq7-xmqj-769h"
+ignoreUntil = 2027-01-24
+reason = "fast-uri 3.1.8 via @astrojs/check -> @astrojs/language-server -> volar-service-yaml -> yaml-language-server -> ajv; dev-only (type checking); no fixed release (3.1.9) is published yet."
