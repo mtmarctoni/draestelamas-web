@@ -1,5 +1,7 @@
-# 2026-07-15: esbuild 0.27.7 (CVSS 2.5, low) — build tool only, not runtime.
-# astro@6.4.8 pins esbuild ^0.27; fix blocked on astro 7 major upgrade.
-[[IgnoredVulns]]
-id = "GHSA-g7r4-m6w7-qqqr"
-reason = "Build tool only; astro@6.4.8 pins esbuild ^0.27, fix requires astro 7 major."
+# osv-scanner config, read by CI (--config=osv-scanner.toml).
+#
+# 2026-10-26: no ignored advisories. The esbuild GHSA-g7r4-m6w7-qqqr entry was
+# removed (the lockfile only has esbuild 0.28.x, outside the affected range),
+# and fast-uri is on 3.1.9, which fixes the four advisories that were briefly
+# ignored on this branch. Add [[IgnoredVulns]] entries here, each with a dated
+# comment, an ignoreUntil date and the real dependency path in its reason.

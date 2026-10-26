@@ -2,3 +2,10 @@ onlyBuiltDependencies:
   - esbuild
   - sharp
   - workerd
+
+# 2026-10-24: undici 7 < 7.30.1 (GHSA-xjj6-f33q-929c, GHSA-4qv8-2p9j-2685,
+# GHSA-f72v-6w45-q472) is pinned exactly (7.29.1) by miniflare via wrangler and
+# @cloudflare/vite-plugin. Dev/build-only (local Workers simulator), never in
+# the deployed Worker. Drop once miniflare depends on >= 7.30.1.
+overrides:
+  undici@7: ^7.30.1
